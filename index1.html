@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clara Luna | Muralismo e Ilustración Social</title>
+    
+    <!-- FUENTES -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- ICONOS -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <style>
+        /* =========================================
+           VARIABLES CSS & TEMAS (NUEVA PALETA PASTEL)
+           ========================================= */
+        :root {
+            /* NUEVA PALETA: "Atelier Sereno"
+               Objetivo: Suavidad, creatividad, sin estridencias.
+            */
+            
+            /* Tonos Pastel Base (Decorativos) */
+            --color-rosa: #FFC2C7;    /* Rosa talco suave */
+            --color-amarillo: #FFF3C4; /* Amarillo crema/mantequilla */
+            --color-azul: #B8E1FF;    /* Azul nube */
+            
+            /* Color de Acento / Acción (Reemplaza al Teja/Marrón) */
+            /* Usamos un índigo suave o lavanda profunda para mantener contraste pero sin ser rojo/marrón */
+            --color-accion: #748CAB;  /* Azul Pizarra Suave (Sereno pero con carácter) */
+            --color-accion-hover: #566B87;
+
+            /* Variables de Tema CLARO (Por defecto) */
+            --bg-body: #FDFBF7;       /* Blanco roto muy cálido (casi papel) */
+            --bg-card: #FFFFFF;
+            --bg-nav: rgba(253, 251, 247, 0.9);
+            --bg-input: #F8F9FA;
+            --text-main: #2D3436;     /* Gris antracita suave, no negro puro */
+            --text-secondary: #636E72;
+            --border-color: #ECECEC;
+            --shadow: 0 10px 30px rgba(116, 140, 171, 0.1); /* Sombra tintada de azul */
+            
+            /* Tipografía */
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        /* TEMA OSCURO */
+        body.dark-mode {
+            /* Ajuste de colores pastel para modo oscuro (más desaturados para no vibrar) */
+            --color-rosa: #D68F95;
+            --color-amarillo: #D6C68B;
+            --color-azul: #8AB6D6;
+            
+            --color-accion: #A2B9D6; /* Azul más claro para resaltar sobre oscuro */
+            --color-accion-hover: #FFFFFF;
+
+            --bg-body: #1E2022;      /* Gris plomo muy oscuro */
+            --bg-card: #25282A;      /* Un tono más claro que el fondo */
+            --bg-nav: rgba(30, 32, 34, 0.95);
+            --bg-input: #2D3033;
+            --text-main: #F0F2F5;    /* Blanco humo */
+            --text-secondary: #B2BEC3;
+            --border-color: #383B40;
+            --shadow: 0 10px 40px rgba(0,0,0,0.4);
+        }
+
+        /* =========================================
+           ESTILOS GENERALES
+           ========================================= */
+        html { scroll-behavior: smooth; } /* Desplazamiento suave */
+
+        * { box-sizing: border-box; margin: 0; padding: 0; transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; }
+        
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; line-height: 1.2; color: var(--text-main); }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; border-radius: 12px; }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Botones Estilo Pastel */
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            border: 2px solid transparent;
+        }
+        .btn-primary {
+            background-color: var(--color-accion);
+            color: white; /* Texto blanco siempre legible en este azul */
+        }
+        .btn-primary:hover {
+            background-color: var(--color-accion-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .btn-outline {
+            background: transparent;
+            border-color: var(--text-main);
+            color: var(--text-main);
+        }
+        .btn-outline:hover {
+            background: var(--text-main);
+            color: var(--bg-body);
+        }
+
+        /* =========================================
+           NAVEGACIÓN
+           ========================================= */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--bg-nav);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+        .logo span { color: var(--color-accion); } /* Ahora el acento es el azul pizarra */
+        
+        .nav-links { display: flex; gap: 35px; }
+        .nav-links a { font-weight: 400; font-size: 0.95rem; position: relative; color: var(--text-main); }
+        .nav-links a::after {
+            content: ''; position: absolute; width: 0; height: 2px; bottom: -4px; left: 0;
+            background-color: var(--color-rosa); transition: width 0.3s;
+        }
+        .nav-links a:hover::after { width: 100%; }
+
+        .theme-toggle { cursor: pointer; font-size: 1.6rem; color: var(--text-main); }
+        .menu-toggle { display: none; font-size: 1.8rem; cursor: pointer; color: var(--text-main); }
+
+        /* =========================================
+           HERO SECTION
+           ========================================= */
+        .hero {
+            padding: 180px 0 120px;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Manchas pastel difuminadas */
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px); /* Más blur para efecto acuarela */
+            z-index: -1;
+            opacity: 0.6;
+        }
+        .blob-1 { width: 400px; height: 400px; background: var(--color-rosa); top: -100px; left: -100px; }
+        .blob-2 { width: 350px; height: 350px; background: var(--color-amarillo); top: 30%; right: -100px; }
+        .blob-3 { width: 300px; height: 300px; background: var(--color-azul); bottom: -50px; left: 20%; }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .hero-text h1 { font-size: 3.8rem; margin-bottom: 24px; letter-spacing: -1px; }
+        .hero-text p { font-size: 1.25rem; color: var(--text-secondary); margin-bottom: 40px; font-weight: 300; }
+        
+        .hero-placeholder {
+            width: 100%;
+            height: 500px;
+            background-color: var(--bg-input); /* Placeholder sutil */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 200px 200px 20px 20px; /* Forma de arco/ventana */
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        /* =========================================
+           SOBRE MÍ
+           ========================================= */
+        .about { padding: 120px 0; background: var(--bg-card); }
+        .section-title { text-align: center; margin-bottom: 70px; }
+        .section-title span {
+            color: var(--color-accion);
+            font-family: var(--font-body);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 12px;
+        }
+        .section-title h2 { font-size: 2.8rem; }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .about-img-placeholder {
+            height: 500px;
+            border-radius: 20px;
+            background-color: var(--bg-input);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 40px;
+        }
+        .stat-card {
+            background: var(--bg-body);
+            padding: 24px;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+        .stat-card h4 { font-size: 2.2rem; color: var(--color-accion); margin-bottom: 4px; }
+        .stat-card p { font-size: 0.9rem; color: var(--text-secondary); margin: 0; }
+
+        /* =========================================
+           SERVICIOS
+           ========================================= */
+        .services { padding: 120px 0; position: relative; }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        .service-card {
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+        /* Decoración superior pastel */
+        .service-card::after {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 6px;
+            background: var(--color-azul);
+        }
+        .service-card:nth-child(2)::after { background: var(--color-rosa); }
+        .service-card:nth-child(3)::after { background: var(--color-amarillo); }
+        
+        .service-card:hover { transform: translateY(-8px); box-shadow: var(--shadow); }
+        .service-icon { font-size: 2.8rem; margin-bottom: 24px; display: block; color: var(--text-main); opacity: 0.8; }
+        
+        .service-card h3 { font-size: 1.6rem; margin-bottom: 16px; }
+        .service-card p { color: var(--text-secondary); margin-bottom: 24px; }
+        .service-card li { margin-bottom: 12px; font-size: 0.95rem; color: var(--text-secondary); display: flex; align-items: center; }
+        .service-card li i { margin-right: 12px; color: var(--color-accion); font-size: 1.1rem; }
+
+        /* =========================================
+           METODOLOGÍA
+           ========================================= */
+        .methodology { padding: 120px 0; background: var(--bg-card); }
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+        .step { padding: 20px; position: relative; }
+        .step-number {
+            font-family: var(--font-display);
+            font-size: 5rem;
+            color: var(--color-rosa);
+            opacity: 0.2; /* Muy sutil */
+            position: absolute;
+            top: -30px;
+            left: 10px;
+            line-height: 1;
+        }
+        .step h3 { margin-bottom: 12px; font-size: 1.3rem; margin-top: 20px; }
+        .step p { font-size: 0.95rem; color: var(--text-secondary); }
+
+        /* =========================================
+           PORTFOLIO
+           ========================================= */
+        .portfolio { padding: 120px 0; }
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 24px;
+        }
+        .portfolio-item {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+        }
+        .portfolio-placeholder {
+            width: 100%; height: 100%;
+            background: var(--bg-input);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .portfolio-item:hover .portfolio-placeholder { transform: scale(1.03); }
+        .portfolio-overlay {
+            position: absolute; bottom: 0; left: 0; width: 100%;
+            background: linear-gradient(to top, rgba(45, 52, 54, 0.9), transparent);
+            padding: 30px 24px;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+
+        /* =========================================
+           VIABILIDAD (PRESUPUESTO)
+           ========================================= */
+        .budget { padding: 120px 0; background-color: var(--bg-card); }
+        .budget-box {
+            /* Degradado muy sutil pastel */
+            background: linear-gradient(135deg, rgba(255, 194, 199, 0.15), rgba(184, 225, 255, 0.15));
+            border-radius: 32px;
+            padding: 60px;
+            border: 1px solid var(--border-color);
+        }
+        .budget-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+        .budget-item i {
+            font-size: 1.8rem;
+            color: var(--color-accion);
+            background: var(--bg-card);
+            padding: 16px;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        /* =========================================
+           SECCIÓN CONTACTO & FORMULARIO
+           ========================================= */
+        .contact { padding: 120px 0; position: relative; }
+        
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            margin-top: 60px;
+        }
+
+        /* Columna Izquierda: Info */
+        .contact-info-card {
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+            height: 100%;
+        }
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .contact-method:last-child { margin-bottom: 0; }
+        .icon-box {
+            width: 50px; height: 50px;
+            background-color: rgba(116, 140, 171, 0.1); /* Azul pizarra muy suave */
+            color: var(--color-accion);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        /* Columna Derecha: Formulario */
+        .form-box {
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+        }
+        
+        .form-group { margin-bottom: 20px; }
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-input);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--text-main);
+            outline: none;
+        }
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            border-color: var(--color-accion);
+            background-color: var(--bg-card);
+            box-shadow: 0 0 0 3px rgba(116, 140, 171, 0.15);
+        }
+        .form-textarea { resize: vertical; min-height: 120px; }
+
+        /* =========================================
+           FOOTER
+           ========================================= */
+        footer {
+            background: var(--bg-body);
+            border-top: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 60px 0;
+            text-align: center;
+        }
+        footer h2 { font-size: 2rem; margin-bottom: 10px; }
+        footer p { opacity: 0.6; font-size: 0.95rem; }
+
+        /* =========================================
+           RESPONSIVE
+           ========================================= */
+        @media (max-width: 850px) {
+            .hero-content, .about-grid, .contact-layout { grid-template-columns: 1fr; gap: 40px; }
+            .hero-text { text-align: center; }
+            .hero-text h1 { font-size: 2.8rem; }
+            .hero-placeholder { height: 350px; }
+            .steps { grid-template-columns: 1fr; gap: 40px; }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 80px; left: 0; width: 100%;
+                background: var(--bg-card);
+                flex-direction: column;
+                padding: 30px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+                border-bottom: 1px solid var(--border-color);
+            }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: block; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVEGACIÓN -->
+    <nav>
+        <div class="container nav-container">
+            <a href="#" class="logo">Clara<span>Luna</span></a>
+            
+            <div class="nav-links" id="navLinks">
+                <a href="#sobre-mi">Sobre mí</a>
+                <a href="#servicios">Servicios</a>
+                <a href="#metodologia">Metodología</a>
+                <a href="#proyectos">Proyectos</a>
+                <a href="#presupuesto">Financiación</a>
+                <a href="#contacto">Contacto</a>
+            </div>
+
+            <div style="display: flex; gap: 15px; align-items: center;">
+                <i class="ph ph-moon theme-toggle" id="themeToggle"></i>
+                <i class="ph ph-list menu-toggle" id="menuToggle"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <!-- Manchas de color pastel -->
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>Transformo espacios a través de formas, líneas y colores.</h1>
+                <p>Arte mural, ilustración social y proyectos colaborativos que conectan comunidades. Soy Clara Luna, doctora en Bellas Artes.</p>
+                <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center md:justify-content: flex-start;">
+                    <a href="#proyectos" class="btn btn-primary">Ver Proyectos</a>
+                    <a href="#contacto" class="btn btn-outline">Hablemos</a>
+                </div>
+            </div>
+            <div class="hero-image-wrapper">
+                <!-- PLACEHOLDER IMAGEN HERO (PDF pag 1) -->
+                <div class="hero-placeholder">
+                    <img src="https://placehold.co/600x650/f0f2f5/aebec4?text=Foto+Clara+Pintando+(PDF+Pag+1)" alt="Clara Luna Pintando">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- SOBRE MÍ -->
+    <section id="sobre-mi" class="about">
+        <div class="container">
+            <div class="section-title">
+                <span>Perfil</span>
+                <h2>Artista y Educadora</h2>
+            </div>
+
+            <div class="about-grid">
+                <!-- PLACEHOLDER IMAGEN RETRATO (PDF pag 2) -->
+                <div class="about-img-placeholder">
+                     <img src="https://placehold.co/500x600/f0f2f5/aebec4?text=Retrato+o+Detalle+Obra" alt="Retrato Clara Luna" style="width:100%; height:100%; object-fit: cover;">
+                </div>
+                
+                <div class="about-text">
+                    <p>Desde que tengo memoria, me recuerdo con un lápiz y papel. Me fascina mirar el mundo a través de sus formas, líneas y colores. Lo que comenzó como una pasión innata se transformó en una sólida carrera profesional.</p>
+                    <br>
+                    <p>Soy <strong>Licenciada en Bellas Artes</strong> por la UCM (2007) y <strong>Doctora Cum Laude</strong> por la Universidad de Granada (2014). He ilustrado siete álbumes infantiles y participado en congresos sobre ilustración adaptada.</p>
+                    <br>
+                    <p>Desde 2016, especializo mi obra en temas <strong>educativos, sociales y de igualdad de género</strong>. Hace siete años di el salto al gran formato, realizando murales que transforman el entorno.</p>
+
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <h4>15+</h4>
+                            <p>Años creando</p>
+                        </div>
+                        <div class="stat-card">
+                            <h4>7</h4>
+                            <p>Álbumes publicados</p>
+                        </div>
+                        <div class="stat-card">
+                            <h4>Doctora</h4>
+                            <p>Cum Laude Bellas Artes</p>
+                        </div>
+                        <div class="stat-card">
+                            <h4>Social</h4>
+                            <p>Enfoque educativo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="servicios" class="services">
+        <div class="container">
+            <div class="section-title">
+                <span>¿Qué ofrezco?</span>
+                <h2>Servicios Artísticos</h2>
+            </div>
+
+            <div class="services-grid">
+                <!-- Tarjeta 1: Murales de Autor -->
+                <div class="service-card">
+                    <i class="ph ph-paint-brush-broad service-icon"></i>
+                    <h3>Murales Individuales</h3>
+                    <p>Murales de autor que reflejan un estilo propio, diseñados para embellecer y resignificar espacios públicos o privados.</p>
+                    <ul>
+                        <li><i class="ph ph-check-circle"></i> Diseño personalizado y único</li>
+                        <li><i class="ph ph-check-circle"></i> Ejecución técnica integral</li>
+                        <li><i class="ph ph-check-circle"></i> Aplicación de barniz de conservación</li>
+                    </ul>
+                </div>
+
+                <!-- Tarjeta 2: Murales Colaborativos -->
+                <div class="service-card">
+                    <i class="ph ph-users-three service-icon"></i>
+                    <h3>Murales Colaborativos</h3>
+                    <p>Procesos participativos donde un colectivo (infancia, mayores, mujeres) crea la obra conmigo en igualdad de condiciones.</p>
+                    <ul>
+                        <li><i class="ph ph-check-circle"></i> Dinámicas de grupo y empoderamiento</li>
+                        <li><i class="ph ph-check-circle"></i> Formación técnica a los participantes</li>
+                        <li><i class="ph ph-check-circle"></i> Integración final para acabado profesional</li>
+                    </ul>
+                </div>
+
+                <!-- Tarjeta 3: Ilustración -->
+                <div class="service-card">
+                    <i class="ph ph-pencil-circle service-icon"></i>
+                    <h3>Ilustración Social</h3>
+                    <p>Ilustración para materiales de divulgación, campañas educativas, guías, carteles y álbumes infantiles.</p>
+                    <ul>
+                        <li><i class="ph ph-check-circle"></i> Temáticas sociales y de género</li>
+                        <li><i class="ph ph-check-circle"></i> Estilo adaptado al público</li>
+                        <li><i class="ph ph-check-circle"></i> Experiencia editorial contrastada</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- METODOLOGÍA -->
+    <section id="metodologia" class="methodology">
+        <div class="container">
+            <div class="section-title">
+                <span>Proceso Colaborativo</span>
+                <h2>¿Cómo trabajamos juntos?</h2>
+                <p style="max-width: 600px; margin: 20px auto; color: var(--text-secondary);">Para los murales colaborativos, sigo una metodología probada que asegura la participación real y un resultado estético de calidad.</p>
+            </div>
+
+            <div class="steps">
+                <div class="step">
+                    <span class="step-number">01</span>
+                    <div class="step-content">
+                        <h3>Encuentro</h3>
+                        <p>Sesiones de diálogo, dinámicas y juegos creativos para definir qué queremos contar y consolidar la idea común.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <span class="step-number">02</span>
+                    <div class="step-content">
+                        <h3>Diseño</h3>
+                        <p>Desarrollo un boceto profesional integrando las propuestas del grupo. Se valida colectivamente antes de pintar.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <span class="step-number">03</span>
+                    <div class="step-content">
+                        <h3>Creación</h3>
+                        <p>¡Manos a la obra! El grupo pinta guiado por mí. Proporciono apoyo técnico y organizo los turnos de trabajo.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <span class="step-number">04</span>
+                    <div class="step-content">
+                        <h3>Integración</h3>
+                        <p>Realizo una intervención final para unificar el dibujo, dar coherencia estética y asegurar un acabado duradero.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROYECTOS / GALERÍA -->
+    <section id="proyectos" class="portfolio">
+        <div class="container">
+            <div class="section-title">
+                <span>Portfolio</span>
+                <h2>Obras Recientes</h2>
+            </div>
+
+            <div class="portfolio-grid">
+                <!-- PROYECTO 1 -->
+                <div class="portfolio-item">
+                    <div class="portfolio-placeholder">
+                        <img src="https://placehold.co/600x450/f0f2f5/aebec4?text=Mural+Colaborativo+50m2+(San+Vicente)" alt="Mural San Vicente">
+                    </div>
+                    <div class="portfolio-overlay">
+                        <h3>El Real de San Vicente</h3>
+                        <p>Mural Colaborativo • 50m²</p>
+                    </div>
+                </div>
+
+                <!-- PROYECTO 2 -->
+                <div class="portfolio-item">
+                    <div class="portfolio-placeholder">
+                         <img src="https://placehold.co/600x450/f0f2f5/aebec4?text=Mural+Mujer+de+Barro+(Azután)" alt="Mural Azután">
+                    </div>
+                    <div class="portfolio-overlay">
+                        <h3>Mujer de Barro y Tierra</h3>
+                        <p>Ayuntamiento de Azután • 70m²</p>
+                    </div>
+                </div>
+
+                <!-- PROYECTO 3 -->
+                <div class="portfolio-item">
+                    <div class="portfolio-placeholder">
+                        <img src="https://placehold.co/600x450/f0f2f5/aebec4?text=Ilustracion+Editorial" alt="Ilustración">
+                    </div>
+                    <div class="portfolio-overlay">
+                        <h3>Ilustración Editorial</h3>
+                        <p>7 Álbumes publicados</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VIABILIDAD / PRESUPUESTO -->
+    <section id="presupuesto" class="budget">
+        <div class="container">
+            <div class="budget-box">
+                <div class="section-title" style="margin-bottom: 30px; text-align: left;">
+                    <h2>Viabilidad Económica</h2>
+                    <p>Entiendo que cada entidad tiene recursos diferentes. Mi enfoque se basa en la flexibilidad y las <strong>tres B: Bueno, Bonito y Barato</strong>.</p>
+                </div>
+
+                <div class="budget-list">
+                    <div class="budget-item">
+                        <i class="ph ph-bank"></i>
+                        <div>
+                            <h3>Subvenciones Públicas</h3>
+                            <p>Muchos proyectos encajan en fondos como el <strong>"Pacto de Estado"</strong> para murales de igualdad y género.</p>
+                        </div>
+                    </div>
+                    <div class="budget-item">
+                        <i class="ph ph-handshake"></i>
+                        <div>
+                            <h3>Colaboraciones</h3>
+                            <p>Sinergias donde una entidad (colegio) financia y otra (ayuntamiento) aporta andamios y pintura.</p>
+                        </div>
+                    </div>
+                    <div class="budget-item">
+                        <i class="ph ph-chart-line-down"></i>
+                        <div>
+                            <h3>Reducción de Costes</h3>
+                            <p>Optimizo el presupuesto si se aportan andamios propios o se realizan trabajos previos (fondeo).</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 50px; text-align: center;">
+                    <p style="font-size: 0.9rem; margin-bottom: 24px;">*Presupuestos desde 400€ para intervenciones sencillas.</p>
+                    <!-- ENLACE AL FORMULARIO -->
+                    <a href="#contacto" class="btn btn-primary">Solicitar Presupuesto</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO & FORMULARIO -->
+    <section id="contacto" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <span>Empecemos</span>
+                <h2>¿Hablamos de tu idea?</h2>
+                <p>Valoraré mucho poder hablar tranquilamente de tus necesidades.</p>
+            </div>
+
+            <div class="contact-layout">
+                <!-- COLUMNA INFO -->
+                <div class="contact-info-card">
+                    <h3>Información</h3>
+                    <p style="margin-bottom: 30px; color: var(--text-secondary);">Si prefieres el trato directo, estoy disponible en estos canales:</p>
+
+                    <div class="contact-method">
+                        <div class="icon-box"><i class="ph ph-whatsapp-logo"></i></div>
+                        <div>
+                            <p style="font-size: 0.85rem; color: var(--text-secondary);">Teléfono / WhatsApp</p>
+                            <a href="tel:619624054" style="font-weight: 600;">619 624 054</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-method">
+                        <div class="icon-box"><i class="ph ph-envelope-simple"></i></div>
+                        <div>
+                            <p style="font-size: 0.85rem; color: var(--text-secondary);">Email</p>
+                            <a href="mailto:claraluna@gmail.com" style="font-weight: 600;">claraluna@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-method">
+                        <div class="icon-box"><i class="ph ph-instagram-logo"></i></div>
+                        <div>
+                            <p style="font-size: 0.85rem; color: var(--text-secondary);">Instagram</p>
+                            <a href="https://instagram.com/claralunailustration" target="_blank" style="font-weight: 600;">@claralunailustration</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COLUMNA FORMULARIO -->
+                <div class="form-box">
+                    <form id="formulario-contacto">
+                        <div class="form-group">
+                            <label class="form-label">Nombre o Entidad</label>
+                            <input type="text" class="form-input" placeholder="Ej. Colegio Público... / Ayuntamiento de...">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Email de contacto</label>
+                            <input type="email" class="form-input" placeholder="tu@email.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Tipo de Proyecto</label>
+                            <select class="form-select">
+                                <option>Selecciona una opción...</option>
+                                <option>Mural Colaborativo (Colegios/Asociaciones)</option>
+                                <option>Mural Individual (Decorativo/Institucional)</option>
+                                <option>Ilustración Editorial / Campaña</option>
+                                <option>Otro / Información General</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Cuéntame sobre tu idea</label>
+                            <textarea class="form-textarea" placeholder="Ubicación aproximada, metros, idea inicial..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <h2>Clara Luna</h2>
+            <p>Pintura Mural, Ilustración y Educación Artística.</p>
+            <br>
+            <p>&copy; 2024 Clara Luna Rodríguez. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Toggle Menú Móvil
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Cerrar menú al hacer click en enlace
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Toggle Dark/Light Mode
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        const icon = themeToggle;
+
+        // Detectar preferencia del sistema
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            body.classList.add('dark-mode');
+            icon.classList.remove('ph-moon');
+            icon.classList.add('ph-sun');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            if(body.classList.contains('dark-mode')){
+                icon.classList.remove('ph-moon');
+                icon.classList.add('ph-sun');
+            } else {
+                icon.classList.remove('ph-sun');
+                icon.classList.add('ph-moon');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clara Luna | Muralismo e Ilustración Social</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <style>
+    /* =========================================
+       VARIABLES & TEMAS
+       ========================================= */
+    :root {
+      /* PALETA DE COLORES */
+      --bg-body: #121212;
+      --bg-surface: #1E1E1E;
+      --bg-surface-hover: #2A2A2A;
+      --text-main: #E0E0E0;
+      --text-muted: #A0A0A0;
+      --border: #333333;
+      
+      --accent-pink: #FF4D6D;
+      --accent-yellow: #FFD43B;
+      --accent-blue: #4DABF7;
+      --accent-primary: #FF4D6D;
+
+      /* TIPOGRAFÍA */
+      --font-display: 'Playfair Display', serif;
+      --font-body: 'Inter', sans-serif;
+      --font-hand: 'Caveat', regular;
+
+      /* ESPACIADO */
+      --container-width: 1200px;
+      --header-height: 80px;
+      --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    [data-theme="light"] {
+      --bg-body: #F9F7F2;
+      --bg-surface: #FFFFFF;
+      --bg-surface-hover: #F0F0F0;
+      --text-main: #1A1A1A;
+      --text-muted: #555555;
+      --border: #E5E5E5;
+      --accent-primary: #D6336C;
+    }
+
+    /* =========================================
+       BASE & RESET
+       ========================================= */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      transition: background-color 0.5s ease, color 0.5s ease;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.2; font-weight: 700; }
+    p { margin-bottom: 1.5rem; }
+    a { text-decoration: none; color: inherit; transition: var(--transition); }
+    img { max-width: 100%; display: block; border-radius: 4px; }
+    ul { list-style: none; }
+
+    .container {
+      max-width: var(--container-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .power-phrase {
+      font-family: var(--font-hand);
+      font-size: 2.8rem;
+      color: var(--accent-yellow);
+      transform: rotate(-2deg);
+      display: inline-block;
+      margin: 1rem 0;
+      text-shadow: 2px 2px 0px rgba(0,0,0,0.5);
+    }
+    [data-theme="light"] .power-phrase {
+      color: #E67E22;
+      text-shadow: none;
+    }
+
+    /* BOTONES */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: var(--transition);
+      letter-spacing: 0.5px;
+    }
+    .btn-primary {
+      background-color: var(--accent-primary);
+      color: white;
+      box-shadow: 0 4px 15px rgba(255, 77, 109, 0.3);
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(255, 77, 109, 0.5);
+    }
+    .btn-outline {
+      border-color: var(--text-main);
+      background: transparent;
+      color: var(--text-main);
+    }
+    .btn-outline:hover {
+      background: var(--text-main);
+      color: var(--bg-body);
+    }
+
+    /* NAVBAR */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: var(--header-height);
+      background: rgba(18, 18, 18, 0.85);
+      backdrop-filter: blur(12px);
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      transition: background 0.5s ease;
+    }
+    [data-theme="light"] .navbar {
+      background: rgba(255, 255, 255, 0.9);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    .nav-inner { display: flex; justify-content: space-between; align-items: center; height: 100%; }
+    .logo { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; letter-spacing: -0.5px; }
+    .logo span { color: var(--accent-pink); }
+    .nav-menu { display: flex; gap: 32px; align-items: center; }
+    .nav-link { font-size: 0.95rem; font-weight: 500; position: relative; cursor: pointer; display: flex; align-items: center; gap: 4px; padding: 10px 0; }
+    .nav-link::after { content: ''; position: absolute; bottom: 4px; left: 0; width: 0; height: 2px; background: var(--accent-blue); transition: var(--transition); }
+    .nav-link:hover::after { width: 100%; }
+    
+    .dropdown { position: relative; display: inline-block; height: 100%; }
+    .dropdown-content { visibility: hidden; opacity: 0; position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(10px); background-color: var(--bg-surface); min-width: 220px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 10; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s; padding: 8px 0; }
+    .dropdown::before { content: ''; position: absolute; top: 80%; left: 0; width: 100%; height: 25px; display: block; z-index: 1; }
+    .dropdown:hover .dropdown-content { visibility: visible; opacity: 1; transform: translateX(-50%) translateY(0); }
+    .dropdown-content a { color: var(--text-main); padding: 12px 20px; text-decoration: none; display: block; font-size: 0.9rem; transition: background 0.2s; }
+    .dropdown-content a:hover { background-color: var(--bg-surface-hover); color: var(--accent-pink); }
+    
+    .theme-toggle { background: none; border: none; cursor: pointer; color: var(--text-main); font-size: 1.5rem; padding: 8px; border-radius: 50%; transition: var(--transition); }
+    .theme-toggle:hover { background: var(--bg-surface-hover); }
+    .menu-btn { display: none; font-size: 1.8rem; cursor: pointer; background: none; border: none; color: var(--text-main); }
+
+    /* HERO */
+    .hero { padding-top: calc(var(--header-height) + 60px); padding-bottom: 80px; position: relative; overflow: hidden; }
+    .blob { position: absolute; border-radius: 50%; filter: blur(80px); z-index: -1; opacity: 0.4; animation: float 10s infinite ease-in-out; }
+    .blob-1 { width: 400px; height: 400px; background: var(--accent-pink); top: -100px; right: -100px; }
+    .blob-2 { width: 300px; height: 300px; background: var(--accent-blue); bottom: 50px; left: -50px; animation-delay: 2s; }
+    .blob-3 { width: 200px; height: 200px; background: var(--accent-yellow); top: 40%; left: 40%; opacity: 0.2; animation-delay: 4s; }
+    @keyframes float { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(20px, -20px); } }
+    .hero-content { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; align-items: center; }
+    .hero-text h1 { font-size: 4rem; margin-bottom: 24px; line-height: 1.1; }
+    .hero-subtitle { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 40px; max-width: 90%; }
+    .hero-image { position: relative; }
+    .hero-image img { width: 100%; height: 500px; object-fit: cover; box-shadow: 20px 20px 0px var(--border); }
+
+    /* SECCIONES COMUNES */
+    section { padding: 100px 0; }
+    .section-header { margin-bottom: 60px; }
+    .section-tag { text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; color: var(--accent-blue); font-weight: 600; margin-bottom: 12px; display: block; }
+    .section-title { font-size: 2.5rem; margin-bottom: 16px; }
+
+    /* SOBRE MÍ */
+    /* .about-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 60px; align-items: start; } */
+    .bio-text p { font-size: 1.1rem; color: var(--text-muted); }
+    .bio-highlight { border-left: 4px solid var(--accent-yellow); padding-left: 24px; margin: 32px 0; font-style: italic; color: var(--text-main); }
+
+    /* SERVICIOS BASE */
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+    .service-card { background: var(--bg-surface); padding: 40px; border: 1px solid var(--border); border-radius: 8px; transition: var(--transition); position: relative; overflow: hidden; }
+    .service-card:hover { transform: translateY(-10px); border-color: var(--accent-pink); }
+    .service-icon { font-size: 2.5rem; margin-bottom: 24px; color: var(--accent-blue); }
+    .service-card h3 { font-size: 1.5rem; margin-bottom: 16px; }
+    .service-card p { font-size: 0.95rem; color: var(--text-muted); }
+
+    /* METODOLOGÍA */
+    .steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 30px; margin-top: 60px; }
+        .steps-autora { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 60px; }
+    .step { padding: 20px; position: relative; }
+    .step-number { font-family: var(--font-display); font-size: 5rem; color: var(--accent-pink); opacity: 0.2; position: absolute; top: -30px; left: 10px; line-height: 1; }
+    .step h3 { margin-bottom: 12px; font-size: 1.3rem; margin-top: 20px; }
+    .step p { font-size: 0.95rem; color: var(--text-muted); }
+
+    /* PORTFOLIO */
+    .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 24px; }
+    .portfolio-item { position: relative; cursor: pointer; overflow: hidden; border-radius: 8px; aspect-ratio: 4/3; }
+    .portfolio-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+    .portfolio-item:hover img { transform: scale(1.05); }
+    .portfolio-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); padding: 30px 24px; transform: translateY(20px); opacity: 0; transition: var(--transition); }
+    .portfolio-item:hover .portfolio-overlay { transform: translateY(0); opacity: 1; }
+    .portfolio-title { color: white; font-size: 1.25rem; font-weight: 700; margin-bottom: 4px; }
+    .portfolio-cat { color: var(--accent-yellow); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+
+    /* LIGHTBOX */
+    .lightbox { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 2000; display: none; justify-content: center; align-items: center; flex-direction: column; opacity: 0; transition: opacity 0.3s ease; }
+    .lightbox.active { display: flex; opacity: 1; }
+    .lightbox-content { position: relative; max-width: 90%; max-height: 80vh; }
+    .lightbox-img { max-width: 100%; max-height: 80vh; border-radius: 4px; box-shadow: 0 0 50px rgba(0,0,0,0.5); }
+    .close-lightbox { position: absolute; top: 20px; right: 20px; background: none; border: none; color: white; font-size: 2rem; cursor: pointer; }
+
+    /* IMPACTO */
+    .impact-section { background: var(--bg-surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
+    .funding-box { background: var(--bg-body); padding: 30px; border-radius: 8px; border-left: 4px solid var(--accent-pink); }
+
+    /* CONTACTO */
+    .contact-container { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+    .contact-details p { font-size: 1.1rem; display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+    .contact-details i { color: var(--accent-blue); font-size: 1.4rem; }
+    .contact-form { background: var(--bg-surface); padding: 40px; border-radius: 12px; border: 1px solid var(--border); }
+    .form-group { margin-bottom: 24px; }
+    .form-group label { display: block; margin-bottom: 8px; font-weight: 500; font-size: 0.9rem; }
+    .form-control { width: 100%; padding: 14px; background: var(--bg-body); border: 1px solid var(--border); color: var(--text-main); border-radius: 6px; font-family: var(--font-body); transition: 0.3s; }
+    .form-control:focus { outline: none; border-color: var(--accent-pink); box-shadow: 0 0 0 3px rgba(255, 77, 109, 0.1); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero-content { grid-template-columns: 1fr; text-align: center; }
+      .hero-text h1 { font-size: 3rem; }
+      .hero-image { display: none; }
+      .about-grid, .info-grid, .contact-container { grid-template-columns: 1fr; gap: 40px; }
+      .navbar .nav-menu { display: none; }
+      .menu-btn { display: block; }
+      .dropdown-content { position: static; transform: none; box-shadow: none; border: none; padding-left: 20px; display: none; opacity: 1; visibility: visible; }
+      .dropdown:hover .dropdown-content { display: block; }
+      
+      /* Ajuste responsive para la nueva rejilla 2x2 en móvil */
+      #servicios .services-grid {
+          grid-template-columns: 1fr !important;
+      }
+    }
+
+    /* =========================================
+       NUEVOS ESTILOS PARA SECCIÓN SERVICIOS
+       ========================================= */
+    #servicios {
+        position: relative;
+        /* Usamos !important para asegurar que sobreescribe cualquier estilo heredado */
+        background-image: url('https://images.unsplash.com/photo-1541963463532-d68292c34b19?q=80&w=800&auto=format&fit=crop') !important;
+        background-size: cover !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        background-color: transparent !important; /* Asegurar que no hay color de fondo */
+    }
+
+    /* Capa oscura (Overlay) */
+    #servicios::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(18, 18, 18, 0.25); /* Un poco más transparente (0.75) para ver mejor la foto */
+        z-index: 1;
+    }
+
+    /* Asegurar que el contenido esté por encima del overlay */
+    #servicios .container {
+        position: relative;
+        z-index: 2;
+    }
+
+    /* Forzar rejilla 2x2 específicamente en esta sección */
+    #servicios .services-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 Columnas fijas */
+        gap: 30px;
+    }
+    
+ /* =========================================
+       NUEVO: GALERÍA CON FLECHAS
+       ========================================= */
+    .gallery-wrapper {
+        position: relative;
+        margin-top: 60px;
+        display: flex;
+        align-items: center;
+    }
+
+    .collab-gallery-scroll {
+        display: flex;
+        gap: 16px;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        padding: 10px 0;
+        /* Ocultar barra de scroll */
+        scrollbar-width: none; /* Firefox */
+    }
+    .collab-gallery-scroll::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+
+    .collab-gallery-scroll img {
+        height: 250px;
+        width: auto;
+        border-radius: 8px;
+        flex-shrink: 0;
+        transition: transform 0.3s ease;
+    }
+
+    .nav-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        transition: 0.3s;
+        backdrop-filter: blur(4px);
+    }
+    .nav-arrow:hover { background: var(--accent-pink); }
+    .arrow-left { left: -22px; }
+    .arrow-right { right: -22px; }
+
+    /* Responsivo Galería */
+    @media (max-width: 900px) {
+        .steps { grid-template-columns: 1fr 1fr; }
+        .nav-arrow { width: 35px; height: 35px; }
+    }  
+   
+ <!--   /* =========================================
+       NUEVO: CINTA DE IMÁGENES (MURALES COLABORATIVOS)
+       ========================================= */
+    .collab-gallery-scroll {
+        display: flex;
+        gap: 16px;
+        overflow-x: auto;
+        padding-bottom: 16px; /* Espacio para el scrollbar */
+        margin-top: 60px;
+        cursor: grab;
+        /* Ocultar scrollbar en Firefox */
+        scrollbar-width: thin;
+        scrollbar-color: var(--accent-pink) var(--bg-surface);
+    }
+    
+    /* Estilo Scrollbar Webkit */
+    .collab-gallery-scroll::-webkit-scrollbar {
+        height: 8px;
+    }
+    .collab-gallery-scroll::-webkit-scrollbar-track {
+        background: var(--bg-surface);
+        border-radius: 4px;
+    }
+    .collab-gallery-scroll::-webkit-scrollbar-thumb {
+        background-color: var(--accent-pink);
+        border-radius: 4px;
+    }
+
+    .collab-gallery-scroll img {
+        height: 220px; /* Altura similar al bloque de texto superior */
+        width: auto;
+        border-radius: 4px;
+        flex-shrink: 0; /* Evita que las imágenes se aplasten */
+        transition: transform 0.3s ease;
+    }
+    .collab-gallery-scroll img:hover {
+        transform: scale(1.02);
+    } -->
+    
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a href="#" class="logo">Clara<span>Luna</span></a>
+      
+      <div class="nav-menu">
+        <a href="#sobre-mi" class="nav-link">Sobre mí</a>
+        <a href="#servicios" class="nav-link">Servicios</a>
+        
+        <div class="dropdown">
+          <div class="nav-link">Colaboración <i class="ph ph-caret-down"></i></div>
+          <div class="dropdown-content">
+            <a href="#murales-autora">Murales de autora</a>
+            <a href="#murales-colaborativos">Murales colaborativos</a>
+            <a href="#ilustracion">Ilustración</a>
+            <a href="#talleres">Talleres artísticos</a>
+          </div>
+        </div>
+
+        <a href="#portfolio" class="nav-link">Portfolio</a>
+        <a href="#financiacion" class="nav-link">Financiación</a>
+        <a href="#contacto" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem;">Contactar</a>
+      </div>
+
+      <div style="display: flex; gap: 15px; align-items: center;">
+        <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
+          <i class="ph ph-sun"></i>
+        </button>
+        <button class="menu-btn"><i class="ph ph-list"></i></button>
+      </div>
+    </div>
+  </nav>
+
+   <!-- HERO SECTION -->
+  <header class="hero">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <div class="container hero-content">
+      <div class="hero-text">
+        <img src="firma-clara.png?q=80&w=150&auto=format&fit=crop"  alt="Clara Luna firma" style="width:200px;">
+        <h1>Doy vida a espacios vacíos a través de líneas, formas y colores.</h1>
+        <p class="hero-subtitle">
+          Muralismo e ilustración. </br>Arte que conecta comunidades y resignifica el entorno.
+        </p>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;">
+          <a href="#portfolio" class="btn btn-primary">Ver mis Obras</a>
+          <a href="#contacto" class="btn btn-outline">Hablemos</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1599420186946-7b6fb4e297f0?q=80&w=1000&auto=format&fit=crop" alt="Clara Luna trabajando en mural">
+        <div style="position: absolute; bottom: -20px; right: -20px; background: var(--bg-surface); padding: 15px; border: 1px solid var(--border);">
+          <span class="power-phrase">"Crear es resistir"</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SOBRE MÍ -->
+  <section id="sobre-mi">
+    <div class="container">
+      <div class="about-grid">
+        <div class="bio-image">
+           <img src="IMG_central2.jpg?q=80&w=800&auto=format&fit=crop" alt="Retrato Clara Luna" style="height: 750px; object-fit: cover;">
+        </div>
+        <div class="bio-text">
+          <div class="section-header">
+            <span class="section-tag">Perfil</span>
+            <h2 class="section-title">Más que pintura, creo diálogos.</h2>
+          </div>
+          <p>Desde que tengo memoria, me recuerdo con lápiz y papel dibujando mi entorno. Me fascina mirar el mundo a través de sus formas y sombras. Lo que empezó como una pasión innata se convirtió en mi profesión y mi forma de vida. Me considero una artista muy polifacética pero con un estilo propio y gran experiencia.</p>
+          <p>Soy <strong>Licenciada en Bellas Artes</strong> por la UCM y <strong>Doctora Cum Laude</strong> por la Universidad de Granada (2014) con una tesis que ha recibido diferentes reconocimientos y premios.</p>
+          <div class="bio-highlight">
+            "Desde 2016, realizo con frecuencia trabajos de ilustración de carácter educativo, social, de igualdad y género, en colaboración con ayuntamientos, fundaciones y entidades educativas."
+          </div>
+          <p>Tengo editados siete álbumes infantiles aparte de diversos trabajos en serigrafia, ilustración de prensa, videoclips y campañas de difusión.</p>
+           <div class="bio-highlight">Hace siete años me he lanzado al gran formato realizando murales, propios y colaborativos de amplia dimensión.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section id="servicios">
+    <div class="container">
+      <div class="section-header" style="text-align: center;">
+        <span class="section-tag">Lo que ofrezco</span>
+        <h2 class="section-title">Arte con Propósito</h2>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <i class="ph ph-paint-brush-broad service-icon"></i>
+          <h3>Murales de Autora</h3>
+          <p>Obras personales para embellecer y dar identidad a un espacio. </br>Me encargo de todo el proceso: diseño, preparación y ejecución.</p>
+        </div>
+        <div class="service-card">
+          <i class="ph ph-users-three service-icon"></i>
+          <h3>Murales Colaborativos</h3>
+          <p>Una experiencia de transformación social. Trabajo mano a mano con colectivos (infancia, mayores, mujeres...) para que sean parte activa de la creación del mural.</p>
+        </div>
+        <div class="service-card">
+          <i class="ph ph-book-open-text service-icon"></i>
+          <h3>Ilustración con Valores</h3>
+          <p>Diseño guías, carteles, cuadernillos, folletos, cómic, agendas, calendarios, juegos, etc para materiales divulgativos y campañas de sensibilización. Imágenes que comunican valores.</p>
+        </div>
+        <div class="service-card">
+          <i class="ph ph-palette service-icon"></i>
+          <h3>Talleres Artísticos</h3>
+          <p>Ofrezco una gran variedad de talleres creativos dirigidos a diferentes colectivos: infancia, juventud, migrantes, mujeres... adaptándome a sus peculiaridades.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+ <!-- MURALES DE AUTORA --> 
+  <section id="murales-autora">
+   <div class="container">
+      <div class="about-grid">
+        <div class="bio-text">
+          <div class="section-header">
+            <span class="section-tag">Servicio</span>
+            <h2 class="section-title">Murales de Autora</h2>
+          </div>
+          <p>Como artista, busco que cada intervención respire la esencia del lugar. Mis murales de autora son piezas únicas donde aplico mi visión artística personal, integrando colores y formas que dialogan con la arquitectura y la luz del entorno.</p>
+          <div class="bio-highlight">
+            "Un muro en blanco es una oportunidad para contar una historia visual que permanezca en el tiempo."
+          </div>
+          <p>Me encargo íntegramente de la dirección artística, desde la conceptualización técnica hasta la pincelada final, garantizando acabados de alta calidad profesional y durabilidad.</p>
+          <p>Oferta dirigida a Ayuntamientos, entidades, fundaciones, ONGś, asociaciones, colegios, bibliotecas, residencias, centros de día y también a particulares o empresas….en la que aplicamos el siguiente esquema:</p>
+        </div>
+        <div class="steps-autora">
+        		<div class="step">
+                <span class="step-number">01</span>
+                <h3>Estudio</h3>
+                <p>Acordamos un presupuesto en función de: Recursos económicos disponibles, m<sup>2</sup> a cubrir y estado de la pared, dificultad del dibujo y su realización, días estimados de trabajo y recursos complementarios disponibles.</p>
+            </div>
+            <div class="step">
+                <span class="step-number">02</span>
+                <h3>Diseño</h3>
+                <p>Realizo un boceto detallado teniendo en cuenta la temática y los valores que se pretendan reflejar, que se aprueba antes de su ejecución en el muro.</p>
+            </div>
+            <div class="step">
+                <span class="step-number">03</span>
+                <h3>Ejecucion</h3>
+                <p>Dedico los días y el cariño necesarios a la realización del mural para obtener un resultado cuidado y de calidad.</p>
+            </div>
+            
+            </div>
+            
+            <div class="gallery-wrapper" style="margin-top: -2.5rem;">
+            <button class="nav-arrow arrow-left" id="prevBtn"><i class="ph ph-caret-left"></i></button>
+            
+            <div class="collab-gallery-scroll" id="gallery">
+                <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=800&auto=format&fit=crop" alt="textura">
+            	<img src="https://images.unsplash.com/photo-1599420186946-7b6fb4e297f0?q=80&w=400&auto=format&fit=crop" alt="Mano pintando">
+            	<img src="https://images.unsplash.com/photo-1525909002-1b05e0c869d8?q=80&w=800&auto=format&fit=crop" alt="cubetas">
+            	<img src="https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?q=80&w=800&auto=format&fit=crop" alt="Bocetos">
+            	<img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?q=80&w=400&auto=format&fit=crop" alt="Pinceles">
+            	<img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=800&auto=format&fit=crop" alt="Paleta de colores">
+           	 	<img src="https://images.unsplash.com/photo-1544531586-fde5298cdd40?q=80&w=400&auto=format&fit=crop" alt="Taller niños">
+            	<img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=400&auto=format&fit=crop" alt="Botes pintura">
+            	<img src="https://images.unsplash.com/photo-1502691876148-a84978e59af8?q=80&w=400&auto=format&fit=crop" alt="Detalle muro">
+            	<img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=800&auto=format&fit=crop" alt="Tablet">
+            </div>
+            
+            <button class="nav-arrow arrow-right" id="nextBtn"><i class="ph ph-caret-right"></i></button>
+        </div>     
+            
+
+        
+      </div>
+    </div>
+  </section>
+
+
+  <!-- MURALES COLABORATIVOS -->
+  <section id="murales-colaborativos" style="background-color: var(--bg-surface);">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Proceso Colaborativo</span>
+            <h2 class="section-title">Murales Colaborativos</h2>
+            <p>Este es el corazón de mi trabajo social, asegurando la participación real</br>
+            Oferta dirigida a Ayuntamientos, entidades, fundaciones, ONGś, asociaciones, colegios, bibliotecas, residencias, centros de día….en la que aplicamos el siguiente esquema:</p>
+        </div>
+        <div class="steps">
+        		<div class="step">
+                <span class="step-number">01</span>
+                <h3>Estudio</h3>
+                <p>Valoramos superficie a cubrir, estado de la pared, dificultad, tiempo de realización y acordamos un presupuesto.</p>
+            </div>
+            <div class="step">
+                <span class="step-number">02</span>
+                <h3>Encuentro</h3>
+                <p>Sesiones de dinámica y diálogo para definir el qué queremos contar y consolidar la idea común.</p>
+            </div>
+            <div class="step">
+                <span class="step-number">03</span>
+                <h3>Diseño</h3>
+                <p>Desarrollo del boceto integrando las propuestas y validándolo colectivamente.</p>
+            </div>
+            <div class="step">
+                <span class="step-number">04</span>
+                <h3>¡Manos a la obra!</h3>
+                <p>El grupo pinta guiado con mi apoyo técnico y la organización del trabajo.</p>
+            </div>
+            <div class="step">
+                <span class="step-number">05</span>
+                <h3>Integración</h3>
+                <p>Realizo los acabados finales para dar coherencia estética y asegurar un acabado de calidad.</p>
+            </div>
+        </div>
+
+			<div class="gallery-wrapper">
+            <button class="nav-arrow arrow-left" id="prevBtn"><i class="ph ph-caret-left"></i></button>
+            
+            <div class="collab-gallery-scroll" id="gallery">
+                <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=800&auto=format&fit=crop" alt="textura">
+            	<img src="https://images.unsplash.com/photo-1599420186946-7b6fb4e297f0?q=80&w=400&auto=format&fit=crop" alt="Mano pintando">
+            	<img src="https://images.unsplash.com/photo-1525909002-1b05e0c869d8?q=80&w=800&auto=format&fit=crop" alt="cubetas">
+            	<img src="https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?q=80&w=800&auto=format&fit=crop" alt="Bocetos">
+            	<img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?q=80&w=400&auto=format&fit=crop" alt="Pinceles">
+            	<img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=800&auto=format&fit=crop" alt="Paleta de colores">
+           	 	<img src="https://images.unsplash.com/photo-1544531586-fde5298cdd40?q=80&w=400&auto=format&fit=crop" alt="Taller niños">
+            	<img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=400&auto=format&fit=crop" alt="Botes pintura">
+            	<img src="https://images.unsplash.com/photo-1502691876148-a84978e59af8?q=80&w=400&auto=format&fit=crop" alt="Detalle muro">
+            	<img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=800&auto=format&fit=crop" alt="Tablet">
+            </div>
+            
+            <button class="nav-arrow arrow-right" id="nextBtn"><i class="ph ph-caret-right"></i></button>
+        </div>        
+        <!--
+        <div class="collab-gallery-scroll">
+            <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=800&auto=format&fit=crop" alt="textura">
+            <img src="https://images.unsplash.com/photo-1599420186946-7b6fb4e297f0?q=80&w=400&auto=format&fit=crop" alt="Mano pintando">
+            <img src="https://images.unsplash.com/photo-1525909002-1b05e0c869d8?q=80&w=800&auto=format&fit=crop" alt="cubetas">
+            <img src="https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?q=80&w=800&auto=format&fit=crop" alt="Bocetos">
+            <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?q=80&w=400&auto=format&fit=crop" alt="Pinceles">
+            <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=800&auto=format&fit=crop" alt="Paleta de colores">
+            <img src="https://images.unsplash.com/photo-1544531586-fde5298cdd40?q=80&w=400&auto=format&fit=crop" alt="Taller niños">
+            <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=400&auto=format&fit=crop" alt="Botes pintura">
+            <img src="https://images.unsplash.com/photo-1502691876148-a84978e59af8?q=80&w=400&auto=format&fit=crop" alt="Detalle muro">
+            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=800&auto=format&fit=crop" alt="Tablet">
+        </div> -->
+    </div>
+  </section>
+
+  
+  <!-- ILUSTRACIÓN -->  
+  <section id="ilustracion">
+    <div class="container">
+      <div class="about-grid">
+        <div class="bio-image">
+           <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=800&auto=format&fit=crop" alt="Ejemplo de ilustración social">
+        </div>
+        <div class="bio-text">
+          <div class="section-header">
+            <span class="section-tag">Diseño Editorial</span>
+            <h2 class="section-title">Ilustración con Valores</h2>
+          </div>
+          <p>Desarrollo materiales gráficos para campañas de sensibilización, igualdad y educación.</p>
+          <ul style="margin-top: 20px; display: grid; gap: 10px;">
+            <li><i class="ph ph-check" style="color: var(--accent-pink);"></i> Álbumes infantiles y cuentos.</li>
+            <li><i class="ph ph-check" style="color: var(--accent-pink);"></i> Cartelería institucional.</li>
+            <li><i class="ph ph-check" style="color: var(--accent-pink);"></i> Guías didácticas escolares.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TALLERES ARTÍSTICOS --> 
+  <section id="talleres" style="background-color: var(--bg-surface);">
+    <div class="container">
+      <div class="section-header" style="text-align: center;">
+        <span class="section-tag">Educación</span>
+        <h2 class="section-title">Talleres Artísticos</h2>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <h4>Infancia y Juventud</h4>
+          <p>Fomento de la creatividad y expresión de emociones.</p>
+        </div>
+        <div class="service-card">
+          <h4>Colectivos Sociales</h4>
+          <p>Empoderamiento a través del arte para diversos grupos.</p>
+        </div>
+        <div class="service-card">
+          <h4>Técnicas Mixtas</h4>
+          <p>Desde serigrafía hasta técnicas de gran formato.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO / GALERÍA -->
+  <section id="portfolio">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Trabajos Recientes</span>
+        <h2>Galería de Proyectos</h2>
+        <p style="color: var(--text-muted);">Haz clic en cualquier proyecto para ver la galería completa.</p>
+      </div>
+
+      <div class="portfolio-grid">
+        
+        <!-- PROYECTO 1 -->
+        <div class="portfolio-item" onclick="openLightbox('project1')">
+          <!-- Placeholder: Mural niños -->
+          <img src="https://images.unsplash.com/photo-1574169208507-84376194878f?auto=format&fit=crop&q=80" alt="Mural San Vicente">
+          <div class="portfolio-overlay">
+            <div class="portfolio-cat">Mural Colaborativo</div>
+            <div class="portfolio-title">El Real de San Vicente</div>
+            <div style="font-size: 0.9rem;">50m² • Patio Escolar • 3 días</div>
+          </div>
+        </div>
+
+        <!-- PROYECTO 2 -->
+        <div class="portfolio-item" onclick="openLightbox('project2')">
+          <!-- Placeholder: Mural artístico grande -->
+          <img src="https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?auto=format&fit=crop&q=80" alt="Mural Azután">
+          <div class="portfolio-overlay">
+            <div class="portfolio-cat">Mural Individual</div>
+            <div class="portfolio-title">Mujer de Barro y Tierra</div>
+            <div style="font-size: 0.9rem;">70m² • Ayto. de Azután • 7 días</div>
+          </div>
+        </div>
+
+        <!-- PROYECTO 3 -->
+        <div class="portfolio-item" onclick="openLightbox('project3')">
+          <!-- Placeholder: Ilustración libro -->
+          <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&q=80" alt="Ilustración Editorial">
+          <div class="portfolio-overlay">
+            <div class="portfolio-cat">Ilustración</div>
+            <div class="portfolio-title">Álbumes Infantiles</div>
+            <div style="font-size: 0.9rem;">7 Títulos publicados</div>
+          </div>
+        </div>
+
+        <!-- PROYECTO 4 -->
+        <div class="portfolio-item" onclick="openLightbox('project4')">
+          <img src="https://images.unsplash.com/photo-1544531586-fde5298cdd40?auto=format&fit=crop&q=80" alt="Talleres">
+          <div class="portfolio-overlay">
+            <div class="portfolio-cat">Educación</div>
+            <div class="portfolio-title">Talleres Creativos</div>
+          </div>
+        </div>
+        
+        <!-- PROYECTO 5 -->
+        <div class="portfolio-item" onclick="openLightbox('project5')">
+          <img src="https://images.unsplash.com/photo-1569173161678-43093b2a26c0?auto=format&fit=crop&q=80" alt="Campaña Igualdad">
+          <div class="portfolio-overlay">
+            <div class="portfolio-cat">Campaña Social</div>
+            <div class="portfolio-title">Igualdad de Género</div>
+          </div>
+        </div>
+
+        <!-- PROYECTO 6 -->
+        <div class="portfolio-item" onclick="openLightbox('project6')">
+          <img src="https://images.unsplash.com/photo-1582201943021-e8e6444cf12d?auto=format&fit=crop&q=80" alt="Mural Interior">
+          <div class="portfolio-overlay">
+            <div class="portfolio-cat">Interiorismo</div>
+            <div class="portfolio-title">Decoración de Espacios</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+   <!-- FINANCIACIÓN E IMPACTO -->
+  <section id="financiacion" class="impact-section">
+    <div class="container">
+      <div class="info-grid">
+        <div>
+          <span class="section-tag">Viabilidad</span>
+          <h2 class="section-title">Hagámoslo Realidad</h2>
+          <p>Entiendo que el presupuesto suele ser la parte compleja. Mi filosofía se basa en las <strong>tres B: Bueno, Bonito y Barato</strong>. Busco siempre el equilibrio para que el proyecto salga adelante.</p>
+          <p>Existen muchas fórmulas para financiar un mural:</p>
+          
+          <ul style="margin-top: 20px; display: grid; gap: 15px;">
+            <li style="display: flex; gap: 10px; align-items: center;">
+              <i class="ph ph-check-circle" style="color: var(--accent-blue);"></i>
+              <span><strong>Subvenciones:</strong> Fondos como el "Pacto de Estado".</span>
+            </li>
+            <li style="display: flex; gap: 10px; align-items: center;">
+              <i class="ph ph-check-circle" style="color: var(--accent-blue);"></i>
+              <span><strong>Colaboraciones:</strong> Sinergias entre colegio y ayuntamiento.</span>
+            </li>
+            <li style="display: flex; gap: 10px; align-items: center;">
+              <i class="ph ph-check-circle" style="color: var(--accent-blue);"></i>
+              <span><strong>Optimización:</strong> Aportación de andamios o trabajos previos.</span>
+            </li>
+          </ul>
+
+          <div style="margin-top: 30px;">
+             <span class="power-phrase" style="color: var(--text-main); font-size: 2.8rem;">"Lo importante es hablar."</span>
+          </div>
+        </div>
+        
+        <div class="funding-box">
+          <h3 style="margin-bottom: 20px;">¿Por qué invertir en esto?</h3>
+          <p>Más allá de la estética, un mural colaborativo aporta:</p>
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+             <div>
+               <h4 style="color: var(--accent-primary);">1. Cohesión Social</h4>
+               <p style="font-size: 0.9rem; margin-bottom: 0;">Crea vínculos entre vecinos, alumnado y familias. El mural pasa a ser "nuestro".</p>
+             </div>
+             <div>
+               <h4 style="color: var(--accent-yellow);">2. Empoderamiento</h4>
+               <p style="font-size: 0.9rem; margin-bottom: 0;">Las participantes descubren que son capaces de transformar su entorno físico.</p>
+             </div>
+             <div>
+               <h4 style="color: var(--accent-blue);">3. Identidad</h4>
+               <p style="font-size: 0.9rem; margin-bottom: 0;">Revitaliza espacios grises y cuenta la historia del lugar.</p>
+             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Contacto</span>
+        <h2 class="section-title">Cuéntame tu idea</h2>
+        <p>Valoraré mucho poder hablar tranquilamente de tus necesidades y encontrar la mejor solución.</p>
+      </div>
+
+      <div class="contact-container">
+        <div class="contact-details">
+          <p>
+            <i class="ph ph-envelope-simple"></i>
+            <a href="mailto:clarichina@gmail.com">clarichina@gmail.com</a>
+          </p>
+          <p>
+            <i class="ph ph-phone"></i>
+            <a href="tel:619624054">619 624 054</a>
+          </p>
+          <p>
+            <i class="ph ph-instagram-logo"></i>
+            <a href="https://instagram.com/claraluna_ilustration" target="_blank">@claraluna_ilustration</a>
+          </p>
+          
+          <div style="margin-top: 40px; padding: 20px; background: var(--bg-surface); border-radius: 8px;">
+            <h4 style="margin-bottom: 10px;">Zona de Trabajo</h4>
+            <p style="font-size: 0.9rem; margin: 0;">Disponible para proyectos en todo el territorio nacional. Base operativa habitual en zona centro.</p>
+          </div>
+        </div>
+
+        <div class="contact-form">
+          <form onsubmit="event.preventDefault(); alert('Gracias por tu mensaje. Te contactaré pronto.');">
+            <div class="form-group">
+              <label>Nombre o Entidad</label>
+              <input type="text" class="form-control" placeholder="Ej: Ayto. de... / Colegio..." required>
+            </div>
+            <div class="form-group">
+              <label>Email de contacto</label>
+              <input type="email" class="form-control" placeholder="tu@email.com" required>
+            </div>
+            <div class="form-group">
+              <label>Tipo de Proyecto</label>
+              <select class="form-control">
+                <option>Mural Colaborativo</option>
+                <option>Mural Individual</option>
+                <option>Ilustración / Editorial</option>
+                <option>Otro</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Mensaje</label>
+              <textarea class="form-control" placeholder="Cuéntame brevemente: metros aproximados, idea, ubicación..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Enviar Propuesta</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer style="padding: 40px 0; text-align: center; border-top: 1px solid var(--border); color: var(--text-muted);">
+    <div class="container"><p>© 2026 Clara Luna Rodríguez.</p></div>
+  </footer>
+
+  <div class="lightbox" id="lightbox">
+    <button class="close-lightbox" onclick="closeLightbox()"><i class="ph ph-x"></i></button>
+    <div class="lightbox-content">
+      <img src="" class="lightbox-img" id="lightbox-img">
+    </div>
+  </div>
+
+  <script>
+    // --- THEME TOGGLE ---
+    const themeToggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+    const icon = themeToggle.querySelector('i');
+
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', newTheme);
+      icon.className = newTheme === 'light' ? 'ph ph-moon' : 'ph ph-sun';
+    });
+
+    // --- LIGHTBOX LOGIC ---
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const projects = {
+      'project1': ['https://images.unsplash.com/photo-1574169208507-84376194878f?auto=format&fit=crop&q=80'],
+      'project2': ['https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?auto=format&fit=crop&q=80'],
+      'project3': ['https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&q=80']
+    };
+
+    function openLightbox(projectId) {
+      lightboxImg.src = projects[projectId][0];
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    lightbox.addEventListener('click', (e) => { if(e.target === lightbox) closeLightbox(); });
+
+    // Cierre automático del menú móvil al hacer clic en un enlace
+    document.querySelectorAll('.dropdown-content a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 900) {
+                // En móvil no necesitamos cerrar explícitamente el hover, pero gestionamos el clic
+            }
+        });
+    });
+    
+ // Lógica de Desplazamiento de Galería
+    const gallery = document.getElementById('gallery');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    nextBtn.addEventListener('click', () => {
+        gallery.scrollLeft += 350; // Ajusta este valor según cuánto quieras desplazar
+    });
+
+    prevBtn.addEventListener('click', () => {
+        gallery.scrollLeft -= 350;
+    });    
+  </script>
+</body>
+</html>

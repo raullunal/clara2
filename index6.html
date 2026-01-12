@@ -553,10 +553,10 @@
             </div>
             
             <div class="gallery-wrapper" style="margin-top: -2rem;">
-            <button class="nav-arrow arrow-left" id="prevBtn"><i class="ph ph-caret-left"></i></button>
+            <button class="nav-arrow arrow-left" id="prevBtnAutora"><i class="ph ph-caret-left"></i></button>
             
-            <div class="collab-gallery-scroll" id="gallery">
-                <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=800&auto=format&fit=crop" alt="textura">
+            <div class="collab-gallery-scroll" id="galleryAutora">
+               <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=800&auto=format&fit=crop" alt="textura">
             	<img src="https://images.unsplash.com/photo-1599420186946-7b6fb4e297f0?q=80&w=400&auto=format&fit=crop" alt="Mano pintando">
             	<img src="https://images.unsplash.com/photo-1525909002-1b05e0c869d8?q=80&w=800&auto=format&fit=crop" alt="cubetas">
             	<img src="https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?q=80&w=800&auto=format&fit=crop" alt="Bocetos">
@@ -568,7 +568,7 @@
             	<img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=800&auto=format&fit=crop" alt="Tablet">
             </div>
             
-            <button class="nav-arrow arrow-right" id="nextBtn"><i class="ph ph-caret-right"></i></button>
+            <button class="nav-arrow arrow-right" id="nextBtnAutora"><i class="ph ph-caret-right"></i></button>
         </div>     
             
 
@@ -615,11 +615,11 @@
             </div>
         </div>
 
-			<div class="gallery-wrapper">
-            <button class="nav-arrow arrow-left" id="prevBtn"><i class="ph ph-caret-left"></i></button>
+			<div class="gallery-wrapper" style="position: relative; display: flex; align-items: center;">
+            <button class="nav-arrow arrow-left" id="p_colab" style="z-index: 10; cursor: pointer;"><i class="ph ph-caret-left"></i></button>
             
-            <div class="collab-gallery-scroll" id="gallery">
-                <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=800&auto=format&fit=crop" alt="textura">
+            <div class="collab-gallery-scroll" id="s_colab" style="display: flex; gap: 16px; overflow-x: auto; scroll-behavior: smooth; width: 100%;">
+               <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=800&auto=format&fit=crop" alt="textura">
             	<img src="https://images.unsplash.com/photo-1599420186946-7b6fb4e297f0?q=80&w=400&auto=format&fit=crop" alt="Mano pintando">
             	<img src="https://images.unsplash.com/photo-1525909002-1b05e0c869d8?q=80&w=800&auto=format&fit=crop" alt="cubetas">
             	<img src="https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?q=80&w=800&auto=format&fit=crop" alt="Bocetos">
@@ -631,21 +631,8 @@
             	<img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=800&auto=format&fit=crop" alt="Tablet">
             </div>
             
-            <button class="nav-arrow arrow-right" id="nextBtn"><i class="ph ph-caret-right"></i></button>
-        </div>        
-        <!--
-        <div class="collab-gallery-scroll">
-            <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=800&auto=format&fit=crop" alt="textura">
-            <img src="https://images.unsplash.com/photo-1599420186946-7b6fb4e297f0?q=80&w=400&auto=format&fit=crop" alt="Mano pintando">
-            <img src="https://images.unsplash.com/photo-1525909002-1b05e0c869d8?q=80&w=800&auto=format&fit=crop" alt="cubetas">
-            <img src="https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?q=80&w=800&auto=format&fit=crop" alt="Bocetos">
-            <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?q=80&w=400&auto=format&fit=crop" alt="Pinceles">
-            <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=800&auto=format&fit=crop" alt="Paleta de colores">
-            <img src="https://images.unsplash.com/photo-1544531586-fde5298cdd40?q=80&w=400&auto=format&fit=crop" alt="Taller niños">
-            <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=400&auto=format&fit=crop" alt="Botes pintura">
-            <img src="https://images.unsplash.com/photo-1502691876148-a84978e59af8?q=80&w=400&auto=format&fit=crop" alt="Detalle muro">
-            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=800&auto=format&fit=crop" alt="Tablet">
-        </div> -->
+            <button class="nav-arrow arrow-right" id="n_colab" style="z-index: 10; cursor: pointer;"><i class="ph ph-caret-right"></i></button>
+        </div>
     </div>
   </section>
 
@@ -955,18 +942,36 @@
         });
     });
     
- // Lógica de Desplazamiento de Galería
-    const gallery = document.getElementById('gallery');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-
-    nextBtn.addEventListener('click', () => {
-        gallery.scrollLeft += 350; // Ajusta este valor según cuánto quieras desplazar
-    });
-
-    prevBtn.addEventListener('click', () => {
-        gallery.scrollLeft -= 350;
-    });    
+	
   </script>
+  <script>
+  //movimiento de imagenes en las cintas
+document.addEventListener("DOMContentLoaded", function() {
+    
+    // Configuración Galería Murales de Autora
+    const s_autora = document.getElementById('galleryAutora');
+    const p_autora = document.getElementById('prevBtnAutora');
+    const n_autora = document.getElementById('nextBtnAutora');
+
+    if (s_autora && p_autora && n_autora) {
+        n_autora.addEventListener('click', () => s_autora.scrollBy({ left: 400, behavior: 'smooth' }));
+        p_autora.addEventListener('click', () => s_autora.scrollBy({ left: -400, behavior: 'smooth' }));
+    }
+
+    // Configuración Galería Murales Colaborativos (LA QUE FALLABA)
+    const s_colab = document.getElementById('s_colab');
+    const p_colab = document.getElementById('p_colab');
+    const n_colab = document.getElementById('n_colab');
+
+    if (s_colab && p_colab && n_colab) {
+        n_colab.onclick = function() {
+            s_colab.scrollBy({ left: 400, behavior: 'smooth' });
+        };
+        p_colab.onclick = function() {
+            s_colab.scrollBy({ left: -400, behavior: 'smooth' });
+        };
+    }
+});
+</script>
 </body>
 </html>

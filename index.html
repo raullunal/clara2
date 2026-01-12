@@ -35,7 +35,7 @@
       /* TIPOGRAFÍA */
       --font-display: 'Playfair Display', serif;
       --font-body: 'Inter', sans-serif;
-      --font-hand: 'Caveat', cursive;
+      --font-hand: 'Caveat', regular;
 
       /* ESPACIADO */
       --container-width: 1200px;
@@ -85,7 +85,7 @@
     /* FRASES FUERZA */
     .power-phrase {
       font-family: var(--font-hand);
-      font-size: 1.8rem;
+      font-size: 2.8rem;
       color: var(--accent-yellow);
       transform: rotate(-2deg);
       display: inline-block;
@@ -306,6 +306,30 @@
     }
     .service-card h3 { font-size: 1.5rem; margin-bottom: 16px; }
     .service-card p { font-size: 0.95rem; color: var(--text-muted); }
+  
+   /* =========================================
+       METODOLOGÍA
+       ========================================= */  
+    
+     .steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 60px;
+        }
+        .step { padding: 20px; position: relative; }
+        .step-number {
+            font-family: var(--font-display);
+            font-size: 5rem;
+            color: var(--color-rosa);
+            opacity: 0.2; /* Muy sutil */
+            position: absolute;
+            top: -30px;
+            left: 10px;
+            line-height: 1;
+        }
+        .step h3 { margin-bottom: 12px; font-size: 1.3rem; margin-top: 20px; }
+        .step p { font-size: 0.95rem; color: var(--text-secondary); }
 
     /* =========================================
        PORTFOLIO (CARRUSELES)
@@ -462,6 +486,7 @@
       <div class="nav-menu">
         <a href="#sobre-mi" class="nav-link">Sobre mí</a>
         <a href="#servicios" class="nav-link">Servicios</a>
+        <a href="#metodologia" class="nav-link">Colaboración</a>
         <a href="#portfolio" class="nav-link">Portfolio</a>
         <a href="#financiacion" class="nav-link">Financiación</a>
         <a href="#contacto" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.9rem;">Contactar</a>
@@ -484,10 +509,11 @@
 
     <div class="container hero-content">
       <div class="hero-text">
-        <span class="section-tag">Doctora en Bellas Artes</span>
-        <h1>Transformo espacios a través de formas, líneas y colores.</h1>
-        <p class="hero-subtitle">
-          Muralismo, ilustración social y proyectos colaborativos. Arte que conecta comunidades y resignifica el entorno.
+              <img src="firma-clara.png?q=80&w=150&auto=format&fit=crop" alt="Clara Luna firma">
+        <h1>Doy vida a espacios vacíos a través de líneas, formas y colores.</h1>
+
+        <p class="hero-subtitle"> <!-- poner un poco más grande lo de muralismo e ilustración -->
+          Muralismo e ilustración. </br>Arte que conecta comunidades y resignifica el entorno.
         </p>
         <div style="display: flex; gap: 16px; flex-wrap: wrap; justify-content: center md:justify-content: flex-start;">
           <a href="#portfolio" class="btn btn-primary">Ver mis Obras</a>
@@ -510,22 +536,23 @@
       <div class="about-grid">
         <div class="bio-image">
            <!-- Placeholder: Retrato artístico -->
-           <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=800&auto=format&fit=crop" alt="Retrato Clara Luna" style="height: 400px; object-fit: cover;">
+           <img src="IMG_central2.jpg?q=80&w=800&auto=format&fit=crop" alt="Retrato Clara Luna" style="height: 750px; object-fit: cover;">
         </div>
         <div class="bio-text">
           <div class="section-header">
             <span class="section-tag">Perfil</span>
             <h2 class="section-title">Más que pintura, creo diálogos.</h2>
           </div>
-          <p>Desde que tengo memoria, me recuerdo con un lápiz y papel. Me fascina mirar el mundo a través de sus formas y sombras. Lo que empezó como una pasión innata se convirtió en mi profesión y mi forma de vida.</p>
+          <p>Desde que tengo memoria, me recuerdo con lápiz y papel dibujando mi entorno. Me fascina mirar el mundo a través de sus formas y sombras. Lo que empezó como una pasión innata se convirtió en mi profesión y mi forma de vida. Me considero una artista muy polifacética pero con un estilo propio y gran experiencia.</p>
           
-          <p>Soy <strong>Licenciada en Bellas Artes</strong> por la UCM y <strong>Doctora Cum Laude</strong> por la Universidad de Granada (2014). Aunque mi formación es académica y rigurosa, mi enfoque es profundamente social.</p>
+          <p>Soy <strong>Licenciada en Bellas Artes</strong> por la UCM y <strong>Doctora Cum Laude</strong> por la Universidad de Granada (2014) con una tesis que ha recibido diferentes reconocimientos y premios. Aunque mi formación es académica y rigurosa, mi enfoque es profundamente social.</p>
           
           <div class="bio-highlight">
-            "Desde 2016, especializo mi obra en temas educativos, sociales y de igualdad de género, llevando el arte a donde más se necesita."
+            "Desde 2016, realizo con frecuencia trabajos de ilustración de carácter educativo, social, de igualdad y género, en colaboración con ayuntamientos, fundaciones y entidades educativas, llevando el arte a donde más se necesita"
           </div>
 
-          <p>Tengo editados siete álbumes infantiles y he realizado murales de gran formato por todo el territorio, colaborando con ayuntamientos, fundaciones y entidades educativas.</p>
+          <p>Tengo editados siete álbumes infantiles aparte de diversos trabajos en serigrafia, ilustración de prensa, videoclips, logos/marcas, ilustración editorial, escenografias, campañas de difusión etc. </p>
+           <div class="bio-highlight">Hace siete años me he lanzado al gran formato realizando murales, propios y colaborativos de amplia dimensión.
         </div>
       </div>
     </div>
@@ -536,40 +563,89 @@
     <div class="container">
       <div class="section-header" style="text-align: center;">
         <span class="section-tag">Lo que ofrezco</span>
-        <h2 class="section-title">Arte con Propósito</h2>
+        <h2 class="section-title">Arte con Propósito</h2><!-- poner imagen de fondo que abarque todo-->
       </div>
 
       <div class="services-grid">
         <!-- Servicio 1 -->
         <div class="service-card">
           <i class="ph ph-paint-brush-broad service-icon"></i>
-          <h3>Murales Individuales</h3>
-          <p>Obras de autor diseñadas para embellecer y dar identidad a un espacio. Me encargo de todo el proceso: diseño, preparación y ejecución con materiales de alta durabilidad.</p>
+          <h3>Murales de Autora</h3>
+          <p>Obras personales para embellecer y dar identidad a un espacio. </br>Me encargo de todo el proceso: diseño, preparación y ejecución.</p>
         </div>
         
         <!-- Servicio 2 -->
         <div class="service-card">
           <i class="ph ph-users-three service-icon"></i>
           <h3>Murales Colaborativos</h3>
-          <p>Una experiencia de transformación social. Trabajo mano a mano con colectivos (infancia, mayores, mujeres) para que sean parte activa de la creación del mural.</p>
+          <p>Una experiencia de transformación social. Trabajo mano a mano con colectivos (infancia, mayores, mujeres...) para que sean parte activa de la creación del mural.</p>
         </div>
 
         <!-- Servicio 3 -->
         <div class="service-card">
           <i class="ph ph-book-open-text service-icon"></i>
-          <h3>Ilustración Social</h3>
-          <p>Ilustración para materiales educativos, campañas de sensibilización, guías y álbumes infantiles. Imágenes que comunican valores.</p>
+          <h3>Ilustración con Valores</h3>
+          <p>Diseño guías, carteles, cuadernillos, folletos, cómic, agendas, calendarios, juegos, etc para materiales divulgativos y campañas de sensibilización. Imágenes que comunican valores.</p>
+        </div>
+         <!-- Servicio 4 -->
+        <div class="service-card">
+          <i class="ph ph-palette service-icon"></i>
+          <h3>Talleres Artísticos</h3>
+          <p>Ofrezco una gran variedad de talleres creativos dirigidos a diferentes colectivos: infancia, juventud, migrantes, mujeres... adaptándome a sus peculiaridades.</p>
         </div>
       </div>
     </div>
   </section>
+  
+    <!-- METODOLOGÍA -->
+    <section id="metodologia">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Proceso Colaborativo</span>
+                <h2 class="section-title">¿Cómo trabajamos juntos?</h2>
+                <p>Para los murales colaborativos, sigo una metodología probada que asegura la participación real y un resultado estético de calidad.</p>
+            </div>
+
+            <div class="steps">
+                <div class="step">
+                    <span class="step-number">01</span>
+                    <div class="step-content">
+                        <h3>Encuentro</h3>
+                        <p>Sesiones de diálogo, dinámicas y juegos creativos para definir qué queremos contar y consolidar la idea común.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <span class="step-number">02</span>
+                    <div class="step-content">
+                        <h3>Diseño</h3>
+                        <p>Desarrollo un boceto profesional integrando las propuestas del grupo. Se valida colectivamente antes de pintar.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <span class="step-number">03</span>
+                    <div class="step-content">
+                        <h3>Creación</h3>
+                        <p>¡Manos a la obra! El grupo pinta guiado por mí. Proporciono apoyo técnico y organizo los turnos de trabajo.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <span class="step-number">04</span>
+                    <div class="step-content">
+                        <h3>Integración</h3>
+                        <p>Realizo una intervención final para unificar el dibujo, dar coherencia estética y asegurar un acabado duradero.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
   <!-- PORTFOLIO / GALERÍA -->
   <section id="portfolio">
     <div class="container">
       <div class="section-header">
         <span class="section-tag">Trabajos Recientes</span>
-        <h2 class="section-title">Galería de Proyectos</h2>
+        <h2>Galería de Proyectos</h2>
         <p style="color: var(--text-muted);">Haz clic en cualquier proyecto para ver la galería completa.</p>
       </div>
 
@@ -665,7 +741,7 @@
           </ul>
 
           <div style="margin-top: 30px;">
-             <span class="power-phrase" style="color: var(--text-main); font-size: 1.5rem;">"Lo importante es hablar."</span>
+             <span class="power-phrase" style="color: var(--text-main); font-size: 2.8rem;">"Lo importante es hablar."</span>
           </div>
         </div>
         
@@ -704,7 +780,7 @@
         <div class="contact-details">
           <p>
             <i class="ph ph-envelope-simple"></i>
-            <a href="mailto:claraluna@gmail.com">claraluna@gmail.com</a>
+            <a href="mailto:clarichina@gmail.com">clarichina@gmail.com</a>
           </p>
           <p>
             <i class="ph ph-phone"></i>
@@ -712,7 +788,7 @@
           </p>
           <p>
             <i class="ph ph-instagram-logo"></i>
-            <a href="https://instagram.com/claralunailustration" target="_blank">@claralunailustration</a>
+            <a href="https://instagram.com/claraluna_ilustration" target="_blank">@claraluna_ilustration</a>
           </p>
           
           <div style="margin-top: 40px; padding: 20px; background: var(--bg-surface); border-radius: 8px;">
@@ -753,7 +829,7 @@
 
   <footer style="padding: 40px 0; text-align: center; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.9rem;">
     <div class="container">
-      <p>© 2024 Clara Luna Rodríguez. Todos los derechos reservados.</p>
+      <p>© 2026 Clara Luna Rodríguez. Todos los derechos reservados.</p>
     </div>
   </footer>
 

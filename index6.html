@@ -254,7 +254,7 @@
         border-bottom: 1px solid var(--border);
         gap: 15px;
       }
-      .navbar .nav-menu.active { display: flex; } /* Menu hamburguesa corregido */
+		.navbar .nav-menu.active { display: flex; } /* Fuerza la visibilidad en móvil */
       
       .menu-btn { display: block; }
       .dropdown-content { position: static; transform: none; box-shadow: none; border: none; padding-left: 20px; display: none; opacity: 1; visibility: visible; }
@@ -406,7 +406,7 @@
     <div class="container nav-inner">
       <a href="#" class="logo">Clara<span>Luna</span></a>
       
-      <div class="nav-menu">
+			<div class="nav-menu" id="navMenu">
         <a href="#sobre-mi" class="nav-link">Sobre mí</a>
         <a href="#servicios" class="nav-link">Servicios</a>
         
@@ -429,7 +429,7 @@
         <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">
           <i class="ph ph-sun"></i>
         </button>
-        <button class="menu-btn"><i class="ph ph-list"></i></button>
+        <button class="menu-btn" id="menuBtn"><i class="ph ph-list"></i></button>
       </div>
     </div>
   </nav>
@@ -912,15 +912,16 @@
     const menuBtn = document.getElementById('menuBtn');
     const navMenu = document.getElementById('navMenu');
 
+    // Abre y cierra el menú al pulsar el botón
     menuBtn.addEventListener('click', () => {
-      navMenu.classList.toggle('active');
+        navMenu.classList.toggle('active');
     });
 
-    // Cerrar menú al hacer clic en un enlace (móvil) /* Menu hamburguesa corregido */
+    // Cierra el menú automáticamente al pulsar cualquier enlace
     document.querySelectorAll('.nav-link, .dropdown-content a, .btn').forEach(link => {
-      link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-      });
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+        });
     });
 
     // --- LIGHTBOX LOGIC ---

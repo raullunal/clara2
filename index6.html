@@ -24,10 +24,10 @@
       --text-muted: #A0A0A0;
       --border: #333333;
       
-      --accent-pink: #FF4D6D;
+      --accent-orange: #d0712d;
       --accent-yellow: #FFD43B;
       --accent-blue: #4DABF7;
-      --accent-primary: #FF4D6D;
+      --accent-primary: #d0712d;
 
       /* TIPOGRAFÍA */
       --font-display: 'Playfair Display', serif;
@@ -47,7 +47,7 @@
       --text-main: #1A1A1A;
       --text-muted: #555555;
       --border: #E5E5E5;
-      --accent-primary: #D6336C;
+      --accent-primary: #d0712d;
     }
 
     /* =========================================
@@ -141,7 +141,7 @@
     }
     .nav-inner { display: flex; justify-content: space-between; align-items: center; height: 100%; }
     .logo { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; letter-spacing: -0.5px; }
-    .logo span { color: var(--accent-pink); }
+    .logo span { color: var(--accent-orange); }
     .nav-menu { display: flex; gap: 32px; align-items: center; }
     .nav-link { font-size: 0.95rem; font-weight: 500; position: relative; cursor: pointer; display: flex; align-items: center; gap: 4px; padding: 10px 0; }
     .nav-link::after { content: ''; position: absolute; bottom: 4px; left: 0; width: 0; height: 2px; background: var(--accent-blue); transition: var(--transition); }
@@ -152,7 +152,7 @@
     .dropdown::before { content: ''; position: absolute; top: 80%; left: 0; width: 100%; height: 25px; display: block; z-index: 1; }
     .dropdown:hover .dropdown-content { visibility: visible; opacity: 1; transform: translateX(-50%) translateY(0); }
     .dropdown-content a { color: var(--text-main); padding: 12px 20px; text-decoration: none; display: block; font-size: 0.9rem; transition: background 0.2s; }
-    .dropdown-content a:hover { background-color: var(--bg-surface-hover); color: var(--accent-pink); }
+    .dropdown-content a:hover { background-color: var(--bg-surface-hover); color: var(--accent-orange); }
     
     .theme-toggle { background: none; border: none; cursor: pointer; color: var(--text-main); font-size: 1.5rem; padding: 8px; border-radius: 50%; transition: var(--transition); }
     .theme-toggle:hover { background: var(--bg-surface-hover); }
@@ -161,7 +161,7 @@
     /* HERO */
     .hero { padding-top: calc(var(--header-height) + 60px); padding-bottom: 80px; position: relative; overflow: hidden; }
     .blob { position: absolute; border-radius: 50%; filter: blur(80px); z-index: -1; opacity: 0.4; animation: float 10s infinite ease-in-out; }
-    .blob-1 { width: 400px; height: 400px; background: var(--accent-pink); top: -100px; right: -100px; }
+    .blob-1 { width: 400px; height: 400px; background: var(--accent-orange); top: -100px; right: -100px; }
     .blob-2 { width: 300px; height: 300px; background: var(--accent-blue); bottom: 50px; left: -50px; animation-delay: 2s; }
     .blob-3 { width: 200px; height: 200px; background: var(--accent-yellow); top: 40%; left: 40%; opacity: 0.2; animation-delay: 4s; }
     @keyframes float { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(20px, -20px); } }
@@ -185,7 +185,7 @@
     /* SERVICIOS BASE */
     .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
     .service-card { background: var(--bg-surface); padding: 40px; border: 1px solid var(--border); border-radius: 8px; transition: var(--transition); position: relative; overflow: hidden; }
-    .service-card:hover { transform: translateY(-10px); border-color: var(--accent-pink); }
+    .service-card:hover { transform: translateY(-10px); border-color: var(--accent-orange); }
     .service-icon { font-size: 2.5rem; margin-bottom: 24px; color: var(--accent-blue); }
     .service-card h3 { font-size: 1.5rem; margin-bottom: 16px; }
     .service-card p { font-size: 0.95rem; color: var(--text-muted); }
@@ -194,7 +194,7 @@
     .steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 30px; margin-top: 60px; }
     .steps-autora { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 60px; }
     .step { padding: 20px; position: relative; }
-    .step-number { font-family: var(--font-display); font-size: 5rem; color: var(--accent-pink); opacity: 0.2; position: absolute; top: -30px; left: 10px; line-height: 1; }
+    .step-number { font-family: var(--font-display); font-size: 5rem; color: var(--accent-orange); opacity: 0.2; position: absolute; top: -30px; left: 10px; line-height: 1; }
     .step h3 { margin-bottom: 12px; font-size: 1.3rem; margin-top: 20px; }
     .step p { font-size: 0.95rem; color: var(--text-muted); }
 
@@ -218,7 +218,7 @@
     /* IMPACTO */
     .impact-section { background: var(--bg-surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
     .info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
-    .funding-box { background: var(--bg-body); padding: 30px; border-radius: 8px; border-left: 4px solid var(--accent-pink); }
+    .funding-box { background: var(--bg-body); padding: 30px; border-radius: 8px; border-left: 4px solid var(--accent-orange); }
 
     /* CONTACTO */
     .contact-container { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
@@ -228,7 +228,7 @@
     .form-group { margin-bottom: 24px; }
     .form-group label { display: block; margin-bottom: 8px; font-weight: 500; font-size: 0.9rem; }
     .form-control { width: 100%; padding: 14px; background: var(--bg-body); border: 1px solid var(--border); color: var(--text-main); border-radius: 6px; font-family: var(--font-body); transition: 0.3s; }
-    .form-control:focus { outline: none; border-color: var(--accent-pink); box-shadow: 0 0 0 3px rgba(255, 77, 109, 0.1); }
+    .form-control:focus { outline: none; border-color: var(--accent-orange); box-shadow: 0 0 0 3px rgba(255, 77, 109, 0.1); }
 
     /* RESPONSIVE */
     @media (max-width: 900px) {
@@ -349,7 +349,7 @@
         transition: 0.3s;
         backdrop-filter: blur(4px);
     }
-    .nav-arrow:hover { background: var(--accent-pink); }
+    .nav-arrow:hover { background: var(--accent-orange); }
     .arrow-left { left: -22px; }
     .arrow-right { right: -22px; }
 
@@ -371,7 +371,7 @@
         cursor: grab;
         /* Ocultar scrollbar en Firefox */
         scrollbar-width: thin;
-        scrollbar-color: var(--accent-pink) var(--bg-surface);
+        scrollbar-color: var(--accent-orange) var(--bg-surface);
     }
     
     /* Estilo Scrollbar Webkit */
@@ -383,7 +383,7 @@
         border-radius: 4px;
     }
     .collab-gallery-scroll::-webkit-scrollbar-thumb {
-        background-color: var(--accent-pink);
+        background-color: var(--accent-orange);
         border-radius: 4px;
     }
 
@@ -413,8 +413,8 @@
         <div class="dropdown">
           <div class="nav-link">Colaboración <i class="ph ph-caret-down"></i></div>
           <div class="dropdown-content">
-            <a href="#murales-autora">Murales de autora</a>
             <a href="#murales-colaborativos">Murales colaborativos</a>
+            <a href="#murales-autora">Murales de autora</a>
             <a href="#ilustracion">Ilustración</a>
             <a href="#talleres">Talleres artísticos</a>
           </div>
@@ -442,10 +442,9 @@
 
     <div class="container hero-content">
       <div class="hero-text">
-        <img src="firma-clara.png?q=80&w=150&auto=format&fit=crop"  alt="Clara Luna firma" style="width:200px;">
-        <h1>Doy vida a espacios vacíos a través de líneas, formas y colores.</h1>
+
         <p class="hero-subtitle">
-          Muralismo e ilustración. </br>Arte que conecta comunidades y resignifica el entorno.
+          <h1>Muralismo e ilustración </h1><h2>Arte que conecta comunidades y resignifica el entorno</h2>
         </p>
         <div style="display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;">
           <a href="#portfolio" class="btn btn-primary">Ver mis Obras</a>
@@ -493,15 +492,15 @@
         <h2 class="section-title">Arte con Propósito</h2>
       </div>
       <div class="services-grid">
-        <div class="service-card">
-          <i class="ph ph-paint-brush-broad service-icon"></i>
-          <h3>Murales de Autora</h3>
-          <p>Obras personales para embellecer y dar identidad a un espacio. </br>Me encargo de todo el proceso: diseño, preparación y ejecución.</p>
-        </div>
-        <div class="service-card">
+		<div class="service-card">
           <i class="ph ph-users-three service-icon"></i>
           <h3>Murales Colaborativos</h3>
           <p>Una experiencia de transformación social. Trabajo mano a mano con colectivos (infancia, mayores, mujeres...) para que sean parte activa de la creación del mural.</p>
+        </div>
+        <div class="service-card">
+          <i class="ph ph-paint-brush-broad service-icon"></i>
+          <h3>Murales de Autora</h3>
+          <p>Obras personales con mensaje para embellecer y dar identidad a un espacio. </br>Me encargo de todo el proceso: diseño, preparación y ejecución.</p>
         </div>
         <div class="service-card">
           <i class="ph ph-book-open-text service-icon"></i>
@@ -517,7 +516,66 @@
     </div>
   </section>
  
- <!-- MURALES DE AUTORA --> 
+ 
+  <!-- MURALES COLABORATIVOS -->
+  <section id="murales-colaborativos" style="background-color: var(--bg-surface);">
+    <div class="container">
+        <div class="section-header">
+            <span class="section-tag">Proceso Colaborativo</span>
+            <h2 class="section-title">Murales Colaborativos</h2>
+            <p>Este es el corazón de mi trabajo social, asegurando la participación real</br>
+            Oferta dirigida a Ayuntamientos, entidades, fundaciones, ONGś, asociaciones, colegios, bibliotecas, residencias, centros de día….en la que aplicamos el siguiente esquema:</p>
+        </div>
+        <div class="steps">
+        		<div class="step">
+                <span class="step-number">01</span>
+                <h3>Estudio</h3>
+                <p>Valoramos superficie a cubrir, estado de la pared, dificultad, tiempo de realización y acordamos un presupuesto.</p>
+            </div>
+            <div class="step">
+                <span class="step-number">02</span>
+                <h3>Encuentro</h3>
+                <p>Sesión de dinámica y diálogo para definir qué queremos contar y consolidar la idea común.</p>
+            </div>
+            <div class="step">
+                <span class="step-number">03</span>
+                <h3>Diseño</h3>
+                <p>Desarrollo el boceto integrando las propuestas y validándolo colectivamente.</p>
+            </div>
+            <div class="step">
+                <span class="step-number">04</span>
+                <h3>¡Manos a la obra!</h3>
+                <p>El grupo pinta guiado por mí. Proporciono apoyo técnico y organizo el espacio y los grupos de trabajo.</p>
+            </div>
+            <div class="step">
+                <span class="step-number">05</span>
+                <h3>Integración</h3>
+                <p>Ejecuto una intervención final para dar coherencia estética y asegurar un acabado de calidad.</p>
+            </div>
+        </div>
+
+          <div class="gallery-wrapper" style="position: relative; display: flex; align-items: center; margin-top: -2.5rem;">
+            <button class="nav-arrow arrow-left" id="p_colab" style="z-index: 10; cursor: pointer;"><i class="ph ph-caret-left"></i></button>
+            
+            <div class="collab-gallery-scroll" id="s_colab" style="display: flex; gap: 16px; overflow-x: auto; scroll-behavior: smooth; width: 100%;">
+               <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=800&auto=format&fit=crop" alt="textura">
+            	<img src="https://images.unsplash.com/photo-1599420186946-7b6fb4e297f0?q=80&w=400&auto=format&fit=crop" alt="Mano pintando">
+            	<img src="https://images.unsplash.com/photo-1525909002-1b05e0c869d8?q=80&w=800&auto=format&fit=crop" alt="cubetas">
+            	<img src="https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?q=80&w=800&auto=format&fit=crop" alt="Bocetos">
+            	<img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?q=80&w=400&auto=format&fit=crop" alt="Pinceles">
+            	<img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=800&auto=format&fit=crop" alt="Paleta de colores">
+           	 	<img src="https://images.unsplash.com/photo-1544531586-fde5298cdd40?q=80&w=400&auto=format&fit=crop" alt="Taller niños">
+            	<img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=400&auto=format&fit=crop" alt="Botes pintura">
+            	<img src="https://images.unsplash.com/photo-1502691876148-a84978e59af8?q=80&w=400&auto=format&fit=crop" alt="Detalle muro">
+            	<img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=800&auto=format&fit=crop" alt="Tablet">
+            </div>
+            
+            <button class="nav-arrow arrow-right" id="n_colab" style="z-index: 10; cursor: pointer;"><i class="ph ph-caret-right"></i></button>
+        </div>
+    </div>
+  </section>
+
+<!-- MURALES DE AUTORA --> 
   <section id="murales-autora">
    <div class="container">
       <div class="about-grid">
@@ -530,14 +588,13 @@
           <div class="bio-highlight">
             "Un muro en blanco es una oportunidad para contar una historia visual que permanezca en el tiempo."
           </div>
-          <p>Me encargo íntegramente de la dirección artística, desde la conceptualización técnica hasta la pincelada final, garantizando acabados de alta calidad profesional y durabilidad.</p>
-          <p>Oferta dirigida a Ayuntamientos, entidades, fundaciones, ONGś, asociaciones, colegios, bibliotecas, residencias, centros de día y también a particulares o empresas….en la que aplicamos el siguiente esquema:</p>
+          <p>Oferta dirigida a Ayuntamientos, entidades, fundaciones, ONGś, asociaciones, colegios, bibliotecas, residencias, centros de día y también a particulares o empresas en la que aplicamos el siguiente esquema:</p>
         </div>
         <div class="steps-autora">
         		<div class="step">
                 <span class="step-number">01</span>
                 <h3>Estudio</h3>
-                <p>Acordamos un presupuesto en función de: Recursos económicos disponibles, m<sup>2</sup> a cubrir y estado de la pared, dificultad del dibujo y su realización, días estimados de trabajo y recursos complementarios disponibles.</p>
+                <p>Acordamos un presupuesto en función de: Recursos económicos disponibles, m<sup>2</sup> a cubrir y estado de la pared, dificultad del dibujo y su realización, días de trabajo estimados y recursos complementarios disponibles.</p>
             </div>
             <div class="step">
                 <span class="step-number">02</span>
@@ -577,65 +634,6 @@
     </div>
   </section>
 
-
-  <!-- MURALES COLABORATIVOS -->
-  <section id="murales-colaborativos" style="background-color: var(--bg-surface);">
-    <div class="container">
-        <div class="section-header">
-            <span class="section-tag">Proceso Colaborativo</span>
-            <h2 class="section-title">Murales Colaborativos</h2>
-            <p>Este es el corazón de mi trabajo social, asegurando la participación real</br>
-            Oferta dirigida a Ayuntamientos, entidades, fundaciones, ONGś, asociaciones, colegios, bibliotecas, residencias, centros de día….en la que aplicamos el siguiente esquema:</p>
-        </div>
-        <div class="steps">
-        		<div class="step">
-                <span class="step-number">01</span>
-                <h3>Estudio</h3>
-                <p>Valoramos superficie a cubrir, estado de la pared, dificultad, tiempo de realización y acordamos un presupuesto.</p>
-            </div>
-            <div class="step">
-                <span class="step-number">02</span>
-                <h3>Encuentro</h3>
-                <p>Sesiones de dinámica y diálogo para definir el qué queremos contar y consolidar la idea común.</p>
-            </div>
-            <div class="step">
-                <span class="step-number">03</span>
-                <h3>Diseño</h3>
-                <p>Desarrollo del boceto integrando las propuestas y validándolo colectivamente.</p>
-            </div>
-            <div class="step">
-                <span class="step-number">04</span>
-                <h3>¡Manos a la obra!</h3>
-                <p>El grupo pinta guiado con mi apoyo técnico y la organización del trabajo.</p>
-            </div>
-            <div class="step">
-                <span class="step-number">05</span>
-                <h3>Integración</h3>
-                <p>Realizo los acabados finales para dar coherencia estética y asegurar un acabado de calidad.</p>
-            </div>
-        </div>
-
-          <div class="gallery-wrapper" style="position: relative; display: flex; align-items: center; margin-top: -2.5rem;">
-            <button class="nav-arrow arrow-left" id="p_colab" style="z-index: 10; cursor: pointer;"><i class="ph ph-caret-left"></i></button>
-            
-            <div class="collab-gallery-scroll" id="s_colab" style="display: flex; gap: 16px; overflow-x: auto; scroll-behavior: smooth; width: 100%;">
-               <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=800&auto=format&fit=crop" alt="textura">
-            	<img src="https://images.unsplash.com/photo-1599420186946-7b6fb4e297f0?q=80&w=400&auto=format&fit=crop" alt="Mano pintando">
-            	<img src="https://images.unsplash.com/photo-1525909002-1b05e0c869d8?q=80&w=800&auto=format&fit=crop" alt="cubetas">
-            	<img src="https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?q=80&w=800&auto=format&fit=crop" alt="Bocetos">
-            	<img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?q=80&w=400&auto=format&fit=crop" alt="Pinceles">
-            	<img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=800&auto=format&fit=crop" alt="Paleta de colores">
-           	 	<img src="https://images.unsplash.com/photo-1544531586-fde5298cdd40?q=80&w=400&auto=format&fit=crop" alt="Taller niños">
-            	<img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=400&auto=format&fit=crop" alt="Botes pintura">
-            	<img src="https://images.unsplash.com/photo-1502691876148-a84978e59af8?q=80&w=400&auto=format&fit=crop" alt="Detalle muro">
-            	<img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=800&auto=format&fit=crop" alt="Tablet">
-            </div>
-            
-            <button class="nav-arrow arrow-right" id="n_colab" style="z-index: 10; cursor: pointer;"><i class="ph ph-caret-right"></i></button>
-        </div>
-    </div>
-  </section>
-
   
   <!-- ILUSTRACIÓN -->  
   <section id="ilustracion">
@@ -644,21 +642,21 @@
             <span class="section-tag">Diseño Editorial</span>
             <h2 class="section-title">Ilustración con Valores</h2>
           </div>
-          <p>Si tienes una idea, campaña, texto o material de sensibilización al que le falte una ilustración y diseño que le den un sentido estético más amplio y atractivo, ponte en contacto conmigo y valoramos todos los aspectos que se puedan necesitar.Una experiencia de más de diez años avala mi trabajo en desarrollo materiales gráficos para campañas de sensibilización, igualdad y educación.</p>
+          <p>Si tienes una idea, campaña, texto o material de sensibilización al que le falte una ilustración y diseño que le den un sentido estético más amplio y atractivo, ponte en contacto conmigo y valoramos todos los aspectos que se puedan necesitar. Una experiencia de más de diez años avala mi trabajo en este ámbito.</p>
           <ul style="margin-top: 20px; display: grid; gap: 10px;">
-            <li><i class="ph ph-check" style="color: var(--accent-pink);"></i> Álbumes infantiles y cuentos.</li>
-            <li><i class="ph ph-check" style="color: var(--accent-pink);"></i> Cartelería institucional.</li>
-            <li><i class="ph ph-check" style="color: var(--accent-pink);"></i> Guías didácticas.</li>
-            <li><i class="ph ph-check" style="color: var(--accent-pink);"></i> Calendarios temáticos.</li>
-            <li><i class="ph ph-check" style="color: var(--accent-pink);"></i> Guías de sensibilización.</li>
+            <li><i class="ph ph-check" style="color: var(--accent-orange);"></i> Álbumes,cuentos y cómics.</li>
+            <li><i class="ph ph-check" style="color: var(--accent-orange);"></i> Juegos didácticos.</li>
+            <li><i class="ph ph-check" style="color: var(--accent-orange);"></i> Cartelería y folletos.</li>
+            <li><i class="ph ph-check" style="color: var(--accent-orange);"></i> Guías y cuadernos.</li>
+            <li><i class="ph ph-check" style="color: var(--accent-orange);"></i> Calendarios y agendas.</li>
+            <li><i class="ph ph-check" style="color: var(--accent-orange);"></i> Vídeos de sensibilización.</li>
           </ul>
           <p></p>
-<p>Acordaremos el presupuesto partiendo de tarifas muy ajustadas dependiendo de la cantidad de ilustraciones, complejidad, tamaño, plazos y trabajo extra que se requiera (maquetación, creación de textos, traducción o imprenta). </p>
+<p>Acordaremos el presupuesto partiendo de tarifas base dependiendo de la cantidad de ilustraciones, complejidad, tamaño, plazos y trabajo extra que se requiera (maquetación, creación de textos, traducción o imprenta). </p>
 <p>En todas las fases del proyecto estaré atenta al feedbak que me puedas aportar:</p>
 <ul style="margin-top: 20px; display: grid; gap: 10px;">
-            <li><i class="ph ph-check" style="color: var(--accent-pink);"></i> Boceto inicial al que añadiremos los cambios y modificaciones necesarios en un díálogo constante</li>
-            <li><i class="ph ph-check" style="color: var(--accent-pink);"></i> Sobre el boceto de ilustración y maquetación aceptado se iniciará la elaboracíón final.</li>
-            <li><i class="ph ph-check" style="color: var(--accent-pink);"></i> Cambios mínimos en el producto final...aunque si hemos mantenido un diálogo fluido no serán necesarios.</li>
+            <li><i class="ph ph-check" style="color: var(--accent-orange);"></i> Bocetos iniciales a los que añadiremos los cambios y modificaciones necesarios en un díálogo constante: ¡somos un equipo!</li>
+            <li><i class="ph ph-check" style="color: var(--accent-orange);"></i> Sobre los bocetos de ilustración y maquetación aceptado se iniciará la elaboracíón final.</li>
             
           </ul>
           <div class="gallery-wrapper" style="position: relative; display: flex; align-items: center; margin-top: -2.5rem;">
@@ -686,31 +684,36 @@
   </section>
 
   <!-- TALLERES ARTÍSTICOS --> 
-  <section id="talleres" style="background-color: var(--bg-surface);">
+  <section id="talleres" style="background-image: url('https://images.unsplash.com/photo-1541963463532-d68292c34b19?q=80&w=800&auto=format&fit=crop') !important;">
     <div class="container">
       <div class="section-header" style="text-align: center;">
         <span class="section-tag">Educación</span>
         <h2 class="section-title">Talleres Artísticos</h2>
       </div>
+            <p>Ofrezco una variedad de talleres artísticos y creativos con diferentes materiales, técnicas y motivos. Desde serigrafía, experimentación con pigmentos naturales, creación de historias, collage, pintura e ilustración, hasta técnicas de gran formato.</p>
       <div class="services-grid">
+
         <div class="service-card">
-          <h4>Infancia y Juventud</h4>
-          <p>Fomento de la creatividad y expresión de emociones.</p>
+          <h4>Objetivos</h4>
+          
+			<ul style="margin-top: 20px; display: grid; gap: 10px;">
+          	<li><i class="ph ph-check" style="color: var(--accent-orange);"></i>Fomento de la creatividad y expresión de emociones.</li>
+          	<li><i class="ph ph-check" style="color: var(--accent-orange);"></i>Empoderamiento a través del arte para diversos grupos.</li>
+
+          </ul>
+          
         </div>
         <div class="service-card">
-          <h4>Colectivos Sociales</h4>
-          <p>Empoderamiento a través del arte para diversos grupos.</p>
+          <h4>Características</h4>
+          <p style="margin-top: 2rem;">Sesiones de 1 &frac12; a 2h en grupos reducidos de hasta 15 participantes, que garanticen la calidad y atención durante el taller.</p>
+			 <p>Desde 60€/hora dependiendo del desplazamiento y materiales requeridos.</p>
+          <p>Se valorará un espacio con sillas suficientes y mesas amplias, así como punto de agua cercano.</p>
         </div>
-        <div class="service-card">
-          <h4>Técnicas Mixtas</h4>
-          <p>Desde serigrafía hasta técnicas de gran formato.</p>
-        </div>
-      </div>
-      <p>Ofrezco una variedad de talleres artísticos y creativos con diferentes materiales, técnicas y motivos.
-Serigrafía casera, experimentación con pigmentos naturales, creación de historias, collages, pintura e ilustración.
-Se valorará un espacio con sillas suficientes y mesas amplias, así como punto de agua cercano.
-Talleres con grupos reducidos de hasta 15 participantes, que garanticen la calidad y atención durante el taller.
-Desde 60€/hora dependiendo del desplazamiento y materiales requeridos.</p>
+        
+        
+        
+
+      
     </div>
   </section>
 

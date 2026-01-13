@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clara Luna | Muralismo e Ilustración Social</title>
+  <title>Clara Luna | Muralismo e Ilustración</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,6 +25,7 @@
       --border: #333333;
       
       --accent-orange: #d0712d;
+      --accent-orange2: #f57214;
       --accent-yellow: #FFD43B;
       --accent-blue: #4DABF7;
       --accent-primary: #d0712d;
@@ -90,6 +91,17 @@
       text-shadow: none;
     }
 
+	/* Columnas para listas */
+    .two-columns-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 20px;
+    }
+    @media (max-width: 600px) {
+      .two-columns-list { grid-template-columns: 1fr; }
+    }
+    
     /* BOTONES */
     .btn {
       display: inline-flex;
@@ -194,7 +206,7 @@
     .steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 30px; margin-top: 60px; }
     .steps-autora { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 60px; }
     .step { padding: 20px; position: relative; }
-    .step-number { font-family: var(--font-display); font-size: 5rem; color: var(--accent-orange); opacity: 0.2; position: absolute; top: -30px; left: 10px; line-height: 1; }
+    .step-number { font-family: var(--font-display); font-size: 5rem; color: var(--accent-orange2); opacity: 0.7; position: absolute; top: -30px; left: 10px; line-height: 1; }
     .step h3 { margin-bottom: 12px; font-size: 1.3rem; margin-top: 20px; }
     .step p { font-size: 0.95rem; color: var(--text-muted); }
 
@@ -236,6 +248,7 @@
       .hero-text h1 { font-size: 3rem; }
       .hero-image { display: none; }
       .about-grid, .about-grid-inicio, .info-grid, .contact-container { grid-template-columns: 1fr; gap: 40px; !important; } 
+      .bio-image {display:flex; justify-content:center; align-items: center; !important;}
       .navbar .nav-menu { display: none; }
       .menu-btn { display: block; }
       .dropdown-content { position: static; transform: none; box-shadow: none; border: none; padding-left: 20px; display: none; opacity: 1; visibility: visible; }
@@ -359,44 +372,6 @@
         .nav-arrow { width: 35px; height: 35px; }
     }  
    
- <!--   /* =========================================
-       NUEVO: CINTA DE IMÁGENES (MURALES COLABORATIVOS)
-       ========================================= */
-    .collab-gallery-scroll {
-        display: flex;
-        gap: 16px;
-        overflow-x: auto;
-        padding-bottom: 16px; /* Espacio para el scrollbar */
-        margin-top: 60px;
-        cursor: grab;
-        /* Ocultar scrollbar en Firefox */
-        scrollbar-width: thin;
-        scrollbar-color: var(--accent-orange) var(--bg-surface);
-    }
-    
-    /* Estilo Scrollbar Webkit */
-    .collab-gallery-scroll::-webkit-scrollbar {
-        height: 8px;
-    }
-    .collab-gallery-scroll::-webkit-scrollbar-track {
-        background: var(--bg-surface);
-        border-radius: 4px;
-    }
-    .collab-gallery-scroll::-webkit-scrollbar-thumb {
-        background-color: var(--accent-orange);
-        border-radius: 4px;
-    }
-
-    .collab-gallery-scroll img {
-        height: 220px; /* Altura similar al bloque de texto superior */
-        width: auto;
-        border-radius: 4px;
-        flex-shrink: 0; /* Evita que las imágenes se aplasten */
-        transition: transform 0.3s ease;
-    }
-    .collab-gallery-scroll img:hover {
-        transform: scale(1.02);
-    } -->
     
   </style>
 </head>
@@ -643,7 +618,8 @@
             <h2 class="section-title">Ilustración con Valores</h2>
           </div>
           <p>Si tienes una idea, campaña, texto o material de sensibilización al que le falte una ilustración y diseño que le den un sentido estético más amplio y atractivo, ponte en contacto conmigo y valoramos todos los aspectos que se puedan necesitar. Una experiencia de más de diez años avala mi trabajo en este ámbito.</p>
-          <ul style="margin-top: 20px; display: grid; gap: 10px;">
+ <!--         <ul style="margin-top: 20px; display: grid; gap: 10px;"> -->
+			 <ul class="two-columns-list">
             <li><i class="ph ph-check" style="color: var(--accent-orange);"></i> Álbumes,cuentos y cómics.</li>
             <li><i class="ph ph-check" style="color: var(--accent-orange);"></i> Juegos didácticos.</li>
             <li><i class="ph ph-check" style="color: var(--accent-orange);"></i> Cartelería y folletos.</li>
@@ -823,7 +799,45 @@
           </div>
         </div>
         
-        <div class="funding-box">
+			<div class="funding-box">
+			          <h3 style="margin-bottom: 20px;">¿Por qué invertir en muralismo e ilustracion con valores?</h3>
+			          <p>El impacto de estas obras trasciende lo visual, generando beneficios tangibles para la entidad y su entorno:</p>
+			          <div style="display: flex; flex-direction: column; gap: 15px;">
+			             <div>
+			               <h4 style="color: var(--accent-primary);">1. Cohesión y Vínculo</h4>
+			               <p style="font-size: 0.85rem; margin-bottom: 0;">Fortalece el sentido de pertenencia en comunidades, colegios o entidades mediante procesos participativos donde el arte pasa a ser "nuestro".</p>
+			             </div>
+			             <div>
+			               <h4 style="color: var(--accent-yellow);">2. Comunicación Eficaz</h4>
+			               <p style="font-size: 0.85rem; margin-bottom: 0;">La ilustración transforma conceptos complejos en mensajes claros, amables y visualmente atractivos para campañas de sensibilización.</p>
+			             </div>
+			             <div>
+			               <h4 style="color: var(--accent-blue);">3. Resignificación del Espacio</h4>
+			               <p style="font-size: 0.85rem; margin-bottom: 0;">Dignifica entornos degradados o paredes olvidadas, convirtiéndolas en puntos de interés turístico, artístico y de orgullo local.</p>
+			             </div>
+			             <div>
+			               <h4 style="color: var(--accent-primary);">4. Educación en Valores</h4>
+			               <p style="font-size: 0.85rem; margin-bottom: 0;">Materiales editoriales y murales diseñados con una profunda perspectiva de género, igualdad, diversidad y sostenibilidad.</p>
+			             </div>
+			             <div>
+			               <h4 style="color: var(--accent-yellow);">5. Bienestar Emocional</h4>
+			               <p style="font-size: 0.85rem; margin-bottom: 0;">El arte en el entorno cotidiano reduce el estrés visual y mejora la calidad de vida de quienes habitan o transitan esos espacios.</p>
+			             </div>
+			             <div>
+			               <h4 style="color: var(--accent-blue);">6. Activo Cultural Único</h4>
+			               <p style="font-size: 0.85rem; margin-bottom: 0;">Genera un patrimonio artístico propio y original que diferencia a la organización y permanece en la memoria colectiva del territorio.</p>
+			             </div>
+			             <div>
+			               <h4 style="color: var(--accent-primary);">7. Accesibilidad Cognitiva</h4>
+			               <p style="font-size: 0.85rem; margin-bottom: 0;">El uso de la ilustración y el lenguaje visual facilita la comprensión de la información para personas con diferentes capacidades o barreras lingüísticas.</p>
+			             </div>
+			             <div>
+			               <h4 style="color: var(--accent-yellow);">8. Dinamización y Participación</h4>
+			               <p style="font-size: 0.85rem; margin-bottom: 0;">Los talleres y murales actúan como catalizadores sociales, activando a grupos que habitualmente no participan en la vida cultural de su zona.</p>
+			             </div>
+			          </div>
+			        </div>        
+<!--        <div class="funding-box">
           <h3 style="margin-bottom: 20px;">¿Por qué invertir en esto?</h3>
           <p>Más allá de la estética, un mural colaborativo aporta:</p>
           <div style="display: flex; flex-direction: column; gap: 20px;">
@@ -840,7 +854,7 @@
                <p style="font-size: 0.9rem; margin-bottom: 0;">Revitaliza espacios grises y cuenta la historia del lugar.</p>
              </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </section>
@@ -876,30 +890,31 @@
         </div>
 
         <div class="contact-form">
-          <form onsubmit="event.preventDefault(); alert('Gracias por tu mensaje. Te contactaré pronto.');">
-            <div class="form-group">
-              <label>Nombre o Entidad</label>
-              <input type="text" class="form-control" placeholder="Ej: Ayto. de... / Colegio..." required>
-            </div>
-            <div class="form-group">
-              <label>Email de contacto</label>
-              <input type="email" class="form-control" placeholder="tu@email.com" required>
-            </div>
-            <div class="form-group">
-              <label>Tipo de Proyecto</label>
-              <select class="form-control">
-                <option>Mural Colaborativo</option>
-                <option>Mural Individual</option>
-                <option>Ilustración / Editorial</option>
-                <option>Otro</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>Mensaje</label>
-              <textarea class="form-control" placeholder="Cuéntame brevemente: metros aproximados, idea, ubicación..."></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Enviar Propuesta</button>
-          </form>
+        <form action="https://formspree.io/f/mwvvkaer" method="POST">
+		  <div class="form-group">
+		    <label>Nombre o Entidad</label>
+		    <input type="text" name="Nombre" class="form-control" placeholder="Ej: Ayto. de... / Colegio..." required>
+		  </div>
+		  <div class="form-group">
+		    <label>Email de contacto</label>
+		    <input type="email" name="email" class="form-control" placeholder="tu@email.com" required>
+		  </div>
+		  <div class="form-group">
+		    <label>Tipo de Proyecto</label>
+		    <select name="proyecto" id="tipoProyecto" class="form-control">
+		      <option value="colaborativo">Mural Colaborativo</option>
+		      <option value="individual">Mural Individual</option>
+		      <option value="ilustracion">Ilustración / Editorial</option>
+		      <option value="otro">Otro</option>
+		    </select>
+		  </div>
+		  <div class="form-group">
+		    <label>Mensaje</label>
+		    <textarea name="Te_cuento" id="mensajeTexto" class="form-control" placeholder="Cuéntame brevemente sobre el mural colaborativo: grupo, metros, ubicación..."></textarea>
+		  </div>
+		  <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Enviar Propuesta</button>
+		</form>
+        
         </div>
       </div>
     </div>
@@ -1019,6 +1034,25 @@
     }
     
 });
+</script>
+<script>
+// --- LÓGICA DINÁMICA DEL FORMULARIO ---
+  const selectorProyecto = document.getElementById('tipoProyecto');
+  const campoMensaje = document.getElementById('mensajeTexto');
+
+  // Definición de mensajes según la selección
+  const mensajesPlaceholder = {
+    'colaborativo': 'Cuéntame brevemente sobre el mural colaborativo: grupo de personas, metros aprox, ubicación...',
+    'individual': 'Cuéntame tu idea para el mural de autora: dimensiones de la pared, temática preferida y lugar...',
+    'ilustracion': 'Describe tu proyecto editorial: tipo de publicación (cuento, cartel, guía...), valores a transmitir...',
+    'otro': 'Cuéntame brevemente qué tienes en mente y cómo puedo ayudarte...'
+  };
+
+  // Función que cambia el placeholder
+  selectorProyecto.addEventListener('change', function() {
+    const seleccion = this.value;
+    campoMensaje.placeholder = mensajesPlaceholder[seleccion] || "Cuéntame tu idea...";
+  });
 </script>
 </body>
 </html>

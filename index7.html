@@ -279,7 +279,6 @@
        ESTILOS DEL MENÚ (RESPONSIVE)
        ========================================= */
     @media (max-width: 900px) {
-      /* Menú principal */
       .navbar .nav-menu { 
         display: none; 
         flex-direction: column; 
@@ -290,38 +289,34 @@
         background: var(--bg-surface); 
         padding: 20px; 
         border-bottom: 1px solid var(--border);
-        max-height: 85vh;
+        max-height: calc(100vh - var(--header-height));
         overflow-y: auto;
       }
 
+      /* Clase que activa la visibilidad del menú principal */
       .navbar .nav-menu.active { display: flex; }
+
       .menu-btn { display: block; }
 
-      /* Submenú (Dropdown) en móvil */
+      /* Dropdown en móvil: Oculto por defecto */
       .dropdown-content { 
         position: static; 
-        display: none; /* Se activa con la clase .open */
         transform: none; 
         box-shadow: none; 
         border: none; 
         padding-left: 20px; 
+        display: none; /* Se controla por JS con la clase .open */
         opacity: 1; 
         visibility: visible; 
       }
 
-      /* Esta clase la añadirá el JS al hacer clic */
-      .dropdown.open .dropdown-content { 
-        display: block !important; 
+      /* Clase que muestra el submenú cuando se pulsa "Colaboración" */
+      .dropdown.open .dropdown-content {
+        display: block;
       }
 
-      /* Flecha indicadora */
-      .nav-link i { transition: transform 0.3s; }
-      .dropdown.open .nav-link i { transform: rotate(180deg); }
-    }  
-      
-      /* =========================================
-       CAMBIO A UNA COLUMNA DE LAS LISTAS EN 2 COLUMNAS
-       ========================================= */ 
+      .nav-link { width: 100%; justify-content: space-between; }
+    }     
       
       /* Ajuste responsive para la nueva rejilla 2x2 en móvil */
       #servicios .services-grid {
@@ -1031,54 +1026,59 @@
   </script>
   
 	 <script type="text/javascript"> 
-	 // --- LÓGICA INTEGRADA DEL MENÚ HAMBURGUESA MÓVIL ---
-    const menuBtn = document.getElementById('menuBtn');
-    const navMenu = document.getElementById('navMenu');
-    const dropdowns = document.querySelectorAll('.dropdown');
-
-    // 1. Toggle del menú hamburguesa
-    menuBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        navMenu.classList.toggle('active');
-    });
-
-    // 2. Control de submenú en móviles
-    dropdowns.forEach(dropdown => {
-        const trigger = dropdown.querySelector('.nav-link');
-        
-        trigger.addEventListener('click', (e) => {
-            if (window.innerWidth <= 900) {
-                // Si el submenú NO está abierto, evitamos que la página se mueva
-                if (!dropdown.classList.contains('open')) {
-                    e.preventDefault(); 
-                    e.stopPropagation();
-                    // Cerramos otros por si acaso
-                    dropdowns.forEach(d => d.classList.remove('open'));
-                    dropdown.classList.add('open');
-                }
-            }
-        });
-    });
-
-    // 3. Cierre al hacer clic en enlaces finales (opciones del submenú o botones)
-    const linksParaCerrar = document.querySelectorAll('.nav-menu a:not(.dropdown > .nav-link), .dropdown-content a');
-    
-    linksParaCerrar.forEach(link => {
-        link.addEventListener('click', () => {
-            if (window.innerWidth <= 900) {
-                navMenu.classList.remove('active');
-                dropdowns.forEach(d => d.classList.remove('open'));
-            }
-        });
-    });
-
-    // 4. Cerrar si se hace clic fuera del menú
-    document.addEventListener('click', (e) => {
-        if (!navMenu.contains(e.target) && !menuBtn.contains(e.target)) {
-            navMenu.classList.remove('active');
-            dropdowns.forEach(d => d.classList.remove('open'));
-        }
-    });
+	 // --- LÓGICA INTEGRADA DEL MENÚ HAMBURGUESA ---
+	    const menuBtn = document.getElementById('menuBtn');
+	    const navMenu = document.getElementById('navMenu');
+	    const dropdowns = document.querySelectorAll('.dropdown');
+	
+	    // 1. Abrir/Cerrar menú principal al pulsar el botón de 3 rayas
+	    menuBtn.addEventListener('click', (e) => {
+	        e.stopPropagation();
+	        navMenu.classList.toggle('active');
+	    });
+	
+	    // 2. Gestión de submenús (Dropdown) en dispositivos táctiles
+	    dropdowns.forEach(dropdown => {
+	        const link = dropdown.querySelector('.nav-link');
+	        
+	        link.addEventListener('click', (e) => {
+	            // Solo aplicamos esta lógica en pantallas móviles (<= 900px)
+	            if (window.innerWidth <= 900) {
+	                // Si el submenú está cerrado, evitamos que navegue y lo abrimos
+	                if (!dropdown.classList.contains('open')) {
+	                    e.preventDefault(); // Detiene el salto a la sección
+	                    e.stopPropagation();
+	                    
+	                    // Cerramos otros submenús abiertos por si acaso
+	                    dropdowns.forEach(d => d.classList.remove('open'));
+	                    // Abrimos el actual
+	                    dropdown.classList.add('open');
+	                }
+	                // Si ya está abierto (segundo toque), el enlace funcionará normalmente
+	            }
+	        });
+	    });
+	
+	    // 3. Cierre automático al pulsar cualquier enlace final
+	    // Buscamos todos los enlaces que NO sean los que abren submenús
+	    const finalLinks = document.querySelectorAll('.nav-menu a:not(.dropdown > .nav-link), .dropdown-content a');
+	    
+	    finalLinks.forEach(link => {
+	        link.addEventListener('click', () => {
+	            if (window.innerWidth <= 900) {
+	                navMenu.classList.remove('active');
+	                dropdowns.forEach(d => d.classList.remove('open'));
+	            }
+	        });
+	    });
+	
+	    // 4. Cerrar menú si se pulsa fuera de él
+	    document.addEventListener('click', (e) => {
+	        if (!navMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+	            navMenu.classList.remove('active');
+	            dropdowns.forEach(d => d.classList.remove('open'));
+	        }
+	    });
 	</script>    
  
  <script type="text/javascript">

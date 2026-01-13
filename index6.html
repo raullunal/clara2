@@ -271,7 +271,10 @@
       
       .menu-btn { display: block; }
       .dropdown-content { position: static; transform: none; box-shadow: none; border: none; padding-left: 20px; display: none; opacity: 1; visibility: visible; }
-      .dropdown:hover .dropdown-content { display: block; }
+/*      .dropdown:hover .dropdown-content { display: block; } */
+      .dropdown:hover .dropdown-content,
+      .dropdown:active .dropdown-content,
+      .dropdown:focus-within .dropdown-content { display: block; } /* Permite apertura por toque en móvil */
       
       /* Ajuste responsive para la nueva rejilla 2x2 en móvil */
       #servicios .services-grid {
@@ -1036,8 +1039,28 @@
 });
 </script>
 <script>
-// --- LÓGICA DINÁMICA DEL FORMULARIO ---
-  const selectorProyecto = document.getElementById('tipoProyecto');
+		// --- LÓGICA DINÁMICA DEL FORMULARIO ---
+		document.addEventListener("DOMContentLoaded", function() {
+		    const selectorProyecto = document.getElementById('tipoProyecto');
+		    const campoMensaje = document.getElementById('mensajeTexto');
+		
+		    if (selectorProyecto && campoMensaje) {
+		      const mensajesPlaceholder = {
+		        'colaborativo': 'Cuéntame brevemente sobre el mural colaborativo: grupo de personas, metros aprox, ubicación...',
+		        'individual': 'Cuéntame tu idea para el mural de autora: dimensiones de la pared, temática preferida y lugar...',
+		        'ilustracion': 'Describe tu proyecto editorial: tipo de publicación (cuento, cartel, guía...), valores a transmitir...',
+		        'otro': 'Cuéntame brevemente qué tienes en mente y cómo puedo ayudarte...'
+		      };
+		
+		      // Usamos 'input' en lugar de 'change' para mayor compatibilidad móvil
+		      selectorProyecto.addEventListener('input', function() {
+		        const seleccion = this.value;
+		        campoMensaje.placeholder = mensajesPlaceholder[seleccion] || "Cuéntame tu idea...";
+		      });
+		    }
+		  });
+
+/*  const selectorProyecto = document.getElementById('tipoProyecto');
   const campoMensaje = document.getElementById('mensajeTexto');
 
   // Definición de mensajes según la selección
@@ -1052,7 +1075,7 @@
   selectorProyecto.addEventListener('change', function() {
     const seleccion = this.value;
     campoMensaje.placeholder = mensajesPlaceholder[seleccion] || "Cuéntame tu idea...";
-  });
+  }); */
 </script>
 </body>
 </html>

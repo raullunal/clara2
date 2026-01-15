@@ -273,6 +273,28 @@
       .menu-btn { display: block; }
       .dropdown-content { position: static; transform: none; box-shadow: none; border: none; padding-left: 20px; display: none; opacity: 1; visibility: visible; }
       .dropdown:hover .dropdown-content { display: block; }
+ 
+				 /* =========================================
+		       EVITAR QUE LAS IMAGENES SE ENCOJAN EN EL MOVIL
+		       ========================================= */
+		      
+		/* Seleccionamos las imágenes de todas tus cintas deslizantes */
+		.collab-gallery-scroll img, 
+		#galleryAutora img, 
+		#s_ilustra img {
+		    /* 1. Evita que la imagen se adapte al ancho de la pantalla */
+		    max-width: none !important; 
+		    
+		    /* 2. Evita que el contenedor flexible las "aplaste" */
+		    flex-shrink: 0 !important; 
+		    
+		    /* 3. Mantiene la altura que definiste (ej. 250px) y calcula el ancho proporcional */
+		    height: 250px; 
+		    width: auto; 
+		    
+		    /* Opcional: suaviza los bordes para que no se vean cortados bruscamente */
+		    object-fit: contain;
+		}
       
  /*     /* Menu hamburguesa corregido *
       .navbar .nav-menu { 
@@ -552,9 +574,9 @@
         </div>
       </div>
       <div class="hero-image">
-        <img src="https://images.unsplash.com/photo-1599420186946-7b6fb4e297f0?q=80&w=1000&auto=format&fit=crop" alt="Clara Luna trabajando en mural">
+        <img src="portadab.jpg?q=80&w=1000&auto=format&fit=crop" alt="Clara Luna trabajando en mural">
         <div style="position: absolute; bottom: -20px; right: -20px; background: var(--bg-surface); padding: 15px; border: 1px solid var(--border);">
-          <span class="power-phrase">"Crear es resistir"</span>
+<!--          <span class="power-phrase">"Crear es resistir"</span> -->
         </div>
       </div>
     </div>

@@ -191,18 +191,49 @@
     .menu-btn { display: none; font-size: 1.8rem; cursor: pointer; background: none; border: none; color: var(--text-main); }
 
     /* HERO */
-    .hero { padding-top: calc(var(--header-height) + 60px); padding-bottom: 80px; position: relative; overflow: hidden; }
-    .blob { position: absolute; border-radius: 50%; filter: blur(80px); z-index: -1; opacity: 0.4; animation: float 10s infinite ease-in-out; }
-    .blob-1 { width: 400px; height: 400px; background: var(--accent-orange); top: -100px; right: -100px; }
-    .blob-2 { width: 300px; height: 300px; background: var(--accent-blue); bottom: 50px; left: -50px; animation-delay: 2s; }
-    .blob-3 { width: 200px; height: 200px; background: var(--accent-yellow); top: 40%; left: 40%; opacity: 0.2; animation-delay: 4s; }
-    @keyframes float { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(20px, -20px); } }
-    .hero-content { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; align-items: center; }
-    .hero-text h1 { font-size: 4rem; margin-bottom: 24px; line-height: 1.1; }
-    .hero-subtitle { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 40px; max-width: 90%; }
-    .hero-image { position: relative; }
-    .hero-image img { width: 100%; height: 500px; object-fit: cover; box-shadow: 20px 20px 0px var(--border); }
-
+		/* --- ESTRUCTURA HERO REVISADA --- */
+      .hero { padding-top: calc(var(--header-height) + 60px); padding-bottom: 60px; position: relative; overflow: hidden; }
+		.hero-content {
+		    display: grid;
+		    /* Escritorio: 2 columnas, los botones se ubican mediante áreas */
+		    grid-template-columns: 1.1fr 0.9fr;
+		    grid-template-areas: 
+		        "texto imagen"
+		        "botones imagen";
+		    gap: 40px 60px;
+		    align-items: center;
+		}
+		
+		.hero-text { grid-area: texto; padding-top: 4rem;justify-content:center; align-items:center; text-align: center;}
+		.hero-image { grid-area: imagen; width: calc(100% + 40px);}
+      .hero-image img { width: 100%; height: 500px; object-fit: cover; box-shadow: 20px 20px 0px var(--border); }
+		.hero-actions { 
+		    grid-area: botones; 
+		    display: flex;
+		    gap: 16px;
+		    justify-content: center; 
+		    align-self: auto; /* Alinea los botones al inicio del área (izquierda) */
+		}
+		
+		/* --- ADAPTACIÓN MÓVIL (Media Query) --- */
+		@media (max-width: 900px) {
+		    .hero-content {
+		        grid-template-columns: 1fr;
+		        grid-template-areas: 
+		            "texto"
+		            "imagen"
+		            "botones"; /* Los botones pasan debajo de la imagen */
+		        text-align: center;
+		        gap: 30px;
+		    }
+		    .hero-image: {display:flex; justify-content:center; align-items: center; !important;}
+		
+		    .hero-actions {
+		        justify-content: center; /* Centra los botones en móvil */
+		        width: 100%;
+		    }
+		}    
+    
     /* SECCIONES COMUNES */
     section { padding: 100px 0; }
     .section-header { margin-bottom: 60px; }
@@ -264,9 +295,9 @@
 
     /* RESPONSIVE */
     @media (max-width: 900px) {
-      .hero-content { grid-template-columns: 1fr; text-align: center; }
+/*      .hero-content { grid-template-columns: 1fr; text-align: center; }
       .hero-text h1 { font-size: 3rem; }
-      .hero-image { display: none; }
+/*      .hero-image { display: none; } */
       .about-grid, .about-grid-inicio, .info-grid, .contact-container { grid-template-columns: 1fr; gap: 40px; !important; } 
       .bio-image {display:flex; justify-content:center; align-items: center; !important;}
  /*     .navbar .nav-menu { display: none; } */
@@ -296,27 +327,7 @@
 		    object-fit: contain;
 		}
       
- /*     /* Menu hamburguesa corregido *
-      .navbar .nav-menu { 
-        display: none; 
-        flex-direction: column; 
-        position: absolute; 
-        top: var(--header-height); 
-        left: 0; 
-        width: 100%; 
-        background: var(--bg-surface); 
-        padding: 20px; 
-        border-bottom: 1px solid var(--border);
-        gap: 15px;
-      }
-		.navbar .nav-menu.active { display: flex; } /* Fuerza la visibilidad en móvil *
-      
-      .menu-btn { display: block; }
-      .dropdown-content { position: static; transform: none; box-shadow: none; border: none; padding-left: 20px; display: none; opacity: 1; visibility: visible; }
-/*      .dropdown:hover .dropdown-content { display: block; } *
-      .dropdown:hover .dropdown-content,
-      .dropdown:active .dropdown-content { display: block; } /* Permite apertura por toque en móvil */ 
-      
+     
 		 /* =========================================
        ESTILOS DEL MENÚ (RESPONSIVE)
        ========================================= */
@@ -430,9 +441,7 @@
         overflow-x: auto;
         scroll-behavior: smooth;
         padding: 10px 0;
-
     }
-
 
     .collab-gallery-scroll img {
         height: 250px;
@@ -465,11 +474,12 @@
     .arrow-left { left: -22px; }
     .arrow-right { right: -22px; }
 
-    /* Responsivo Galería */
+    /* Responsivo Galería  */
     @media (max-width: 900px) {
         .steps, .steps-autora { grid-template-columns: 1fr 1fr; }
-        .nav-arrow { width: 35px; height: 35px; }
+        .nav-arrow { width: 35px; height: 35px; }        
 	    } 
+	    
 	     
 	    /* --- ESTILOS PARA RECUPERAR EL DESLIZADOR --- */
 	
@@ -514,12 +524,57 @@
 	#s_ilustra::-webkit-scrollbar-thumb:hover {
 	    background: #e0823d; /* Un tono un poco más claro al pasar el ratón */
 	}  
-	.collab-gallery-scroll img, 
+/*	.collab-gallery-scroll img, 
 	#galleryAutora img, 
 	#s_ilustra img {
 	    flex-shrink: 0; /* Impide que las imágenes se compriman */
+	.collab-gallery-scroll > *, 
+	#galleryAutora > *, 
+	#s_ilustra > * {
+	    flex-shrink: 0; /* Impide que las imágenes y vídeos se compriman   */ 
+	    
 	} 
-    
+
+/* =========================================
+       PARA POSTER DE VIDEO EN CINTAS
+       ========================================= */
+		/* Contenedor del video */
+		.video-wrapper {
+		    position: relative;
+		    height: 250px;
+		    flex-shrink: 0;
+		    cursor: pointer;
+		    border-radius: 8px;
+		    overflow: hidden;
+		    background: #000;
+		}
+		
+		.gallery-video {
+		    height: 100%;
+		    width: auto;
+		    display: block;
+		    object-fit: cover;
+		}
+		
+		/* Icono de Play central */
+		.play-overlay {
+		    position: absolute;
+		    top: 50%;
+		    left: 50%;
+		    transform: translate(-50%, -50%);
+		    font-size: 4rem;
+		    color: white;
+		    opacity: 0.9;
+		    z-index: 2;
+		    pointer-events: none; /* Para que no interfiera con el click en el video */
+		    transition: all 0.4s ease;
+		}
+		
+		/* ESTADO: CUANDO SE REPRODUCE (Ocultar icono) */
+		.video-wrapper.is-playing .play-overlay {
+		    opacity: 0;
+		    transform: translate(-50%, -50%) scale(1.5); /* Efecto de desvanecimiento hacia afuera */
+		}
   </style>
 </head>
 <body>
@@ -557,32 +612,27 @@
   </nav>
 
    <!-- HERO SECTION -->
-  <header class="hero">
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-    <div class="blob blob-3"></div>
 
+<header class="hero">
     <div class="container hero-content">
-      <div class="hero-text">
+        <div class="hero-text">
+                      <h1>Muralismo e ilustración </h1>
+                      <h2>Arte que conecta comunidades y resignifica el entorno</h2>
+        </div>
 
-        <p class="hero-subtitle">
-          <h1>Muralismo e ilustración </h1><h2>Arte que conecta comunidades y resignifica el entorno</h2>
-        </p>
-        <div style="display: flex; gap: 16px; flex-wrap: wrap; justify-content: center;">
-          <a href="#portfolio" class="btn btn-primary">Ver mis Obras</a>
-          <a href="#contacto" class="btn btn-outline">Hablemos</a>
+        <div class="hero-image">
+            <img src="portadab.jpg?q=80&w=1000&auto=format&fit=crop" alt="Clara Luna">
         </div>
-      </div>
-      <div class="hero-image">
-        <img src="portadab.jpg?q=80&w=1000&auto=format&fit=crop" alt="Clara Luna trabajando en mural">
-        <div style="position: absolute; bottom: -20px; right: -20px; background: var(--bg-surface); padding: 15px; border: 1px solid var(--border);">
-<!--          <span class="power-phrase">"Crear es resistir"</span> -->
+
+        <div class="hero-actions">
+            <a href="#portfolio" class="btn btn-primary">Ver Proyectos</a>
+            <a href="#contacto" class="btn btn-outline">Hablemos</a>
         </div>
-      </div>
     </div>
-  </header>
-
+</header>  
+   
   <!-- SOBRE MÍ -->
+  
   <section id="sobre-mi">
     <div class="container">
       <div class="about-grid-inicio">
@@ -607,6 +657,7 @@
   </section>
 
   <!-- SERVICIOS -->
+  
   <section id="servicios">
     <div class="container">
       <div class="section-header" style="text-align: center;">
@@ -640,6 +691,7 @@
  
  
   <!-- MURALES COLABORATIVOS -->
+  
   <section id="murales-colaborativos" style="background-color: var(--bg-surface);">
     <div class="container">
         <div class="section-header">
@@ -686,9 +738,25 @@
             	<img src="mc-espinoso1.jpg?q=80&w=800&auto=format&fit=crop" alt="Mural Espinosa del Rey">       
 	            <img src="mc-espinoso3.jpg?q=80&w=800&auto=format&fit=crop" alt="Mural Espinosa del Rey">
             	<img src="mc-real3.jpg?q=80&w=800&auto=format&fit=crop" alt="Mural Real de los Montes">
+            	
             	<img src="mc-real-p.jpg?q=80&w=800&auto=format&fit=crop" alt="Mural Real de los Montes">
             	<img src="mc-real2.jpg?q=80&w=800&auto=format&fit=crop" alt="Mural Real de los Montes">
-            </div>
+					<div class="video-wrapper" id="wrapperColab">
+					    <div class="play-overlay">
+					    <i class="ph-fill ph-play-circle"></i>
+					    </div>					    
+					    <video 
+					        id="videoColab"
+					        class="gallery-video" 
+					        poster="postervideo1.jpg?q=80&w=600" 
+					        muted 
+					        loop 
+					        playsinline>
+					        <source src="VID20220308185717.mp4" type="video/mp4">
+					    </video>
+					</div>            	
+            
+				</div>
             
             <button class="nav-arrow arrow-right" id="n_colab" style="z-index: 10; cursor: pointer;"><i class="ph ph-caret-right"></i></button>
         </div>
@@ -696,6 +764,7 @@
   </section>
 
 <!-- MURALES DE AUTORA --> 
+
   <section id="murales-autora">
    <div class="container">
       <div class="about-grid">
@@ -751,16 +820,14 @@
             </div>
             
             <button class="nav-arrow arrow-right" id="nextBtnAutora"><i class="ph ph-caret-right"></i></button>
-        </div>     
-            
-
-        
+        </div>           
       </div>
     </div>
   </section>
 
   
-  <!-- ILUSTRACIÓN -->  
+  <!-- ILUSTRACIÓN --> 
+   
   <section id="ilustracion">
     <div class="container">
            <div class="section-header">
@@ -768,15 +835,6 @@
             <h2 class="section-title">Ilustración con Valores</h2>
           </div>
           <p>Si tienes una idea, campaña, texto o material de sensibilización al que le falte una ilustración y diseño que le den un sentido estético más amplio y atractivo, ponte en contacto conmigo y valoramos todos los aspectos que se puedan necesitar. Una experiencia de más de diez años avala mi trabajo en este ámbito.</p>
- <!--         <ul style="margin-top: 20px; display: grid; gap: 10px;"> -->
-<!--			 <ul class="two-columns-list">
-            <li><i class="ph ph-check" style="color: var(--accent-orange);"></i> Álbumes,cuentos y cómics.</li>
-            <li><i class="ph ph-check" style="color: var(--accent-orange);"></i> Juegos didácticos.</li>
-            <li><i class="ph ph-check" style="color: var(--accent-orange);"></i> Cartelería y folletos.</li>
-            <li><i class="ph ph-check" style="color: var(--accent-orange);"></i> Guías y cuadernos.</li>
-            <li><i class="ph ph-check" style="color: var(--accent-orange);"></i> Calendarios y agendas.</li>
-            <li><i class="ph ph-check" style="color: var(--accent-orange);"></i> Vídeos de sensibilización.</li>
-          </ul> -->
 
 			 <ul class="two-columns-list">
             <li class="lorange"> Álbumes,cuentos y cómics.</li>
@@ -793,10 +851,6 @@
 	         <li class="lorange"> Bocetos iniciales a los que añadiremos los cambios y modificaciones necesarios en un díálogo constante: ¡somos un equipo!</li>
 	         <li class="lorg2"> Sobre los bocetos de ilustración y maquetación aceptados se realizará la elaboracíón final.</li>           
           </ul>
-<!--			 <ul style="margin-top: 20px; display: grid; gap: 10px;">
-	         <li><i class="ph ph-check" style="color: var(--accent-orange);"></i> Bocetos iniciales a los que añadiremos los cambios y modificaciones necesarios en un díálogo constante: ¡somos un equipo!</li>
-	         <li><i class="ph ph-check" style="color: var(--accent-orange);"></i> Sobre los bocetos de ilustración y maquetación aceptados se realizará la elaboracíón final.</li>           
-          </ul> -->
           <div class="gallery-wrapper" style="position: relative; display: flex; align-items: center; margin-top: -0.1rem;">
             <button class="nav-arrow arrow-left" id="p_ilustra" style="z-index: 10; cursor: pointer;"><i class="ph ph-caret-left"></i></button>
             
@@ -815,13 +869,13 @@
             
             <button class="nav-arrow arrow-right" id="n_ilustra" style="z-index: 10; cursor: pointer;"><i class="ph ph-caret-right"></i></button>
         </div>
-        </div>
-     
+        </div>     
       </div>
     </div>
   </section>
 
   <!-- TALLERES ARTÍSTICOS --> 
+  
   <section id="talleres">
     <div class="container">
       <div class="section-header" style="text-align: center;">
@@ -835,9 +889,8 @@
           <h4>Objetivos</h4>
           
 			<ul style="margin-top: 20px; display: grid; gap: 10px;">
-          	<li><i class="ph ph-check" style="color: var(--accent-orange);"></i>Fomento de la creatividad y expresión de emociones.</li>
-          	<li><i class="ph ph-check" style="color: var(--accent-orange);"></i>Empoderamiento a través del arte para diversos grupos.</li>
-
+          	<li class="lorange">Fomento de la creatividad y expresión de emociones.</li>
+          	<li class="lorg2">Empoderamiento a través del arte para diversos grupos.</li>
           </ul>
           
         </div>
@@ -846,16 +899,12 @@
           <p style="margin-top: 2rem;">Sesiones de 1 &frac12; a 2h en grupos reducidos de hasta 15 participantes, que garanticen la calidad y atención durante el taller.</p>
 			 <p>Desde 60€/hora dependiendo del desplazamiento y materiales requeridos.</p>
           <p>Se valorará un espacio con sillas suficientes y mesas amplias, así como punto de agua cercano.</p>
-        </div>
-        
-        
-        
-
-      
+        </div>      
     </div>
   </section>
 
   <!-- PORTFOLIO / GALERÍA -->
+  
   <section id="portfolio">
     <div class="container">
       <div class="section-header">
@@ -925,13 +974,13 @@
             <div class="portfolio-title">Decoración de Espacios</div>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
 
    <!-- FINANCIACIÓN E IMPACTO -->
+   
   <section id="financiacion" class="impact-section">
     <div class="container">
       <div class="info-grid">
@@ -1004,6 +1053,7 @@
   </section>
 
   <!-- CONTACTO -->
+  
   <section id="contacto">
     <div class="container">
       <div class="section-header">
@@ -1214,10 +1264,10 @@
         p_ilustra.onclick = function() {
             s_ilustra.scrollBy({ left: -400, behavior: 'smooth' });
         };
-    }
-    
+    }   
 });
 </script>
+
  <script type="text/javascript">
 		// --- LÓGICA DINÁMICA DEL FORMULARIO ---
 		document.addEventListener("DOMContentLoaded", function() {
@@ -1239,7 +1289,39 @@
 		      });
 		    }
 		  });
+</script>
 
+<script type="text/javascript">
+		// --- VIDEO EN CINTAS ---
+		 document.addEventListener("DOMContentLoaded", function() {
+	    const video = document.getElementById('videoColab');
+	    const wrapper = document.getElementById('wrapperColab');
+	
+	    if (video && wrapper) {
+	        // 1. Detectar reproducción para ocultar el icono
+	        video.onplay = function() {
+	            wrapper.classList.add('is-playing');
+	        };
+	
+	        // 2. Detectar pausa para mostrar el icono
+	        video.onpause = function() {
+	            wrapper.classList.remove('is-playing');
+	        };
+	
+	        // 3. Control por ratón (Escritorio)
+	        wrapper.addEventListener('mouseenter', () => video.play());
+	        wrapper.addEventListener('mouseleave', () => video.pause());
+	
+	        // 4. Control por clic (Móvil y Escritorio)
+	        wrapper.addEventListener('click', () => {
+	            if (video.paused) {
+	                video.play();
+	            } else {
+	                video.pause();
+	            }
+	        });
+	    }
+	});
 </script>
 </body>
 </html>

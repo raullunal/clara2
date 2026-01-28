@@ -638,30 +638,41 @@
 		    transform: translate(-50%, -50%) scale(1.5); /* Efecto de desvanecimiento hacia afuera */
 		}
 /* =========================================
-       AJUSTE MÓVIL PARA GALERÍAS (TEXTO VISIBLE)
+       CORRECCIÓN FINAL: TEXTO SIEMPRE VISIBLE EN MÓVIL
        ========================================= */
-	    @media (max-width: 768px) {
-	      /* 1. Forzamos que la capa de texto sea visible siempre en móviles */
-	      .gallery-item .gallery-overlay {
-	        opacity: 1 !important;
-	      }
-	
-	      /* 2. Cambiamos el fondo negro total por un degradado 
-	            para que se vea la imagen detrás */
-	      .gallery-overlay {
-	        background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 50%, transparent 100%) !important;
-	        
-	        /* 3. Movemos el texto a la parte inferior para despejar la vista */
-	        justify-content: flex-end !important; 
-	        padding-bottom: 20px; /* Un poco de aire abajo */
-	      }
-	      
-	      /* 4. Aseguramos que el texto tenga sombra para leerse mejor sobre cualquier foto */
-	      .gallery-overlay h3, 
-	      .gallery-overlay p {
-	        text-shadow: 0 2px 4px rgba(0,0,0,0.8);
-	      }
-	    }
+    @media (max-width: 1024px) {
+      /* 1. Forzamos la visibilidad anulando la opacidad cero */
+      .gallery-item .gallery-overlay {
+        opacity: 1 !important;
+        visibility: visible !important;
+        
+        /* 2. Fondo degradado suave (oscuro abajo, transparente arriba) 
+              para que se vea la foto y se lea el texto */
+        background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 50%, transparent 100%) !important;
+        
+        /* 3. Colocamos el texto abajo del todo */
+        justify-content: flex-end !important;
+        padding-bottom: 1.5rem !important;
+      }
+
+      /* 4. Ajustamos un poco el texto para que no sea gigante en móvil */
+      .gallery-overlay h3 {
+        font-size: 1.3rem !important;
+        margin-bottom: 0.3rem !important;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.9); /* Sombra para leer mejor */
+      }
+      
+      .gallery-overlay p {
+        font-size: 0.95rem !important;
+        text-shadow: 0 1px 3px rgba(0,0,0,0.9);
+        display: block !important; /* Asegura que la descripción también se vea */
+      }
+      
+      /* 5. Eliminamos el efecto de 'transformación' al tocar para que se sienta estático */
+      .gallery-item:hover .gallery-overlay {
+        opacity: 1 !important;
+      }
+    }
   </style>
 </head>
 <body>

@@ -637,6 +637,31 @@
 		    opacity: 0;
 		    transform: translate(-50%, -50%) scale(1.5); /* Efecto de desvanecimiento hacia afuera */
 		}
+/* =========================================
+       AJUSTE MÓVIL PARA GALERÍAS (TEXTO VISIBLE)
+       ========================================= */
+	    @media (max-width: 768px) {
+	      /* 1. Forzamos que la capa de texto sea visible siempre en móviles */
+	      .gallery-item .gallery-overlay {
+	        opacity: 1 !important;
+	      }
+	
+	      /* 2. Cambiamos el fondo negro total por un degradado 
+	            para que se vea la imagen detrás */
+	      .gallery-overlay {
+	        background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 50%, transparent 100%) !important;
+	        
+	        /* 3. Movemos el texto a la parte inferior para despejar la vista */
+	        justify-content: flex-end !important; 
+	        padding-bottom: 20px; /* Un poco de aire abajo */
+	      }
+	      
+	      /* 4. Aseguramos que el texto tenga sombra para leerse mejor sobre cualquier foto */
+	      .gallery-overlay h3, 
+	      .gallery-overlay p {
+	        text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+	      }
+	    }
   </style>
 </head>
 <body>

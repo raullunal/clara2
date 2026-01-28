@@ -1536,68 +1536,51 @@ una de las galerías en el script en la variable const projectsData -->
 </script>
 
 <script type="text/javascript">
-		// --- VIDEO Colab EN CINTAS ---
-		 document.addEventListener("DOMContentLoaded", function() {
-	    const video = document.getElementById('videoColab');
-	    const wrapper = document.getElementById('wrapperColab');
-	
-	    if (video && wrapper) {
-	        // 1. Detectar reproducción para ocultar el icono
-	        video.onplay = function() {
-	            wrapper.classList.add('is-playing');
-	        };
-	
-	        // 2. Detectar pausa para mostrar el icono
-	        video.onpause = function() {
-	            wrapper.classList.remove('is-playing');
-	        };
-	
-	        // 3. Control por ratón (Escritorio)
-	        wrapper.addEventListener('mouseenter', () => video.play());
-	        wrapper.addEventListener('mouseleave', () => video.pause());
-	
-	        // 4. Control por clic (Móvil y Escritorio)
-	        wrapper.addEventListener('click', () => {
-	            if (video.paused) {
-	                video.play();
-	            } else {
-	                video.pause();
-	            }
-	        });
-	    }
-	});
-</script>
-<script type="text/javascript">
-		// --- VIDEO Autora EN CINTAS ---
-		 document.addEventListener("DOMContentLoaded", function() {
-	    const video = document.getElementById('videoAutora');
-	    const wrapper = document.getElementById('wrapperAutora');
-	
-	    if (video && wrapper) {
-	        // 1. Detectar reproducción para ocultar el icono
-	        video.onplay = function() {
-	            wrapper.classList.add('is-playing');
-	        };
-	
-	        // 2. Detectar pausa para mostrar el icono
-	        video.onpause = function() {
-	            wrapper.classList.remove('is-playing');
-	        };
-	
-	        // 3. Control por ratón (Escritorio)
-	        wrapper.addEventListener('mouseenter', () => video.play());
-	        wrapper.addEventListener('mouseleave', () => video.pause());
-	
-	        // 4. Control por clic (Móvil y Escritorio)
-	        wrapper.addEventListener('click', () => {
-	            if (video.paused) {
-	                video.play();
-	            } else {
-	                video.pause();
-	            }
-	        });
-	    }
-	});
+  // --- CONTROL UNIFICADO DE VIDEOS EN CINTAS ---
+  document.addEventListener("DOMContentLoaded", function() {
+
+    // Función reutilizable que aplica la lógica a cualquier pareja video/wrapper
+    function configurarVideo(videoId, wrapperId) {
+      const video = document.getElementById(videoId);
+      const wrapper = document.getElementById(wrapperId);
+
+      // Solo ejecutamos si ambos elementos existen en el HTML
+      if (video && wrapper) {
+        
+        // 1. Detectar reproducción para ocultar el icono
+        video.onplay = function() {
+          wrapper.classList.add('is-playing');
+        };
+
+        // 2. Detectar pausa para mostrar el icono
+        video.onpause = function() {
+          wrapper.classList.remove('is-playing');
+        };
+
+        // 3. Control por ratón (Escritorio)
+        wrapper.addEventListener('mouseenter', () => video.play());
+        wrapper.addEventListener('mouseleave', () => video.pause());
+
+        // 4. Control por clic (Móvil y Escritorio)
+        wrapper.addEventListener('click', () => {
+          if (video.paused) {
+            video.play();
+          } else {
+            video.pause();
+          }
+        });
+      }
+    }
+
+    // --- AQUÍ LLAMAMOS A LA FUNCIÓN PARA CADA VIDEO ---
+    
+    // 1. Para el video de Colaboración
+    configurarVideo('videoColab', 'wrapperColab');
+
+    // 2. Para el video de Autora
+    configurarVideo('videoAutora', 'wrapperAutora');
+
+  });
 </script>
 </body>
 </html>

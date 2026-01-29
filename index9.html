@@ -673,6 +673,43 @@
         opacity: 1 !important;
       }
     }
+    
+    /* Contenedor específico para el video dentro del lightbox */
+		.lightbox-video-container {
+		    position: relative;
+		    max-width: 100%;
+		    max-height: 1024px;
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+		}
+		
+		.lightbox-video-container video {
+		    max-height: 1024px;
+		    width: auto;
+		    max-width: 100%;
+		    border-radius: 4px;
+		    display: block;
+		}
+		
+		/* El icono de play que ya usas, adaptado al lightbox */
+		.lightbox-video-container .play-overlay {
+		    position: absolute;
+		    top: 50%;
+		    left: 50%;
+		    transform: translate(-50%, -50%);
+		    font-size: 5rem;
+		    color: white;
+		    opacity: 0.8;
+		    pointer-events: none;
+		    transition: opacity 0.3s;
+		    z-index: 10;
+		}
+		
+		/* Ocultar icono cuando el video se mueve */
+		.lightbox-video-container.is-playing .play-overlay {
+		    opacity: 0;
+		}
   </style>
 </head>
 <body>
@@ -1031,7 +1068,7 @@ una de las galerías en el script en la variable const projectsData -->
         
         <!-- PROYECTO 1 -->
         <div class="portfolio-item" onclick="openLightbox('project1')">
-          <!-- Placeholder: Mural niños -->
+          <!-- Placeholder: Mural Colaborativo -->
           <img src="mc-real-p.jpg?auto=format&fit=crop&q=80" alt="Mural San Vicente">
           <div class="portfolio-overlay">
             <div class="portfolio-cat">Mural Colaborativo</div>
@@ -1042,7 +1079,7 @@ una de las galerías en el script en la variable const projectsData -->
 
         <!-- PROYECTO 2 -->
         <div class="portfolio-item" onclick="openLightbox('project2')">
-          <!-- Placeholder: Mural artístico grande -->
+          <!-- Placeholder: Mural individual -->
           <img src="ma-06.jpg?auto=format&fit=crop&q=80" alt="Mural Azután">
           <div class="portfolio-overlay">
             <div class="portfolio-cat">Mural Individual</div>
@@ -1053,7 +1090,7 @@ una de las galerías en el script en la variable const projectsData -->
         
  		  <!-- PROYECTO 3 -->
         <div class="portfolio-item" onclick="openLightbox('project3')">
-          <!-- Placeholder: Ilustración libro -->
+          <!-- Placeholder: Mural individual -->
           <img src="gal8m01.jpg?auto=format&fit=crop&q=80" alt="Mural 8M La Iglesuela">
           <div class="portfolio-overlay">
             <div class="portfolio-cat">Mural Individual</div>
@@ -1062,8 +1099,19 @@ una de las galerías en el script en la variable const projectsData -->
           </div>
         </div>
 
-        <!-- PROYECTO 4 -->
+ 		  <!-- PROYECTO 4 -->
         <div class="portfolio-item" onclick="openLightbox('project4')">
+          <!-- Placeholder: Mural individual -->
+          <img src="postervientos.jpg?auto=format&fit=crop&q=80" alt="Mural Vientos">
+          <div class="portfolio-overlay">
+            <div class="portfolio-cat">Mural Individual</div>
+            <div class="portfolio-title">Vientos</div>
+            <div style="font-size: 0.9rem;">40m² • Pub Vientos Madrid • 7 días</div>
+          </div>
+        </div>
+
+        <!-- PROYECTO 5 -->
+        <div class="portfolio-item" onclick="openLightbox('project5')">
           <!-- Placeholder: Ilustración libro -->
           <img src="juegos04.jpg?auto=format&fit=crop&q=80" alt="Mural Azután">
           <div class="portfolio-overlay">
@@ -1073,8 +1121,8 @@ una de las galerías en el script en la variable const projectsData -->
           </div>
         </div>
 
-        <!-- PROYECTO 5 -->
-        <div class="portfolio-item" onclick="openLightbox('project5')">
+        <!-- PROYECTO 6 -->
+        <div class="portfolio-item" onclick="openLightbox('project6')">
           <img src="cagendas01.jpg?auto=format&fit=crop&q=80" alt="Calendarios y Agendas">
           <div class="portfolio-overlay">
             <div class="portfolio-cat">Ilustración</div>
@@ -1082,8 +1130,8 @@ una de las galerías en el script en la variable const projectsData -->
           </div>
         </div>
         
-        <!-- PROYECTO 6 -->
-        <div class="portfolio-item" onclick="openLightbox('project6')">
+        <!-- PROYECTO 7 -->
+        <div class="portfolio-item" onclick="openLightbox('project7')">
           <img src="cf01.jpg?auto=format&fit=crop&q=80" alt="Cartelería">
           <div class="portfolio-overlay">
             <div class="portfolio-cat">Ilustración</div>
@@ -1091,8 +1139,8 @@ una de las galerías en el script en la variable const projectsData -->
           </div>
         </div>
 
-        <!-- PROYECTO 7 -->
-        <div class="portfolio-item" onclick="openLightbox('project7')">
+        <!-- PROYECTO 8 -->
+        <div class="portfolio-item" onclick="openLightbox('project8')">
           <img src="guias01.jpg?auto=format&fit=crop&q=80" alt="Cartelería">
           <div class="portfolio-overlay">
             <div class="portfolio-cat">Ilustración</div>
@@ -1100,8 +1148,8 @@ una de las galerías en el script en la variable const projectsData -->
           </div>
         </div>
         
-        <!-- PROYECTO 7 -->
-        <div class="portfolio-item" onclick="openLightbox('project7')">
+        <!-- PROYECTO 9 -->
+        <div class="portfolio-item" onclick="openLightbox('project9')">
           <img src="cuentos01.jpg?auto=format&fit=crop&q=80" alt="Cuentos">
           <div class="portfolio-overlay">
             <div class="portfolio-cat">Ilustración</div>
@@ -1257,7 +1305,7 @@ una de las galerías en el script en la variable const projectsData -->
     <button class="lightbox-arrow prev" onclick="changeLightboxImage(-1)"><i class="ph ph-caret-left"></i></button>
     
     <div class="lightbox-content">
-        <img id="lightbox-img" src="" alt="Imagen ampliada">
+        <div id="lightbox-media-container"></div>
     </div>
     
     <button class="lightbox-arrow next" onclick="changeLightboxImage(1)"><i class="ph ph-caret-right"></i></button>
@@ -1278,18 +1326,21 @@ una de las galerías en el script en la variable const projectsData -->
  </script>  
  
 	<script type="text/javascript">
-	// --- LÓGICA DE GALERÍA LIGHTBOX AVANZADA ---
-	let currentProjectImages = [];
-	let currentImageIndex = 0;
 	
-	const lightbox = document.getElementById('lightbox');
-	const lightboxImg = document.getElementById('lightbox-img');
-	
-	// Aquí defines las fotos de cada proyecto (añade todas las que quieras por ID)
-	const projectsData = {
+    // --- LÓGICA DE GALERÍA LIGHTBOX AVANZADA ---
+    let currentProjectImages = [];
+    let currentImageIndex = 0;
+    
+    const lightbox = document.getElementById('lightbox');
+    const mediaContainer = document.getElementById('lightbox-media-container');
+    
+    // Definición de proyectos 
+    // Permite intercalar videos con el código sin encerrar entre  ' ' { type: 'video', src: 'video.mp4', poster: 'poster.jpg' },)
+    const projectsData = {
 	    'project1': [
 	        'galreal01.jpg?auto=format&fit=crop&q=80',
 	        'galreal02.jpg?auto=format&fit=crop&q=80',
+
 	        'galreal03.jpg?auto=format&fit=crop&q=80',
 	        'galreal04.jpg?auto=format&fit=crop&q=80',
 	        'galreal05.jpg?auto=format&fit=crop&q=80',
@@ -1351,7 +1402,27 @@ una de las galerías en el script en la variable const projectsData -->
 	        'gal8m13.jpg?auto=format&fit=crop&q=80',
 	        'gal8m14.jpg?auto=format&fit=crop&q=80',
 	    ],
+	    
 	    'project4': [
+	        'galvientos01.jpg?auto=format&fit=crop&q=80',
+	        'galvientos02.jpg?auto=format&fit=crop&q=80',
+	        'galvientos03.jpg?auto=format&fit=crop&q=80',
+	        'galvientos04.jpg?auto=format&fit=crop&q=80',
+	        'galvientos05.jpg?auto=format&fit=crop&q=80',
+	        'galvientos06.jpg?auto=format&fit=crop&q=80',
+	        'galvientos07.jpg?auto=format&fit=crop&q=80',
+	        'galvientos08.jpg?auto=format&fit=crop&q=80',
+	        'galvientos09.jpg?auto=format&fit=crop&q=80',
+	        'galvientos10.jpg?auto=format&fit=crop&q=80',
+	        'galvientos11.jpg?auto=format&fit=crop&q=80',
+	        'galvientos12.jpg?auto=format&fit=crop&q=80',
+	        'galvientos13.jpg?auto=format&fit=crop&q=80',
+	        'galvientos14.jpg?auto=format&fit=crop&q=80',
+	        'galvientos15.jpg?auto=format&fit=crop&q=80',
+			  { type: 'video', src: 'muroveryfast.mp4', poster: 'postervientos.jpg' },
+	        
+	    ],
+	    'project5': [
 	        'juegos04.jpg?auto=format&fit=crop&q=80',
 	        'juegos01.jpg?auto=format&fit=crop&q=80',
 	        'juegos02.jpg?auto=format&fit=crop&q=80',
@@ -1373,7 +1444,7 @@ una de las galerías en el script en la variable const projectsData -->
 	        'prensa04.jpg?auto=format&fit=crop&q=80',
 	        'prensa05.jpg?auto=format&fit=crop&q=80',
 	    ],
-	    'project5': [
+	    'project6': [
 	        'cagendas01.jpg?auto=format&fit=crop&q=80',
 	        'cagendas02.jpg?auto=format&fit=crop&q=80',
 	        'cagendas03.jpg?auto=format&fit=crop&q=80',
@@ -1393,7 +1464,7 @@ una de las galerías en el script en la variable const projectsData -->
 	        'cagendas21.jpg?auto=format&fit=crop&q=80',
 	        'cagendas26.jpg?auto=format&fit=crop&q=80',
 	    ],
-	    'project6': [
+	    'project7': [
 	        'cf01.jpg?auto=format&fit=crop&q=80',
 	        'cf02.jpg?auto=format&fit=crop&q=80',
 	        'cf03.jpg?auto=format&fit=crop&q=80',
@@ -1403,7 +1474,7 @@ una de las galerías en el script en la variable const projectsData -->
 	        'cf07.jpg?auto=format&fit=crop&q=80',
 	        'cf08.jpg?auto=format&fit=crop&q=80',
 	    ],
-	    'project7': [
+	    'project8': [
 	        'guias01.jpg?auto=format&fit=crop&q=80',
 	        'guias02.jpg?auto=format&fit=crop&q=80',
 	        'guias03.jpg?auto=format&fit=crop&q=80',
@@ -1417,7 +1488,7 @@ una de las galerías en el script en la variable const projectsData -->
 	        'guias11.jpg?auto=format&fit=crop&q=80',
 
 	    ],
-	    'project7': [
+	    'project9': [
 	        'cuentos01.jpg?auto=format&fit=crop&q=80',
 	        'cuentos02.jpg?auto=format&fit=crop&q=80',
 	        'cuentos03.jpg?auto=format&fit=crop&q=80',
@@ -1455,50 +1526,92 @@ una de las galerías en el script en la variable const projectsData -->
 	};
 	
 	function openLightbox(projectId) {
-	    currentProjectImages = projectsData[projectId] || [];
-	    currentImageIndex = 0;
-	    
-	    if (currentProjectImages.length > 0) {
-	        updateLightboxImage();
-	        lightbox.classList.add('active');
-	        document.body.style.overflow = 'hidden';
-	    }
-	}
-	
-	function updateLightboxImage() {
-	    lightboxImg.src = currentProjectImages[currentImageIndex];
-	}
-	
-	function changeLightboxImage(direction) {
-	    currentImageIndex += direction;
-	    
-	    // Bucle infinito: si llega al final, vuelve al principio
-	    if (currentImageIndex >= currentProjectImages.length) currentImageIndex = 0;
-	    if (currentImageIndex < 0) currentImageIndex = currentProjectImages.length - 1;
-	    
-	    updateLightboxImage();
-	}
-	
-	function closeLightbox() {
-	    lightbox.classList.remove('active');
-	    document.body.style.overflow = '';
-	}
-	
-	// Cerrar al pulsar fuera de la imagen
-	lightbox.addEventListener('click', (e) => {
-	    if (e.target === lightbox || e.target.classList.contains('lightbox-content')) {
-	        closeLightbox();
-	    }
-	});
-	
-	// Control por teclado (Flechas e Escape)
-	document.addEventListener('keydown', (e) => {
-	    if (!lightbox.classList.contains('active')) return;
-	    
-	    if (e.key === "ArrowRight") changeLightboxImage(1);
-	    if (e.key === "ArrowLeft") changeLightboxImage(-1);
-	    if (e.key === "Escape") closeLightbox();
-	});
+        currentProjectImages = projectsData[projectId] || [];
+        currentImageIndex = 0;
+        
+        if (currentProjectImages.length > 0) {
+            updateLightboxContent();
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+    
+    function updateLightboxContent() {
+        const item = currentProjectImages[currentImageIndex];
+        mediaContainer.innerHTML = ""; // Limpiar contenido anterior
+
+        if (typeof item === 'string') {
+            // ES UNA IMAGEN
+            const img = document.createElement('img');
+            img.src = item;
+            img.classList.add('lightbox-img'); 
+            mediaContainer.appendChild(img);
+        } 
+        else if (item.type === 'video') {
+            // ES UN VÍDEO
+            mediaContainer.innerHTML = `
+                <div class="lightbox-video-container" id="lboxWrapper">
+                    <div class="play-overlay">
+                        <i class="ph-fill ph-play-circle"></i>
+                    </div>
+                    <video id="lboxVideo" poster="${item.poster}" loop playsinline>
+                        <source src="${item.src}" type="video/mp4">
+                    </video>
+                </div>
+            `;
+            // Aplicamos la lógica de play/pausa que ya tienes definida
+            setTimeout(() => {
+                configurarVideo('lboxVideo', 'lboxWrapper');
+            }, 50);
+        }
+    }
+    
+    function changeLightboxImage(direction) {
+        currentImageIndex += direction;
+        if (currentImageIndex >= currentProjectImages.length) currentImageIndex = 0;
+        if (currentImageIndex < 0) currentImageIndex = currentProjectImages.length - 1;
+        updateLightboxContent();
+    }
+    
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+        // Pausar cualquier video al cerrar
+        mediaContainer.innerHTML = "";
+    }
+
+    // --- LA FUNCIÓN DE LÓGICA DE VIDEO QUE YA TENÍAS ---
+    function configurarVideo(videoId, wrapperId) {
+      const video = document.getElementById(videoId);
+      const wrapper = document.getElementById(wrapperId);
+      if (video && wrapper) {
+        video.onplay = () => wrapper.classList.add('is-playing');
+        video.onpause = () => wrapper.classList.remove('is-playing');
+        wrapper.addEventListener('mouseenter', () => video.play());
+        wrapper.addEventListener('mouseleave', () => video.pause());
+        wrapper.addEventListener('click', () => {
+          video.paused ? video.play() : video.pause();
+        });
+      }
+    }
+
+    // Inicialización de videos que NO están en el lightbox (los de la cinta)
+    document.addEventListener("DOMContentLoaded", function() {
+        configurarVideo('videoColab', 'wrapperColab');
+        configurarVideo('videoAutora', 'wrapperAutora');
+    });
+
+    // Eventos de cierre y teclado
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox || e.target.classList.contains('lightbox-content')) closeLightbox();
+    });
+    
+    document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('active')) return;
+        if (e.key === "ArrowRight") changeLightboxImage(1);
+        if (e.key === "ArrowLeft") changeLightboxImage(-1);
+        if (e.key === "Escape") closeLightbox();
+    });
 	</script>
 
 
@@ -1670,3 +1783,9 @@ una de las galerías en el script en la variable const projectsData -->
 </script>
 </body>
 </html>
+
+    transform: translate(-50%, -50%);
+    font-size: 5rem;
+    color: white;
+    opacity: 0.8;
+    pointer-events: none;

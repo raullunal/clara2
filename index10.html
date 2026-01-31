@@ -733,6 +733,36 @@
 		    outline: none;
 		    cursor: pointer;
 		}
+				/* Fuerza la visibilidad de los pasos en dispositivos móviles */
+		@media (max-width: 900px) {
+		  /* 1. Hacemos que el paso y sus textos sean siempre visibles */
+		  .step {
+		    opacity: 1 !important;
+		    transform: none !important;
+		    margin-bottom: 2rem; /* Añade separación extra entre pasos */
+		  }
+		
+		  /* 2. Aseguramos que el párrafo (descripción) no esté oculto */
+		  .step p {
+		    opacity: 1 !important;
+		    display: block !important;
+		    color: var(--text-main); /* Cambiamos a un color más legible que el muted */
+		  }
+		
+		  /* 3. Ajustamos el número de fondo para que no interfiera con la lectura */
+		  .step-number {
+		    font-size: 4rem; /* Un poco más pequeño para móviles */
+		    opacity: 0.3;    /* Lo hacemos más tenue para que se lea bien el texto encima */
+		    top: -15px;      /* Lo re-ajustamos ligeramente */
+		    left: 0;
+		  }
+		
+		  /* 4. Cambiamos la rejilla a 1 columna para facilitar la lectura en vertical */
+		  .steps, .steps-autora {
+		    grid-template-columns: 1fr !important;
+		    gap: 20px;
+		  }
+	}
   </style>
 </head>
 <body>

@@ -8,6 +8,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=New+Tegomin&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
@@ -31,7 +34,7 @@
       --accent-primary: #d0712d;
 
       /* TIPOGRAFÍA */
-      --font-display: 'Playfair Display', serif;
+      --font-display: 'New Tegomin', serif;
       --font-body: 'Inter', sans-serif;
       --font-hand: 'Caveat', regular;
 
@@ -205,6 +208,7 @@
 		}
 		
 		.hero-text { grid-area: texto; padding-top: 4rem;justify-content:center; align-items:center; text-align: center;}
+		.hero-text h1{ padding-bottom: 2rem; text-transform: uppercase; font-size: 2.5rem;}
 		.hero-image { grid-area: imagen; width: calc(100% + 40px);}
       .hero-image img { width: 100%; height: 500px; object-fit: cover; box-shadow: 20px 20px 0px var(--border); }
 		.hero-actions { 
@@ -644,6 +648,7 @@
       /* 1. Forzamos la visibilidad anulando la opacidad cero */
       .gallery-item .gallery-overlay {
         opacity: 1 !important;
+        transform: none !important;
         visibility: visible !important;
         
         /* 2. Fondo degradado suave (oscuro abajo, transparente arriba) 
@@ -710,6 +715,24 @@
 		.lightbox-video-container.is-playing .play-overlay {
 		    opacity: 0;
 		}
+		
+		/* Para que el selector de google fonts no altere la apariencia  */
+		.google-font-control {
+		    padding: 15px;
+		    background-color: #ffffff;
+		    border-bottom: 2px solid #eaeaea;
+		    display: flex;
+		    align-items: center;
+		    gap: 10px;
+		}
+		
+		#google-font-select {
+		    padding: 8px 12px;
+		    border: 1px solid #ddd;
+		    border-radius: 20px; /* Estilo moderno redondeado */
+		    outline: none;
+		    cursor: pointer;
+		}
   </style>
 </head>
 <body>
@@ -743,6 +766,18 @@
         </button>
         <button class="menu-btn" id="menuBtn"><i class="ph ph-list"></i></button>
       </div>
+   <!-- Para seleccionar fuentes -->
+		<div class="google-font-control">
+		    <label for="google-font-select">Estilo de fuente:</label>
+		    <select id="google-font-select" onchange="applyGoogleFont(this.value)">
+		        <option value="'Roboto', sans-serif">Roboto</option>
+		        <option value="'Inter', sans-serif">Open Sans</option>
+		        <option value="'Montserrat', sans-serif">Montserrat</option>
+		        <option value="'Playfair Display', serif">Playfair Display</option>
+		        <option value="'Lato', sans-serif">Lato</option>
+		    </select>
+		</div>
+      
     </div>
   </nav>
 
@@ -1749,6 +1784,20 @@ una de las galerías en el script en la variable const projectsData -->
     configurarVideo('videoAutora', 'wrapperAutora');
 
   });
+  
+		// ---Logica para selección de google fonts ---
+		function applyGoogleFont(fontFamily) {
+		    // Aplica la fuente al cuerpo y a los elementos comunes
+		    document.body.style.fontFamily = fontFamily;
+		    
+		    // Opcional: Forzar a que los botones y entradas también cambien
+		    const elements = document.querySelectorAll('button, input, select, textarea');
+		    elements.forEach(el => {
+		        el.style.fontFamily = fontFamily;
+		    });
+		
+		    console.log("Fuente cambiada a: " + fontFamily);
+		}
 </script>
 </body>
 </html>

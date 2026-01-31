@@ -733,51 +733,58 @@
 		    outline: none;
 		    cursor: pointer;
 		}
+/* ========================
 /* ============================================================
-   SOLUCIÓN DEFINITIVA: VISIBILIDAD PERMANENTE EN MÓVIL DE LOS TEXTOS DE GALERIAS
+   SOLUCIÓN DEFINITIVA: VISIBILIDAD PERMANENTE EN MÓVIL
    ============================================================ */
-@media (max-width: 900px) {
-  
-  /* 1. ASEGURAR QUE LOS 'STEPS' (METODOLOGÍA) SE VEAN SIEMPRE */
+
+/* 1. Aplicamos a móviles y tablets (hasta 1024px para cubrir iPads) */
+@media (max-width: 1024px) {
+
+  /* --- SECCIÓN STEPS (Metodología) --- */
   .step {
     opacity: 1 !important;
     transform: none !important;
     visibility: visible !important;
-    margin-bottom: 2rem;
-    display: block !important;
   }
 
   .step p {
     opacity: 1 !important;
     display: block !important;
-    color: var(--text-main) !important; /* Mayor contraste para lectura */
+    color: var(--text-main) !important;
+    max-height: none !important; /* Por si hubiera restricciones de altura */
   }
 
-  /* 2. TEXTO DE LAS GALERÍAS (PORTFOLIO) */
-  /* Si usas la estructura de portfolio-item, forzamos el texto */
+  /* --- SECCIÓN PORTFOLIO (Las 7 galerías de abajo) --- */
+  /* Forzamos que el overlay oscuro y el texto estén siempre visibles */
   .portfolio-item .portfolio-overlay {
     opacity: 1 !important;
-    transform: translateY(0) !important;
-    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 60%, transparent 100%) !important;
+    visibility: visible !important;
+    transform: translateY(0) !important; /* Lo fijamos en su posición final */
+    
+    /* Mejoramos el degradado para que el texto siempre sea legible sobre la foto */
+    background: linear-gradient(to top, 
+        rgba(0,0,0,0.9) 0%, 
+        rgba(0,0,0,0.6) 50%, 
+        rgba(0,0,0,0.2) 100%) !important;
   }
 
-  /* 3. TÍTULOS DE SECCIÓN SIEMPRE VISIBLES */
-  /* Esto asegura que los encabezados de cada galería no dependan de interacciones */
-  .section-header {
+  /* Aseguramos que el contenido interno del portfolio sea visible */
+  .portfolio-title, .portfolio-cat, .portfolio-overlay div {
     opacity: 1 !important;
-    transform: none !important;
+    visibility: visible !important;
+    display: block !important;
   }
 
-  /* 4. EVITAR EL EFECTO DE "DESAPARECER AL TOCAR OTRO" */
-  /* Eliminamos cualquier transición que oculte elementos en estado focus o active */
-  .step:focus, .step:active, .portfolio-item:focus {
-    outline: none;
+  /* Anulamos cualquier efecto que ocurra al "tocar" (hover emulado) */
+  .portfolio-item:hover img {
+    transform: none !important; /* Evitamos que la imagen se mueva al tocar */
   }
 }
 
-/* 5. CORRECCIÓN PARA DISPOSITIVOS TÁCTILES (Añadir fuera del media query) */
+/* 2. Regla extra para dispositivos que NO tienen puntero (Pantallas táctiles puras) */
 @media (hover: none) {
-  .step, .portfolio-overlay, .gallery-overlay {
+  .portfolio-overlay, .step, .step p {
     opacity: 1 !important;
     transform: none !important;
     visibility: visible !important;

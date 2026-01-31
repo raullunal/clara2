@@ -710,6 +710,64 @@
 		.lightbox-video-container.is-playing .play-overlay {
 		    opacity: 0;
 		}
+
+		/* ============================================================
+		   SOLUCIÓN DEFINITIVA: VISIBILIDAD PERMANENTE EN MÓVIL PARA LOS TEXTOS DE LAS GALERÍAS
+		   ============================================================ */
+		
+		/* 1. Aplicamos a móviles y tablets (hasta 1024px para cubrir iPads) */
+		@media (max-width: 1024px) {
+		
+		  /* --- SECCIÓN STEPS (Metodología) --- */
+		  .step {
+		    opacity: 1 !important;
+		    transform: none !important;
+		    visibility: visible !important;
+		  }
+		
+		  .step p {
+		    opacity: 1 !important;
+		    display: block !important;
+		    color: var(--text-main) !important;
+		    max-height: none !important; /* Por si hubiera restricciones de altura */
+		  }
+		
+		  /* --- SECCIÓN PORTFOLIO (Las 7 galerías de abajo) --- */
+		  /* Forzamos que el overlay oscuro y el texto estén siempre visibles */
+		  .portfolio-item .portfolio-overlay {
+		    opacity: 1 !important;
+		    visibility: visible !important;
+		    transform: translateY(0) !important; /* Lo fijamos en su posición final */
+		    
+		    /* Mejoramos el degradado para que el texto siempre sea legible sobre la foto */
+		    background: linear-gradient(to top, 
+		        rgba(0,0,0,0.9) 0%, 
+		        rgba(0,0,0,0.6) 50%, 
+		        rgba(0,0,0,0.2) 100%) !important;
+		  }
+		
+		  /* Aseguramos que el contenido interno del portfolio sea visible */
+		  .portfolio-title, .portfolio-cat, .portfolio-overlay div {
+		    opacity: 1 !important;
+		    visibility: visible !important;
+		    display: block !important;
+		  }
+		
+		  /* Anulamos cualquier efecto que ocurra al "tocar" (hover emulado) */
+		  .portfolio-item:hover img {
+		    transform: none !important; /* Evitamos que la imagen se mueva al tocar */
+		  }
+		}
+		
+		/* 2. Regla extra para dispositivos que NO tienen puntero (Pantallas táctiles puras) */
+		@media (hover: none) {
+		  .portfolio-overlay, .step, .step p {
+		    opacity: 1 !important;
+		    transform: none !important;
+		    visibility: visible !important;
+		  }
+		}
+		
   </style>
 </head>
 <body>

@@ -212,8 +212,8 @@
 		
 		.hero-text { grid-area: texto; padding-top: 4rem; justify-content:center; align-items:center; text-align: center;}
 		.hero-text h1 {font-size:2.5rem; padding-bottom: 3rem;}
-		.hero-image { grid-area: imagen; width: calc(100% + 40px);}
-      .hero-image img { width: 100%; height: 500px; object-fit: cover;}
+		.hero-image { grid-area: imagen; width: 100%;}
+      .hero-image img { width: 100%; object-fit: cover;}
 		.hero-actions { 
 		    grid-area: botones; 
 		    display: flex;
@@ -233,7 +233,8 @@
 		        text-align: center;
 		        gap: 30px;
 		    }
-		    .hero-image: {display:flex; justify-content:center; align-items: center; !important;}
+		    .hero-text {padding-top:0.5rem;} !important /*Disminuimos el padding superior para aprovechar espacio */
+		    .hero-image img{display:flex; justify-content:center; align-items: center; width: 100%;} !important;
 		
 		    .hero-actions {
 		        justify-content: center; /* Centra los botones en móvil */
@@ -849,7 +850,7 @@
           <div class="bio-highlight">
             "Desde 2016, realizo con frecuencia trabajos de ilustración de carácter educativo, social, de igualdad y género, en colaboración con ayuntamientos, fundaciones y entidades educativas."
           </div>
-          <p>Tengo editados siete álbumes infantiles aparte de diversos trabajos en serigrafía, ilustración de prensa, ilustración editorial, escenografias, videoclips, vídeos divulgativos y campañas de difusión.</p>
+          <p>Tengo editados siete álbumes infantiles aparte de diversos trabajos en serigrafía, ilustración de prensa, ilustración editorial, escenografías, videoclips, vídeos divulgativos y campañas de difusión.</p>
            <div class="bio-highlight">Hace siete años me he lanzado al gran formato realizando murales, propios y colaborativos de amplia dimensión.</div>
         </div>
       </div>
@@ -1070,8 +1071,8 @@
 			 <p>Acordaremos el presupuesto partiendo de tarifas base dependiendo de la cantidad de ilustraciones, complejidad, tamaño, plazos y trabajo extra que se requiera (maquetación, creación de textos, traducción o imprenta). </p>
 			 <p>En todas las fases del proyecto estaré atenta al feedbak que me puedas aportar:</p>
 			 <ul style="margin-top: 20px; display: grid; gap: 10px; margin-bottom: 2rem; margin-top: -1rem;">
-	         <li class="lorange"> Bocetos iniciales a los que añadiremos los cambios y modificaciones necesarios en un díálogo constante: ¡somos un equipo!</li>
-	         <li class="lorg2"> Sobre los bocetos de ilustración y maquetación aceptados se realizará la elaboracíón final.</li>           
+	         <li class="lorange"> Bocetos iniciales a los que añadiremos los cambios y modificaciones necesarios en un diálogo constante: ¡somos un equipo!</li>
+	         <li class="lorg2"> Sobre los bocetos de ilustración y maquetación aceptados se realizará la elaboración final.</li>           
           </ul>
           <div class="gallery-wrapper" style="position: relative; display: flex; align-items: center; margin-top: -0.1rem;">
             <button class="nav-arrow arrow-left" id="p_ilustra" style="z-index: 10; cursor: pointer;"><i class="ph ph-caret-left"></i></button>
@@ -1274,11 +1275,11 @@ una de las galerías en el script en la variable const projectsData -->
             </li>
             <li style="display: flex; gap: 10px; align-items: center;">
               <i class="ph ph-check-circle" style="color: var(--accent-blue);"></i>
-              <span><strong>Colaboraciones:</strong> Sinergias entre entidades para la cofinanciacion del proyecto.</span>
+              <span><strong>Colaboraciones:</strong> Sinergias entre entidades para la cofinanciación del proyecto.</span>
             </li>
             <li style="display: flex; gap: 10px; align-items: center;">
               <i class="ph ph-check-circle" style="color: var(--accent-blue);"></i>
-              <span><strong>Optimización:</strong> Aportación de materiales, andamios, gruas o trabajos previos que pueden reducir el tiempo de ejecucion de la artista.</span>
+              <span><strong>Optimización:</strong> Aportación de materiales, andamios, grúas o trabajos previos que pueden reducir el tiempo de ejecución de la artista.</span>
             </li>
           </ul>
 
@@ -1921,9 +1922,3 @@ una de las galerías en el script en la variable const projectsData -->
 </script>
 </body>
 </html>
-
-    transform: translate(-50%, -50%);
-    font-size: 5rem;
-    color: white;
-    opacity: 0.8;
-    pointer-events: none;

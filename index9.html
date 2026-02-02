@@ -211,7 +211,8 @@
 		}
 		
 		.hero-text { grid-area: texto; padding-top: 4rem; justify-content:center; align-items:center; text-align: center;}
-		.hero-text h1 {font-size:2.5rem; padding-bottom: 3rem;}
+		.hero-text h1 {font-size:3.5rem; padding-bottom: 3rem;}
+		.hero-text h2 {font-size:2rem;}
 		.hero-image { grid-area: imagen; width: 100%;}
       .hero-image img { width: 100%; object-fit: cover;}
 		.hero-actions { 
@@ -794,7 +795,7 @@
         <a href="#servicios" class="nav-link">Servicios</a>
         
         <div class="dropdown">
-          <div class="nav-link">Colaboración <i class="ph ph-caret-down"></i></div>
+          <div class="nav-link">Hagámoslo realidad<i class="ph ph-caret-down"></i></div>
           <div class="dropdown-content">
             <a href="#murales-colaborativos">Murales colaborativos</a>
             <a href="#murales-autora">Murales de autora</a>
@@ -909,7 +910,7 @@
   <section id="murales-colaborativos" style="background-color: var(--bg-surface);">
     <div class="container">
         <div class="section-header">
-            <span class="section-tag">Proceso Colaborativo</span>
+            <span class="section-tag">Creación colectiva</span>
             <h2 class="section-title">Murales Colaborativos</h2>
             <p>Este es el corazón de mi trabajo social, asegurando la participación real</br>
             Oferta dirigida a Ayuntamientos, entidades, fundaciones, ONG's, asociaciones, colegios, bibliotecas, residencias, centros de día….en la que aplicamos el siguiente esquema:</p>
@@ -985,7 +986,7 @@
       <div class="about-grid">
         <div class="bio-text">
           <div class="section-header">
-            <span class="section-tag">Servicio</span>
+            <span class="section-tag">Visión personal</span>
             <h2 class="section-title">Murales de Autora</h2>
           </div>
           <p>Como artista, busco que cada intervención respire la esencia del lugar. Mis murales de autora son piezas únicas donde aplico mi visión artística personal, integrando colores y formas que dialogan con la arquitectura y la luz del entorno.</p>
@@ -1107,7 +1108,7 @@
   <section id="talleres">
     <div class="container">
       <div class="section-header" style="text-align: center;">
-        <span class="section-tag">Educación</span>
+        <span class="section-tag">Educación y Participación comunitaria</span>
         <h2 class="section-title cambiocolor">Talleres Artísticos</h2>
       </div>
             <p class="cambiocolor">Ofrezco una variedad de talleres artísticos y creativos con diferentes materiales, técnicas y motivos. Desde serigrafía, experimentación con pigmentos naturales, creación de historias, collage, pintura e ilustración, hasta técnicas de gran formato.</p>
@@ -1138,26 +1139,15 @@ una de las galerías en el script en la variable const projectsData -->
   <section id="portfolio">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Trabajos Recientes</span>
+        <span class="section-tag">Trayectoria profesional</span>
         <h2>Galería de Proyectos</h2>
         <p style="color: var(--text-muted);">Haz clic en cualquier proyecto para ver la galería completa.</p>
       </div>
 
       <div class="portfolio-grid">
-        
+      
         <!-- PROYECTO 1 -->
         <div class="portfolio-item" onclick="openLightbox('project1')">
-          <!-- Placeholder: Mural Colaborativo -->
-          <img src="minigalreal.jpg?auto=format&fit=crop&q=80" alt="Mural San Vicente">
-          <div class="portfolio-overlay">
-            <div class="portfolio-cat">Mural Colaborativo</div>
-            <div class="portfolio-title">El Real de San Vicente</div>
-            <div style="font-size: 0.9rem;">50m² • Patio Escolar • 3 días</div>
-          </div>
-        </div>
-
-        <!-- PROYECTO 2 -->
-        <div class="portfolio-item" onclick="openLightbox('project2')">
           <!-- Placeholder: Mural individual -->
           <img src="minigalazutan.jpg?auto=format&fit=crop&q=80" alt="Mural Azután">
           <div class="portfolio-overlay">
@@ -1167,8 +1157,8 @@ una de las galerías en el script en la variable const projectsData -->
           </div>
         </div>
         
- 		  <!-- PROYECTO 3 -->
-        <div class="portfolio-item" onclick="openLightbox('project3')">
+ 		  <!-- PROYECTO 2 -->
+        <div class="portfolio-item" onclick="openLightbox('project2')">
           <!-- Placeholder: Mural individual -->
           <img src="minigal8m.jpg?auto=format&fit=crop&q=80" alt="Mural 8M La Iglesuela">
           <div class="portfolio-overlay">
@@ -1177,7 +1167,18 @@ una de las galerías en el script en la variable const projectsData -->
             <div style="font-size: 0.9rem;">80m² • Ayto. de La Iglesuela • 7 días</div>
           </div>
         </div>
-
+        
+ 		  <!-- PROYECTO 3 -->
+        <div class="portfolio-item" onclick="openLightbox('project3')">
+          <!-- Placeholder: Mural individual -->
+          <img src="postervientos.jpg?auto=format&fit=crop&q=80" alt="Mural Vientos">
+          <div class="portfolio-overlay">
+            <div class="portfolio-cat">Mural de Autora</div>
+            <div class="portfolio-title">Vientos</div>
+            <div style="font-size: 0.9rem;">40m² • Pub Vientos Madrid • 7 días</div>
+          </div>
+        </div>
+        
  		  <!-- PROYECTO 4 -->
         <div class="portfolio-item" onclick="openLightbox('project4')">
           <!-- Placeholder: Mural individual -->
@@ -1200,14 +1201,14 @@ una de las galerías en el script en la variable const projectsData -->
           </div>
         </div>
         
- 		  <!-- PROYECTO 6 -->
+        <!-- PROYECTO 6 -->
         <div class="portfolio-item" onclick="openLightbox('project6')">
-          <!-- Placeholder: Mural individual -->
-          <img src="postervientos.jpg?auto=format&fit=crop&q=80" alt="Mural Vientos">
+          <!-- Placeholder: Mural Colaborativo -->
+          <img src="minigalreal.jpg?auto=format&fit=crop&q=80" alt="Mural San Vicente">
           <div class="portfolio-overlay">
-            <div class="portfolio-cat">Mural de Autora</div>
-            <div class="portfolio-title">Vientos</div>
-            <div style="font-size: 0.9rem;">40m² • Pub Vientos Madrid • 7 días</div>
+            <div class="portfolio-cat">Mural Colaborativo</div>
+            <div class="portfolio-title">El Real de San Vicente</div>
+            <div style="font-size: 0.9rem;">50m² • Patio Escolar • 3 días</div>
           </div>
         </div>
 
@@ -1269,7 +1270,7 @@ una de las galerías en el script en la variable const projectsData -->
       <div class="info-grid">
         <div>
           <span class="section-tag">Viabilidad</span>
-          <h2 class="section-title">Hagámoslo Realidad</h2>
+          <h2 class="section-title"><a href="#contacto">¿Cuánto costará?</a></h2>
           <p>Entiendo que el presupuesto suele ser la parte compleja, ya que depende de muchas variables: cantidad de ilustraciones, complejidad, soporte, tamaño, plazo de entrega… pero siempre se pueden encontrar soluciones para lograr que el proyecto salga adelante.</p>
           <p>Existen muchas fórmulas para financiar un proyecto mural, de ilustración o de talleres:</p>
           
@@ -1289,7 +1290,7 @@ una de las galerías en el script en la variable const projectsData -->
           </ul>
 
           <div style="margin-top: 30px;">
-             <span class="power-phrase" style="color: var(--text-main); font-size: 2.8rem;">"Lo importante es hablar."</span>
+             <span class="power-phrase" style="color: var(--text-main); font-size: 2.8rem;"><a href="#contacto">"Lo importante es hablar."</a></span>
           </div>
         </div>
         
@@ -1349,7 +1350,7 @@ una de las galerías en el script en la variable const projectsData -->
         <div class="contact-details">
           <p>
             <i class="ph ph-envelope-simple"></i>
-            <a href="mailto:clarichina@gmail.com">clarichina@gmail.com</a>
+            <a href="mailto:clarichina@proton.me">clarichina@proton.me</a>
           </p>
           <p>
             <i class="ph ph-phone"></i>
@@ -1438,25 +1439,8 @@ una de las galerías en el script en la variable const projectsData -->
     // Definición de proyectos 
     // Permite intercalar videos con el código sin encerrar entre  ' ' { type: 'video', src: 'video.mp4', poster: 'poster.jpg' },)
     const projectsData = {
+    
 	    'project1': [
-	        'galreal01.jpg?auto=format&fit=crop&q=100',
-	        'galreal02.jpg?auto=format&fit=crop&q=100',
-
-	        'galreal03.jpg?auto=format&fit=crop&q=100',
-	        'galreal04.jpg?auto=format&fit=crop&q=100',
-	        'galreal05.jpg?auto=format&fit=crop&q=100',
-	        'galreal06.jpg?auto=format&fit=crop&q=100',
-	        'galreal07.jpg?auto=format&fit=crop&q=100',
-	        'galreal08.jpg?auto=format&fit=crop&q=100',
-	        'galreal09.jpg?auto=format&fit=crop&q=100',
-	        'galreal10.jpg?auto=format&fit=crop&q=100',
-	        'galreal11.jpg?auto=format&fit=crop&q=100',
-	        'galreal12.jpg?auto=format&fit=crop&q=100',
-	        'galreal13.jpg?auto=format&fit=crop&q=100',
-	        'galreal14.jpg?auto=format&fit=crop&q=100',
-	        'galreal15.jpg?auto=format&fit=crop&q=100',
-	    ],
-	    'project2': [
 	        'galazutan01-0.jpg?auto=format&fit=crop&q=100',
 	        'galazutan01-1.jpg?auto=format&fit=crop&q=100',
 	        'galazutan01-2.jpg?auto=format&fit=crop&q=100',
@@ -1485,10 +1469,9 @@ una de las galerías en el script en la variable const projectsData -->
 	        'galazutan05-5.jpg?auto=format&fit=crop&q=100',
 	        'galazutan05-7.jpg?auto=format&fit=crop&q=100',
 	        'galazutan05-8.jpg?auto=format&fit=crop&q=100',
-	        'galazutan05-9.jpg?auto=format&fit=crop&q=100',
-	        
+	        'galazutan05-9.jpg?auto=format&fit=crop&q=100',	        
 	    ],
-	    'project3': [
+	    'project2': [
 	        'gal8m01.jpg?auto=format&fit=crop&q=100',
 	        'gal8m02.jpg?auto=format&fit=crop&q=100',
 	        'gal8m03.jpg?auto=format&fit=crop&q=100',
@@ -1504,7 +1487,24 @@ una de las galerías en el script en la variable const projectsData -->
 	        'gal8m13.jpg?auto=format&fit=crop&q=100',
 	        'gal8m14.jpg?auto=format&fit=crop&q=100',
 	    ],
-	    
+	    'project3': [
+			  { type: 'video', src: 'muroveryfast.mp4', poster: 'postervientos.jpg' },
+	        'galvientos01.jpg?auto=format&fit=crop&q=100',
+	        'galvientos02.jpg?auto=format&fit=crop&q=100',
+	        'galvientos03.jpg?auto=format&fit=crop&q=100',
+	        'galvientos04.jpg?auto=format&fit=crop&q=100',
+	        'galvientos05.jpg?auto=format&fit=crop&q=100',
+	        'galvientos06.jpg?auto=format&fit=crop&q=100',
+	        'galvientos07.jpg?auto=format&fit=crop&q=100',
+	        'galvientos08.jpg?auto=format&fit=crop&q=100',
+	        'galvientos09.jpg?auto=format&fit=crop&q=100',
+	        'galvientos10.jpg?auto=format&fit=crop&q=100',
+	        'galvientos11.jpg?auto=format&fit=crop&q=100',
+	        'galvientos12.jpg?auto=format&fit=crop&q=100',
+	        'galvientos13.jpg?auto=format&fit=crop&q=100',
+	        'galvientos14.jpg?auto=format&fit=crop&q=100',
+	        'galvientos15.jpg?auto=format&fit=crop&q=100',
+	    ],
 	    'project4': [
 			  { type: 'video', src: 'espinosofundido.mp4', poster: 'posterespinoso.jpg' },
 	        'galespinoso01.jpg?auto=format&fit=crop&q=100',
@@ -1528,8 +1528,6 @@ una de las galerías en el script en la variable const projectsData -->
 	        'galespinoso19.jpg?auto=format&fit=crop&q=100',
 	        'galespinoso20.jpg?auto=format&fit=crop&q=100',
 	    ],	    
-	    
-	    
 	    'project5': [
 	        'galteatro01.jpg?auto=format&fit=crop&q=100',
 	        'galteatro02.jpg?auto=format&fit=crop&q=100',
@@ -1546,26 +1544,23 @@ una de las galerías en el script en la variable const projectsData -->
 	        'galteatro13.jpg?auto=format&fit=crop&q=100',
 	        'galteatro14.jpg?auto=format&fit=crop&q=100',       
 	    ],
-	    
 	    'project6': [
-			  { type: 'video', src: 'muroveryfast.mp4', poster: 'postervientos.jpg' },
-	        'galvientos01.jpg?auto=format&fit=crop&q=100',
-	        'galvientos02.jpg?auto=format&fit=crop&q=100',
-	        'galvientos03.jpg?auto=format&fit=crop&q=100',
-	        'galvientos04.jpg?auto=format&fit=crop&q=100',
-	        'galvientos05.jpg?auto=format&fit=crop&q=100',
-	        'galvientos06.jpg?auto=format&fit=crop&q=100',
-	        'galvientos07.jpg?auto=format&fit=crop&q=100',
-	        'galvientos08.jpg?auto=format&fit=crop&q=100',
-	        'galvientos09.jpg?auto=format&fit=crop&q=100',
-	        'galvientos10.jpg?auto=format&fit=crop&q=100',
-	        'galvientos11.jpg?auto=format&fit=crop&q=100',
-	        'galvientos12.jpg?auto=format&fit=crop&q=100',
-	        'galvientos13.jpg?auto=format&fit=crop&q=100',
-	        'galvientos14.jpg?auto=format&fit=crop&q=100',
-	        'galvientos15.jpg?auto=format&fit=crop&q=100',
+	        'galreal01.jpg?auto=format&fit=crop&q=100',
+	        'galreal02.jpg?auto=format&fit=crop&q=100',
+	        'galreal03.jpg?auto=format&fit=crop&q=100',
+	        'galreal04.jpg?auto=format&fit=crop&q=100',
+	        'galreal05.jpg?auto=format&fit=crop&q=100',
+	        'galreal06.jpg?auto=format&fit=crop&q=100',
+	        'galreal07.jpg?auto=format&fit=crop&q=100',
+	        'galreal08.jpg?auto=format&fit=crop&q=100',
+	        'galreal09.jpg?auto=format&fit=crop&q=100',
+	        'galreal10.jpg?auto=format&fit=crop&q=100',
+	        'galreal11.jpg?auto=format&fit=crop&q=100',
+	        'galreal12.jpg?auto=format&fit=crop&q=100',
+	        'galreal13.jpg?auto=format&fit=crop&q=100',
+	        'galreal14.jpg?auto=format&fit=crop&q=100',
+	        'galreal15.jpg?auto=format&fit=crop&q=100',
 	    ],
-	    
 	    'project7': [
 	        'juegos04.jpg?auto=format&fit=crop&q=100',
 	        'juegos01.jpg?auto=format&fit=crop&q=100',

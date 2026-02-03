@@ -2,7 +2,42 @@
 <html lang="es" data-theme="dark">
 <head>
   <meta charset="UTF-8">
+	<meta name="keywords" content="mural, muralista, ilustración, ilustradora, cuentos, carteles, diseño gráfico, material ilustrado, álbum ilustrado, guías, cuadernos, escenografía, murales, arte urbano, street art, graffiti, murales colaborativos, arte en la calle, artes visuales, Clara Luna, portafolio artístico, pintura mural, diseño editorial, intervención urbana, diseño gráfico, artista, artist, arte, talleres artísticos, talleres">
+	<meta name="description" content="Portafolio de Clara Luna: muralista e ilustradora especializada en murales colaborativos, arte urbano y diseño gráfico. Exploración de material ilustrado, álbumes, carteles y escenografía con un enfoque social y creativo.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://claralunarte.vercel.app/">
+	<meta property="og:title" content="Clara Luna | Muralismo e Ilustración">
+	<meta property="og:description" content="Explora el portfolio de Clara Luna: proyectos de muralismo colaborativo, arte urbano e ilustración con un enfoque social y creativo.">
+	<meta property="og:image" content="https://claralunarte.vercel.app/screenshot-portfolio.jpg">
+	
+	<meta property="twitter:card" content="summary_large_image">
+	<meta property="twitter:url" content="https://claraluna.vercel.app/">
+	<meta property="twitter:title" content="Clara Luna | Muralismo e Ilustración">
+	<meta property="twitter:description" content="Explora el portfolio de Clara Luna: proyectos de muralismo colaborativo, arte urbano e ilustración con un enfoque social y creativo.">
+	<meta property="twitter:image" content="https://claralunarte.vercel.app/screenshot-portfolio.jpg">
+	<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@type": "Person",
+	  "name": "Clara Luna",
+	  "url": "https://claralunarte.vercel.app/",
+	  "jobTitle": "Muralista e Ilustradora",
+	  "knowsAbout": [
+	    "Muralismo",
+	    "Arte urbano",
+	    "Ilustración",
+	    "Diseño gráfico",
+	    "Escenografía",
+	    "Arte social"
+	  ],
+	  "description": "Clara Luna es una artista visual especializada en muralismo, ilustración y procesos creativos comunitarios.",
+	  "sameAs": [
+	    "https://www.instagram.com/clarluna_ilustration",
+	    "https://www.linkedin.com/in/clara-luna-32504850/"
+	  ]
+	}
+	</script>
   <title>Clara Luna | Muralismo e Ilustración</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -243,9 +278,11 @@
     
     /* SECCIONES COMUNES */
     section { padding: 100px 0; }
-    .section-header { margin-bottom: 60px; }
+   .section-header { margin-bottom: 60px; }
     .section-tag { text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; color: var(--accent-blue); font-weight: 600; margin-bottom: 12px; display: block; }
     .section-title { font-size: 2.5rem; margin-bottom: 16px; }
+    /* Espaciado inferior especial para Talleres y presupuesto */
+    #espaciadocolaborativo , #espaciadoautora , #espaciadoilustra { margin-top: 1.5rem; margin-bottom: 1.8rem; !important}
 
     /* SOBRE MÍ */
     .about-grid-inicio { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 60px; align-items: start; }
@@ -501,7 +538,8 @@
        ========================================= */
     .gallery-wrapper {
         position: relative;
-        margin-top: 60px;
+        margin-top: -0.8rem;
+        margin-bottom: 1.8rem;
         display: flex;
         align-items: center;
     }
@@ -906,41 +944,11 @@
   
   <section id="murales-colaborativos" style="background-color: var(--bg-surface);">
     <div class="container">
-        <div class="section-header">
+        <div class="section-header" id="espaciadocolaborativo">
             <span class="section-tag">Creación colectiva</span>
             <h2 class="section-title">Murales Colaborativos</h2>
-            <p>Este es el corazón de mi trabajo social, asegurando la participación real</br>
-            Oferta dirigida a Ayuntamientos, entidades, fundaciones, ONG's, asociaciones, colegios, bibliotecas, residencias, centros de día….en la que aplicamos el siguiente esquema:</p>
         </div>
-        <div class="steps">
-        		<div class="step">
-                <span class="step-number">01</span>
-                <h3>Estudio</h3>
-                <p>Valoramos superficie a cubrir, estado de la pared, dificultad, tiempo de realización y acordamos un presupuesto.</p>
-            </div>
-            <div class="step">
-                <span class="step-number">02</span>
-                <h3>Encuentro</h3>
-                <p>Sesión de dinámica y diálogo para definir qué queremos contar y consolidar la idea común.</p>
-            </div>
-            <div class="step">
-                <span class="step-number">03</span>
-                <h3>Diseño</h3>
-                <p>Desarrollo el boceto integrando las propuestas y validándolo colectivamente.</p>
-            </div>
-            <div class="step">
-                <span class="step-number">04</span>
-                <h3>¡Manos a la obra!</h3>
-                <p>El grupo pinta guiado por mí. Proporciono apoyo técnico y organizo el espacio y los grupos de trabajo.</p>
-            </div>
-            <div class="step">
-                <span class="step-number">05</span>
-                <h3>Integración</h3>
-                <p>Ejecuto una intervención final para dar coherencia estética y asegurar un acabado de calidad.</p>
-            </div>
-        </div>
-
-          <div class="gallery-wrapper" style="position: relative; display: flex; align-items: center; margin-top: -2.5rem;">
+          <div class="gallery-wrapper">
             <button class="nav-arrow arrow-left" id="p_colab" style="z-index: 10; cursor: pointer;"><i class="ph ph-caret-left"></i></button>
             
             <div class="collab-gallery-scroll" id="s_colab" style="display: flex; gap: 16px; overflow-x: auto; scroll-behavior: smooth; width: 100%;">
@@ -973,6 +981,39 @@
             
             <button class="nav-arrow arrow-right" id="n_colab" style="z-index: 10; cursor: pointer;"><i class="ph ph-caret-right"></i></button>
         </div>
+        <div>    
+            <p>Este es el corazón de mi trabajo social, asegurando la participación real.</p>
+            <p>Oferta dirigida a Ayuntamientos, entidades, fundaciones, ONG's, asociaciones, colegios, bibliotecas, residencias, centros de día….en la que aplicamos el siguiente esquema:</p>
+        </div>
+        <div class="steps">
+        		<div class="step">
+                <span class="step-number">01</span>
+                <h3>Estudio</h3>
+                <p>Valoramos superficie a cubrir, estado de la pared, dificultad, tiempo de realización y acordamos un presupuesto.</p>
+            </div>
+            <div class="step">
+                <span class="step-number">02</span>
+                <h3>Encuentro</h3>
+                <p>Sesión de dinámica y diálogo para definir qué queremos contar y consolidar la idea común.</p>
+            </div>
+            <div class="step">
+                <span class="step-number">03</span>
+                <h3>Diseño</h3>
+                <p>Desarrollo el boceto integrando las propuestas y validándolo colectivamente.</p>
+            </div>
+            <div class="step">
+                <span class="step-number">04</span>
+                <h3>¡Manos a la obra!</h3>
+                <p>El grupo pinta guiado por mí. Proporciono apoyo técnico y organizo el espacio y los grupos de trabajo.</p>
+            </div>
+            <div class="step">
+                <span class="step-number">05</span>
+                <h3>Integración</h3>
+                <p>Ejecuto una intervención final para dar coherencia estética y asegurar un acabado de calidad.</p>
+            </div>
+        </div>
+
+
     </div>
   </section>
 
@@ -982,36 +1023,12 @@
    <div class="container">
       <div class="about-grid">
         <div class="bio-text">
-          <div class="section-header">
+          <div class="section-header" id="espaciadoautora">
             <span class="section-tag">Visión personal</span>
             <h2 class="section-title">Murales de Autora</h2>
           </div>
-          <p>Como artista, busco que cada intervención respire la esencia del lugar. Mis murales de autora son piezas únicas donde aplico mi visión artística personal, integrando colores y formas que dialogan con la arquitectura y la luz del entorno.</p>
-          <div class="bio-highlight">
-            "Un muro en blanco es una oportunidad para contar una historia visual que permanezca en el tiempo."
-          </div>
-          <p>Oferta dirigida a Ayuntamientos, entidades, fundaciones, ONG's, asociaciones, colegios, bibliotecas, residencias, centros de día y también a particulares o empresas en la que aplicamos el siguiente esquema:</p>
-        </div>
-        <div class="steps-autora">
-        		<div class="step">
-                <span class="step-number">01</span>
-                <h3>Estudio</h3>
-                <p>Acordamos un presupuesto en función de: Recursos económicos disponibles, m<sup>2</sup> a cubrir y estado de la pared, dificultad del dibujo y su realización, días de trabajo estimados y recursos complementarios disponibles.</p>
-            </div>
-            <div class="step">
-                <span class="step-number">02</span>
-                <h3>Diseño</h3>
-                <p>Realizo un boceto detallado teniendo en cuenta la temática y los valores que se pretendan reflejar, que se aprueba antes de su ejecución en el muro.</p>
-            </div>
-            <div class="step">
-                <span class="step-number">03</span>
-                <h3>Ejecución</h3>
-                <p>Dedico los días y el cariño necesarios a la realización del mural para obtener un resultado cuidado y de calidad.</p>
-            </div>
             
-            </div>
-            
-            <div class="gallery-wrapper" style="margin-top: -2rem;">
+            <div class="gallery-wrapper" >
             <button class="nav-arrow arrow-left" id="prevBtnAutora"><i class="ph ph-caret-left"></i></button>
             
             <div class="collab-gallery-scroll" id="galleryAutora">
@@ -1046,7 +1063,33 @@
             </div>
             
             <button class="nav-arrow arrow-right" id="nextBtnAutora"><i class="ph ph-caret-right"></i></button>
-        </div>           
+        </div>  
+          
+          <p>Como artista, busco que cada intervención respire la esencia del lugar. Mis murales de autora son piezas únicas donde aplico mi visión artística personal, integrando colores y formas que dialogan con la arquitectura y la luz del entorno.</p>
+          <div class="bio-highlight">
+            "Un muro en blanco es una oportunidad para contar una historia visual que permanezca en el tiempo."
+          </div>
+          <p>Oferta dirigida a Ayuntamientos, entidades, fundaciones, ONG's, asociaciones, colegios, bibliotecas, residencias, centros de día y también a particulares o empresas en la que aplicamos el siguiente esquema:</p>
+        </div>
+        <div class="steps-autora">
+        		<div class="step">
+                <span class="step-number">01</span>
+                <h3>Estudio</h3>
+                <p>Acordamos un presupuesto en función de: Recursos económicos disponibles, m<sup>2</sup> a cubrir y estado de la pared, dificultad del dibujo y su realización, días de trabajo estimados y recursos complementarios disponibles.</p>
+            </div>
+            <div class="step">
+                <span class="step-number">02</span>
+                <h3>Diseño</h3>
+                <p>Realizo un boceto detallado teniendo en cuenta la temática y los valores que se pretendan reflejar, que se aprueba antes de su ejecución en el muro.</p>
+            </div>
+            <div class="step">
+                <span class="step-number">03</span>
+                <h3>Ejecución</h3>
+                <p>Dedico los días y el cariño necesarios a la realización del mural para obtener un resultado cuidado y de calidad.</p>
+            </div>
+            
+            </div>
+         
       </div>
     </div>
   </section>
@@ -1056,27 +1099,10 @@
    
   <section id="ilustracion" style="background-color: var(--bg-surface);">
     <div class="container">
-           <div class="section-header">
+           <div class="section-header" id="espaciadoilustra">
             <span class="section-tag">Diseño Editorial</span>
             <h2 class="section-title">Ilustración con Valores</h2>
           </div>
-          <p>Si tienes una idea, campaña, texto o material de sensibilización al que le falte una ilustración y diseño que le den un sentido estético más amplio y atractivo, ponte en contacto conmigo y valoramos todos los aspectos que se puedan necesitar. Una experiencia de más de diez años avala mi trabajo en este ámbito.</p>
-
-			 <ul class="two-columns-list">
-            <li class="lorange"> Álbumes,cuentos y cómics.</li>
-            <li class="yllw"> Juegos didácticos.</li>
-            <li class="blue"> Calendarios y agendas.</li>
-            <li class="lorg2"> Cartelería y folletos.</li>
-            <li class="yllw"> Guías y cuadernos.</li>
-            <li class="blue"> Vídeos de sensibilización.</li>
-          </ul>
-          <p></p>
-			 <p>Acordaremos el presupuesto partiendo de tarifas base dependiendo de la cantidad de ilustraciones, complejidad, tamaño, plazos y trabajo extra que se requiera (maquetación, creación de textos, traducción o imprenta). </p>
-			 <p>En todas las fases del proyecto estaré atenta al feedbak que me puedas aportar:</p>
-			 <ul style="margin-top: 20px; display: grid; gap: 10px; margin-bottom: 2rem; margin-top: -1rem;">
-	         <li class="lorange"> Bocetos iniciales a los que añadiremos los cambios y modificaciones necesarios en un diálogo constante: ¡somos un equipo!</li>
-	         <li class="lorg2"> Sobre los bocetos de ilustración y maquetación aceptados se realizará la elaboración final.</li>           
-          </ul>
           <div class="gallery-wrapper" style="position: relative; display: flex; align-items: center; margin-top: -0.1rem;">
             <button class="nav-arrow arrow-left" id="p_ilustra" style="z-index: 10; cursor: pointer;"><i class="ph ph-caret-left"></i></button>
             
@@ -1097,6 +1123,25 @@
             
             <button class="nav-arrow arrow-right" id="n_ilustra" style="z-index: 10; cursor: pointer;"><i class="ph ph-caret-right"></i></button>
         </div>
+          
+          <p>Si tienes una idea, campaña, texto o material de sensibilización al que le falte una ilustración y diseño que le den un sentido estético más amplio y atractivo, ponte en contacto conmigo y valoramos todos los aspectos que se puedan necesitar. Una experiencia de más de diez años avala mi trabajo en este ámbito.</p>
+
+			 <ul class="two-columns-list">
+            <li class="lorange"> Álbumes,cuentos y cómics.</li>
+            <li class="yllw"> Juegos didácticos.</li>
+            <li class="blue"> Calendarios y agendas.</li>
+            <li class="lorg2"> Cartelería y folletos.</li>
+            <li class="yllw"> Guías y cuadernos.</li>
+            <li class="blue"> Vídeos de sensibilización.</li>
+          </ul>
+          <p></p>
+			 <p>Acordaremos el presupuesto partiendo de tarifas base dependiendo de la cantidad de ilustraciones, complejidad, tamaño, plazos y trabajo extra que se requiera (maquetación, creación de textos, traducción o imprenta). </p>
+			 <p>En todas las fases del proyecto estaré atenta al feedbak que me puedas aportar:</p>
+			 <ul style="margin-top: 20px; display: grid; gap: 10px; margin-bottom: 2rem; margin-top: -1rem;">
+	         <li class="lorange"> Bocetos iniciales a los que añadiremos los cambios y modificaciones necesarios en un diálogo constante: ¡somos un equipo!</li>
+	         <li class="lorg2"> Sobre los bocetos de ilustración y maquetación aceptados se realizará la elaboración final.</li>           
+          </ul>
+
         </div>     
       </div>
     </div>

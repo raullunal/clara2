@@ -2,8 +2,57 @@
 <html lang="es" data-theme="dark">
 <head>
   <meta charset="UTF-8">
+	<meta name="keywords" content="mural, muralista, ilustración, ilustradora, cuentos, carteles, diseño gráfico, material ilustrado, álbum ilustrado, guías, cuadernos, escenografía, murales, arte urbano, street art, graffiti, murales colaborativos, arte en la calle, artes visuales, Clara Luna, portafolio artístico, pintura mural, diseño editorial, intervención urbana, diseño gráfico, artista, artist, arte, talleres artísticos, talleres">
+	<meta name="description" content="Portafolio de Clara Luna: muralista e ilustradora especializada en murales colaborativos, arte urbano y diseño gráfico. Exploración de material ilustrado, álbumes, carteles y escenografía con un enfoque social y creativo.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clara Luna | Muralismo e Ilustración</title>
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://claralunarte.vercel.app/">
+	<meta property="og:title" content="Clara Luna | Muralismo e Ilustración">
+	<meta property="og:description" content="Explora el portfolio de Clara Luna: proyectos de muralismo colaborativo, arte urbano e ilustración con un enfoque social y creativo.">
+	<meta property="og:image" content="https://claralunarte.vercel.app/screenshot-portfolio.jpg">
+	
+	<meta property="twitter:card" content="summary_large_image">
+	<meta property="twitter:url" content="https://claraluna.vercel.app/">
+	<meta property="twitter:title" content="Clara Luna | Muralismo e Ilustración">
+	<meta property="twitter:description" content="Explora el portfolio de Clara Luna: proyectos de muralismo colaborativo, arte urbano e ilustración con un enfoque social y creativo.">
+	<meta property="twitter:image" content="https://claralunarte.vercel.app/screenshot-portfolio.jpg">
+	<script type="application/ld+json">
+	{
+	  "@context": "https://schema.org",
+	  "@type": "Person",
+	  "name": "Clara Luna",
+	  "url": "https://claralunarte.vercel.app/",
+	  "jobTitle": "Muralista e Ilustradora",
+	  "knowsAbout": [
+	    "Muralismo",
+	    "Arte urbano",
+	    "Ilustración",
+	    "Diseño gráfico",
+	    "Escenografía",
+	    "Arte social"
+	  ],
+	  "description": "Clara Luna es una artista visual especializada en muralismo, ilustración y procesos creativos comunitarios.",
+	  "sameAs": [
+	    "https://www.instagram.com/clarluna_ilustration",
+	    "https://www.linkedin.com/in/clara-luna-32504850/"
+	  ]
+	}
+	</script>
+	
+			<!-- Favicon estándar -->
+      <link rel="icon" type="image/x-icon" href="/favicon.ico">
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		
+		<!-- Fallback para navegadores antiguos -->
+		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+		
+		<!-- Icono para Apple (iPhone, iPad) -->
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">  
+		<meta name="apple-mobile-web-app-title" content="Claralunarte" /> 
+		<link rel="manifest" href="/site.webmanifest" />	
+
+  <title>Clara Luna | Muralismo e Ilustración</title>	  
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -113,9 +162,7 @@
 		  } 
 		li.lorg2{
 		  list-style-image: url('splashorg.png'); 
-		  }  
-
-
+		  }
 
 	/* Columnas para listas */
     .two-columns-list {
@@ -213,8 +260,21 @@
 		.hero-text { grid-area: texto; padding-top: 4rem; justify-content:center; align-items:center; text-align: center;}
 		.hero-text h1 {font-size:3.5rem; padding-bottom: 3rem;}
 		.hero-text h2 {font-size:2rem;}
-		.hero-image { grid-area: imagen; width: 100%;}
-      .hero-image img { width: 100%; object-fit: cover;}
+		.hero-image { grid-area: imagen; width: 100%; height: 500px; display: flex; align-items: center;justify-content: center; overflow: hidden;}
+		
+/* --- para el carrusel. Se han añadido transition y cursor 	---*/	
+		
+		.hero-image img { 
+		  max-width: 100%;
+		  max-height: 100%;
+		  width: auto;
+		  height: auto;
+		  object-fit: contain;
+		  display: block;
+		  transition: opacity 0.8s ease-in-out; /* Esto hace que el cambio sea suave */
+		/*  cursor: pointer;  Indica que la imagen es clicable */
+		}
+/* --- hasta aquí ---*/		
 		.hero-actions { 
 		    grid-area: botones; 
 		    display: flex;
@@ -235,7 +295,7 @@
 		        gap: 30px;
 		    }
 		    .hero-text {padding-top:0.5rem;} !important /*Disminuimos el padding superior para aprovechar espacio */
-		    .hero-image img{display:flex; justify-content:center; align-items: center; width: 100%;} !important;
+		    .hero-image img{display:; justify-content:center; align-items: center; width: 100%;} !important;
 		
 		    .hero-actions {
 		        justify-content: center; /* Centra los botones en móvil */
@@ -245,9 +305,11 @@
     
     /* SECCIONES COMUNES */
     section { padding: 100px 0; }
-    .section-header { margin-bottom: 60px; }
+   .section-header { margin-bottom: 60px; }
     .section-tag { text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; color: var(--accent-blue); font-weight: 600; margin-bottom: 12px; display: block; }
     .section-title { font-size: 2.5rem; margin-bottom: 16px; }
+    /* Espaciado inferior especial para Talleres y presupuesto */
+    #espaciadocolaborativo , #espaciadoautora , #espaciadoilustra { margin-top: 1.5rem; margin-bottom: 1.8rem; !important}
 
     /* SOBRE MÍ */
     .about-grid-inicio { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 60px; align-items: start; }
@@ -310,7 +372,6 @@
     .portfolio-cat { color: var(--accent-yellow); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
 
 
-
     /* LIGHTBOX */
     
     .lightbox-arrow {
@@ -369,8 +430,8 @@
 
     /* RESPONSIVE */
     @media (max-width: 900px) {
-/*      .hero-content { grid-template-columns: 1fr; text-align: center; }
-      .hero-text h1 { font-size: 3rem; }
+/*      .hero-content { grid-template-columns: 1fr; text-align: center; } */
+/*     .hero-text h1 { font-size: 3rem; } */
 /*      .hero-image { display: none; } */
       .about-grid, .about-grid-inicio, .info-grid, .contact-container { grid-template-columns: 1fr; gap: 40px; !important; } 
       .bio-image {display:flex; justify-content:center; align-items: center; !important;}
@@ -399,8 +460,7 @@
 		    
 		    /* Opcional: suaviza los bordes para que no se vean cortados bruscamente */
 		    object-fit: contain;
-		}
-      
+		}      
      
 		 /* =========================================
        ESTILOS DEL MENÚ (RESPONSIVE)
@@ -470,6 +530,7 @@
         background-color: transparent !important; /* Asegurar que no hay color de fondo */
     }
     /* CAMBIAR AQUÍ LA IMAGEN DE FONDO DE CADA SECCIÓN */        
+        
         #servicios {
         background-image: url('conproposito.jpg?q=100&w=800&auto=format&fit=crop') !important;
         }
@@ -499,12 +560,13 @@
         gap: 30px;
     }
     
- /* =========================================
+    /* =========================================
        NUEVO: GALERÍA CON FLECHAS
        ========================================= */
     .gallery-wrapper {
         position: relative;
-        margin-top: 60px;
+        margin-top: -0.8rem;
+        margin-bottom: 1.8rem;
         display: flex;
         align-items: center;
     }
@@ -776,6 +838,17 @@
 		    visibility: visible !important;
 		  }
 		}
+				
+		/* Clase para el efecto de fundido en la imagen de portada */
+		.fade-out {
+		    opacity: 0;
+		    transition: opacity 1s ease-in-out;
+		}
+		
+		.hero-image img {
+		    transition: opacity 1s ease-in-out;
+		    opacity: 1;
+}
 		
   </style>
 	<!-- Vercel Web Analytics -->
@@ -828,7 +901,7 @@
         </div>
 
         <div class="hero-image">
-            <img src="portadab.jpg?q=80&w=1000&auto=format&fit=crop" alt="Clara Luna">
+            <img src="portadac.jpg?q=100&w=1000&auto=format&fit=crop" alt="Clara Luna">
         </div>
 
         <div class="hero-actions">
@@ -909,41 +982,11 @@
   
   <section id="murales-colaborativos" style="background-color: var(--bg-surface);">
     <div class="container">
-        <div class="section-header">
+        <div class="section-header" id="espaciadocolaborativo">
             <span class="section-tag">Creación colectiva</span>
             <h2 class="section-title">Murales Colaborativos</h2>
-            <p>Este es el corazón de mi trabajo social, asegurando la participación real</br>
-            Oferta dirigida a Ayuntamientos, entidades, fundaciones, ONG's, asociaciones, colegios, bibliotecas, residencias, centros de día….en la que aplicamos el siguiente esquema:</p>
         </div>
-        <div class="steps">
-        		<div class="step">
-                <span class="step-number">01</span>
-                <h3>Estudio</h3>
-                <p>Valoramos superficie a cubrir, estado de la pared, dificultad, tiempo de realización y acordamos un presupuesto.</p>
-            </div>
-            <div class="step">
-                <span class="step-number">02</span>
-                <h3>Encuentro</h3>
-                <p>Sesión de dinámica y diálogo para definir qué queremos contar y consolidar la idea común.</p>
-            </div>
-            <div class="step">
-                <span class="step-number">03</span>
-                <h3>Diseño</h3>
-                <p>Desarrollo el boceto integrando las propuestas y validándolo colectivamente.</p>
-            </div>
-            <div class="step">
-                <span class="step-number">04</span>
-                <h3>¡Manos a la obra!</h3>
-                <p>El grupo pinta guiado por mí. Proporciono apoyo técnico y organizo el espacio y los grupos de trabajo.</p>
-            </div>
-            <div class="step">
-                <span class="step-number">05</span>
-                <h3>Integración</h3>
-                <p>Ejecuto una intervención final para dar coherencia estética y asegurar un acabado de calidad.</p>
-            </div>
-        </div>
-
-          <div class="gallery-wrapper" style="position: relative; display: flex; align-items: center; margin-top: -2.5rem;">
+          <div class="gallery-wrapper">
             <button class="nav-arrow arrow-left" id="p_colab" style="z-index: 10; cursor: pointer;"><i class="ph ph-caret-left"></i></button>
             
             <div class="collab-gallery-scroll" id="s_colab" style="display: flex; gap: 16px; overflow-x: auto; scroll-behavior: smooth; width: 100%;">
@@ -976,131 +1019,164 @@
             
             <button class="nav-arrow arrow-right" id="n_colab" style="z-index: 10; cursor: pointer;"><i class="ph ph-caret-right"></i></button>
         </div>
-    </div>
-  </section>
-
-<!-- MURALES DE AUTORA --> 
-
-  <section id="murales-autora">
-   <div class="container">
-      <div class="about-grid">
-        <div class="bio-text">
-          <div class="section-header">
-            <span class="section-tag">Visión personal</span>
-            <h2 class="section-title">Murales de Autora</h2>
-          </div>
-          <p>Como artista, busco que cada intervención respire la esencia del lugar. Mis murales de autora son piezas únicas donde aplico mi visión artística personal, integrando colores y formas que dialogan con la arquitectura y la luz del entorno.</p>
-          <div class="bio-highlight">
-            "Un muro en blanco es una oportunidad para contar una historia visual que permanezca en el tiempo."
-          </div>
-          <p>Oferta dirigida a Ayuntamientos, entidades, fundaciones, ONG's, asociaciones, colegios, bibliotecas, residencias, centros de día y también a particulares o empresas en la que aplicamos el siguiente esquema:</p>
+        <div>    
+            <p>Este es el corazón de mi trabajo social, asegurando la participación real.</p>
+            <p>Oferta dirigida a Ayuntamientos, entidades, fundaciones, ONG's, asociaciones, colegios, bibliotecas, residencias, centros de día….en la que aplicamos el siguiente esquema:</p>
         </div>
-        <div class="steps-autora">
+        <div class="steps">
         		<div class="step">
                 <span class="step-number">01</span>
                 <h3>Estudio</h3>
-                <p>Acordamos un presupuesto en función de: Recursos económicos disponibles, m<sup>2</sup> a cubrir y estado de la pared, dificultad del dibujo y su realización, días de trabajo estimados y recursos complementarios disponibles.</p>
+                <p>Valoramos superficie a cubrir, estado de la pared, dificultad, tiempo de realización y acordamos un presupuesto.</p>
             </div>
             <div class="step">
                 <span class="step-number">02</span>
-                <h3>Diseño</h3>
-                <p>Realizo un boceto detallado teniendo en cuenta la temática y los valores que se pretendan reflejar, que se aprueba antes de su ejecución en el muro.</p>
+                <h3>Encuentro</h3>
+                <p>Sesión de dinámica y diálogo para definir qué queremos contar y consolidar la idea común.</p>
             </div>
             <div class="step">
                 <span class="step-number">03</span>
-                <h3>Ejecución</h3>
-                <p>Dedico los días y el cariño necesarios a la realización del mural para obtener un resultado cuidado y de calidad.</p>
+                <h3>Diseño</h3>
+                <p>Desarrollo el boceto integrando las propuestas y validándolo colectivamente.</p>
             </div>
-            
+            <div class="step">
+                <span class="step-number">04</span>
+                <h3>¡Manos a la obra!</h3>
+                <p>El grupo pinta guiado por mí. Proporciono apoyo técnico y organizo el espacio y los grupos de trabajo.</p>
             </div>
-            
-            <div class="gallery-wrapper" style="margin-top: -2rem;">
-            <button class="nav-arrow arrow-left" id="prevBtnAutora"><i class="ph ph-caret-left"></i></button>
-            
-            <div class="collab-gallery-scroll" id="galleryAutora">
-            	<img src="ma-08.jpg?q=80&w=800&auto=format&fit=crop" alt="Mural Azután">
-            	<img src="ma-02.jpg?q=80&w=800&auto=format&fit=crop" alt="Mural Azután">
-            	<img src="ma-06.jpg?q=80&w=800&auto=format&fit=crop" alt="Mural Azután">
-            	<img src="ma-09.jpg?q=80&w=800&auto=format&fit=crop" alt="Mural Azután">
-            	<img src="ma-12.jpg?q=80&w=800&auto=format&fit=crop" alt="Mural La Iglesuela">
-            	<img src="ma-14.jpg?q=80&w=800&auto=format&fit=crop" alt="Mural La Iglesuela">
-            	<img src="ma-15a.jpg?q=80&w=800&auto=format&fit=crop" alt="Mural La Iglesuela">            	 
-            	<img src="ma-16.jpg?q=80&w=800&auto=format&fit=crop" alt="Mural Vientos">
-            	<img src="ma-18a.jpg?q=80&w=800&auto=format&fit=crop" alt="Mural Vientos">
-            	<img src="ma-20.jpg?q=80&w=800&auto=format&fit=crop" alt="Mural La Iglesuela">
-            	<img src="ma-21.jpg?q=80&w=800&auto=format&fit=crop" alt="Mural La Iglesuela">
-            	<div class="video-wrapper" id="wrapperAutora">
-					    <div class="play-overlay">
-					    <i class="ph-fill ph-play-circle"></i>
-					    </div>					    
-					    <video 
-					        id="videoAutora"
-					        class="gallery-video" 
-					        poster="postervideo1.jpg?q=80&w=600" 
-					        muted 
-					        loop 
-					        playsinline>
-					        <source src="8mcaraacelerado.mp4" type="video/mp4">
-					    </video>
-					</div> 
-            	<img src="ma-24b.jpg?q=80&w=800&auto=format&fit=crop" alt="Mural Almendral">       	         	
-            	<img src="ma-30.jpg?q=80&w=800&auto=format&fit=crop" alt="Mural Almendral">       	         	
-            	      	         	
+            <div class="step">
+                <span class="step-number">05</span>
+                <h3>Integración</h3>
+                <p>Ejecuto una intervención final para dar coherencia estética y asegurar un acabado de calidad.</p>
             </div>
-            
-            <button class="nav-arrow arrow-right" id="nextBtnAutora"><i class="ph ph-caret-right"></i></button>
-        </div>           
-      </div>
+        </div>
+
+
     </div>
   </section>
+
+	<!-- MURALES DE AUTORA --> 
+  
+	  <section id="murales-autora">
+	  <div class="container">
+	    <div class="about-grid">
+	      <div class="bio-text">
+	        <div class="section-header" id="espaciadoautora">
+	          <span class="section-tag">Visión personal</span>
+	          <h2 class="section-title">Murales de Autora</h2>
+	        </div>
+	
+	        <div class="gallery-wrapper">
+	          <button class="nav-arrow arrow-left" id="prevBtnAutora"><i class="ph ph-caret-left"></i></button>
+	          
+	          <div class="collab-gallery-scroll" id="galleryAutora">
+	            <img src="ma-08.jpg?q=80&w=800&auto=format&fit=crop" alt="Mural Azután">
+	            <img src="ma-02.jpg?q=80&w=800&auto=format&fit=crop" alt="Mural Azután">
+	            <img src="ma-06.jpg?q=80&w=800&auto=format&fit=crop" alt="Mural Azután">
+	            <img src="ma-09.jpg?q=80&w=800&auto=format&fit=crop" alt="Mural Azután">
+	            <img src="ma-12.jpg?q=80&w=800&auto=format&fit=crop" alt="Mural La Iglesuela">
+	            <img src="ma-14.jpg?q=80&w=800&auto=format&fit=crop" alt="Mural La Iglesuela">
+	            <img src="ma-15a.jpg?q=80&w=800&auto=format&fit=crop" alt="Mural La Iglesuela">
+	            <img src="ma-16.jpg?q=80&w=800&auto=format&fit=crop" alt="Mural Vientos">
+	            <img src="ma-18a.jpg?q=80&w=800&auto=format&fit=crop" alt="Mural Vientos">
+	            <img src="ma-20.jpg?q=80&w=800&auto=format&fit=crop" alt="Mural La Iglesuela">
+	            <img src="ma-21.jpg?q=80&w=800&auto=format&fit=crop" alt="Mural La Iglesuela">
+	            
+	            <div class="video-wrapper" id="wrapperAutora">
+	              <div class="play-overlay">
+	                <i class="ph-fill ph-play-circle"></i>
+	              </div>
+	              <video id="videoAutora" class="gallery-video" poster="postervideo1.jpg?q=80&w=600" muted loop playsinline>
+	                <source src="8mcaraacelerado.mp4" type="video/mp4">
+	              </video>
+	            </div>
+	
+	            <img src="ma-24b.jpg?q=80&w=800&auto=format&fit=crop" alt="Mural Almendral">
+	            <img src="ma-30.jpg?q=80&w=800&auto=format&fit=crop" alt="Mural Almendral">
+	          </div>
+	
+	          <button class="nav-arrow arrow-right" id="nextBtnAutora"><i class="ph ph-caret-right"></i></button>
+	        </div>
+	      </div> 
+	      <div class="bio-content">
+	        <p>Como artista, busco que cada intervención respire la esencia del lugar. Mis murales de autora son piezas únicas donde aplico mi visión artística personal, integrando colores y formas que dialogan con la arquitectura y la luz del entorno.</p>
+	        <div class="bio-highlight">
+	          "Un muro en blanco es una oportunidad para contar una historia visual que permanezca en el tiempo."
+	        </div>
+	        <p>Oferta dirigida a Ayuntamientos, entidades, fundaciones, ONG's, asociaciones, colegios, bibliotecas, residencias, centros de día y también a particulares o empresas en la que aplicamos el siguiente esquema:</p>
+	
+	        <div class="steps-autora">
+	          <div class="step">
+	            <span class="step-number">01</span>
+	            <h3>Estudio</h3>
+	            <p>Acordamos un presupuesto en función de: Recursos económicos disponibles, m<sup>2</sup> a cubrir y estado de la pared, dificultad del dibujo y su realización, días de trabajo estimados y recursos complementarios disponibles.</p>
+	          </div>
+	          <div class="step">
+	            <span class="step-number">02</span>
+	            <h3>Diseño</h3>
+	            <p>Realizo un boceto detallado teniendo en cuenta la temática y los valores que se pretendan reflejar, que se aprueba antes de su ejecución en el muro.</p>
+	          </div>
+	          <div class="step">
+	            <span class="step-number">03</span>
+	            <h3>Ejecución</h3>
+	            <p>Dedico los días y el cariño necesarios a la realización del mural para obtener un resultado cuidado y de calidad.</p>
+	          </div>
+	        </div>
+	      </div> 
+	      </div> 
+	      </div> 
+	      </section>
 
   
   <!-- ILUSTRACIÓN --> 
    
   <section id="ilustracion" style="background-color: var(--bg-surface);">
     <div class="container">
-           <div class="section-header">
+           <div class="section-header" id="espaciadoilustra">
             <span class="section-tag">Diseño Editorial</span>
             <h2 class="section-title">Ilustración con Valores</h2>
           </div>
+          <div class="gallery-wrapper" style="position: relative; display: flex; align-items: center; margin-top: -0.1rem;">
+            <button class="nav-arrow arrow-left" id="p_ilustra" style="z-index: 10; cursor: pointer;"><i class="ph ph-caret-left"></i></button>
+            
+            <div class="collab-gallery-scroll" id="s_ilustra" style="display: flex; gap: 16px; overflow-x: auto; scroll-behavior: smooth; width: 100%;">
+               <img src="cagendas08.jpg?q=100&w=800&auto=format&fit=crop" alt="textura">
+               <img src="cf06.jpg?q=100&w=800&auto=format&fit=crop" alt="textura">
+               <img src="cf01.jpg?q=100&w=800&auto=format&fit=crop" alt="textura">
+               <img src="cuentos02.jpg?q=100&w=800&auto=format&fit=crop" alt="textura">
+               <img src="cagendas05.jpg?q=100&w=800&auto=format&fit=crop" alt="textura">
+               <img src="guias06.jpg?q=100&w=800&auto=format&fit=crop" alt="textura">
+               <img src="cf02.jpg?q=100&w=800&auto=format&fit=crop" alt="textura">
+               <img src="cagendas17.jpg?q=100&w=800&auto=format&fit=crop" alt="textura">
+               <img src="cagendas15.jpg?q=100&w=800&auto=format&fit=crop" alt="textura">
+               <img src="cuentos14.jpg?q=100&w=800&auto=format&fit=crop" alt="textura">
+               <img src="cuentos31.jpg?q=100&w=800&auto=format&fit=crop" alt="textura">
+               <img src="guias11.jpg?q=100&w=800&auto=format&fit=crop" alt="textura">
+            </div>
+            
+            <button class="nav-arrow arrow-right" id="n_ilustra" style="z-index: 10; cursor: pointer;"><i class="ph ph-caret-right"></i></button>
+        </div>
+          
           <p>Si tienes una idea, campaña, texto o material de sensibilización al que le falte una ilustración y diseño que le den un sentido estético más amplio y atractivo, ponte en contacto conmigo y valoramos todos los aspectos que se puedan necesitar. Una experiencia de más de diez años avala mi trabajo en este ámbito.</p>
 
-			 <ul class="two-columns-list">
+			 <ul class="two-columns-list" style="padding-bottom:1.5rem;" >
             <li class="lorange"> Álbumes,cuentos y cómics.</li>
             <li class="yllw"> Juegos didácticos.</li>
             <li class="blue"> Calendarios y agendas.</li>
             <li class="lorg2"> Cartelería y folletos.</li>
             <li class="yllw"> Guías y cuadernos.</li>
             <li class="blue"> Vídeos de sensibilización.</li>
-          </ul>
-          <p></p>
+          </ul >
+          
 			 <p>Acordaremos el presupuesto partiendo de tarifas base dependiendo de la cantidad de ilustraciones, complejidad, tamaño, plazos y trabajo extra que se requiera (maquetación, creación de textos, traducción o imprenta). </p>
 			 <p>En todas las fases del proyecto estaré atenta al feedbak que me puedas aportar:</p>
 			 <ul style="margin-top: 20px; display: grid; gap: 10px; margin-bottom: 2rem; margin-top: -1rem;">
 	         <li class="lorange"> Bocetos iniciales a los que añadiremos los cambios y modificaciones necesarios en un diálogo constante: ¡somos un equipo!</li>
 	         <li class="lorg2"> Sobre los bocetos de ilustración y maquetación aceptados se realizará la elaboración final.</li>           
           </ul>
-          <div class="gallery-wrapper" style="position: relative; display: flex; align-items: center; margin-top: -0.1rem;">
-            <button class="nav-arrow arrow-left" id="p_ilustra" style="z-index: 10; cursor: pointer;"><i class="ph ph-caret-left"></i></button>
-            
-            <div class="collab-gallery-scroll" id="s_ilustra" style="display: flex; gap: 16px; overflow-x: auto; scroll-behavior: smooth; width: 100%;">
-               <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?q=80&w=800&auto=format&fit=crop" alt="textura">
-            	<img src="https://images.unsplash.com/photo-1599420186946-7b6fb4e297f0?q=80&w=400&auto=format&fit=crop" alt="Mano pintando">
-            	<img src="https://images.unsplash.com/photo-1525909002-1b05e0c869d8?q=80&w=800&auto=format&fit=crop" alt="cubetas">
-            	<img src="https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?q=80&w=800&auto=format&fit=crop" alt="Bocetos">
-            	<img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?q=80&w=400&auto=format&fit=crop" alt="Pinceles">
-            	<img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=800&auto=format&fit=crop" alt="Paleta de colores">
-           	 	<img src="https://images.unsplash.com/photo-1544531586-fde5298cdd40?q=80&w=400&auto=format&fit=crop" alt="Taller niños">
-            	<img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=400&auto=format&fit=crop" alt="Botes pintura">
-            	<img src="https://images.unsplash.com/photo-1502691876148-a84978e59af8?q=80&w=400&auto=format&fit=crop" alt="Detalle muro">
-            	<img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=800&auto=format&fit=crop" alt="Tablet">
-            </div>
-            
-            <button class="nav-arrow arrow-right" id="n_ilustra" style="z-index: 10; cursor: pointer;"><i class="ph ph-caret-right"></i></button>
-        </div>
-        </div>     
-      </div>
-    </div>
+
+        </div>        
+    
   </section>
 
   <!-- TALLERES ARTÍSTICOS --> 
@@ -1139,8 +1215,8 @@ una de las galerías en el script en la variable const projectsData -->
   <section id="portfolio">
     <div class="container">
       <div class="section-header">
-        <span class="section-tag">Trayectoria profesional</span>
-        <h2>Galería de Proyectos</h2>
+      <!--  <span class="section-tag">Trayectoria profesional</span> -->
+        <h2 class="section-title">Galería de Proyectos</h2>
         <p style="color: var(--text-muted);">Haz clic en cualquier proyecto para ver la galería completa.</p>
       </div>
 
@@ -1164,14 +1240,14 @@ una de las galerías en el script en la variable const projectsData -->
           <div class="portfolio-overlay">
             <div class="portfolio-cat">Mural de Autora</div>
             <div class="portfolio-title">8 de marzo</div>
-            <div style="font-size: 0.9rem;">80m² • Ayto. de La Iglesuela • 7 días</div>
+            <div style="font-size: 0.9rem;">80m² • Ayto. de La Iglesuela • 9 días</div>
           </div>
         </div>
         
  		  <!-- PROYECTO 3 -->
         <div class="portfolio-item" onclick="openLightbox('project3')">
           <!-- Placeholder: Mural individual -->
-          <img src="postervientos3.jpg?auto=format&fit=crop&q=80" alt="Mural Vientos">
+          <img src="postervientos.jpg?auto=format&fit=crop&q=80" alt="Mural Vientos">
           <div class="portfolio-overlay">
             <div class="portfolio-cat">Mural de Autora</div>
             <div class="portfolio-title">Vientos</div>
@@ -1186,7 +1262,7 @@ una de las galerías en el script en la variable const projectsData -->
           <div class="portfolio-overlay">
             <div class="portfolio-cat">Mural Colaborativo</div>
             <div class="portfolio-title">SUM</div>
-            <div style="font-size: 0.9rem;">10m² • Espinoso del Rey • 2 días</div>
+            <div style="font-size: 0.9rem;">12m² • Espinoso del Rey • 3 días</div>
           </div>
         </div>
         
@@ -1211,52 +1287,51 @@ una de las galerías en el script en la variable const projectsData -->
             <div style="font-size: 0.9rem;">50m² • Patio Escolar • 3 días</div>
           </div>
         </div>
-
+        
         <!-- PROYECTO 7 -->
         <div class="portfolio-item" onclick="openLightbox('project7')">
-          <!-- Placeholder: Ilustración libro -->
-          <img src="juegos04.jpg?auto=format&fit=crop&q=80" alt="Mural Azután">
+          <img src="cf03.jpg?auto=format&fit=crop&q=80" alt="Cartelería">
           <div class="portfolio-overlay">
             <div class="portfolio-cat">Ilustración</div>
-            <div class="portfolio-title">Juegos, Logos y Prensa</div>
-           
+            <div class="portfolio-title">Cartelería, folletos, guías y cuadernos</div>
           </div>
         </div>
-
+        
         <!-- PROYECTO 8 -->
         <div class="portfolio-item" onclick="openLightbox('project8')">
-          <img src="cagendas01.jpg?auto=format&fit=crop&q=80" alt="Calendarios y Agendas">
-          <div class="portfolio-overlay">
-            <div class="portfolio-cat">Ilustración</div>
-            <div class="portfolio-title">Calendarios y Agendas</div>
-          </div>
-        </div>
-        
-        <!-- PROYECTO 9 -->
-        <div class="portfolio-item" onclick="openLightbox('project9')">
-          <img src="cf01.jpg?auto=format&fit=crop&q=80" alt="Cartelería">
-          <div class="portfolio-overlay">
-            <div class="portfolio-cat">Ilustración</div>
-            <div class="portfolio-title">Cartelería y folletos</div>
-          </div>
-        </div>
-
-        <!-- PROYECTO 10 -->
-        <div class="portfolio-item" onclick="openLightbox('project10')">
-          <img src="guias01.jpg?auto=format&fit=crop&q=80" alt="Cartelería">
-          <div class="portfolio-overlay">
-            <div class="portfolio-cat">Ilustración</div>
-            <div class="portfolio-title">Guías y cuadernos</div>
-          </div>
-        </div>
-        
-        <!-- PROYECTO 11 -->
-        <div class="portfolio-item" onclick="openLightbox('project11')">
-          <img src="cuentos01.jpg?auto=format&fit=crop&q=80" alt="Cuentos">
+          <img src="cuentos01.png?auto=format&fit=crop&q=80" alt="Cuentos">
           <div class="portfolio-overlay">
             <div class="portfolio-cat">Ilustración</div>
             <div class="portfolio-title">Cuentos</div>
           </div>
+        </div>
+
+        <!-- PROYECTO 9 -->
+        <div class="portfolio-item" onclick="openLightbox('project9')">
+          <!-- Placeholder: Ilustración libro -->
+          <img src="cagendas01.jpg?auto=format&fit=crop&q=80" alt="Calendarios y agendas">
+          <div class="portfolio-overlay">
+            <div class="portfolio-cat">Ilustración</div>
+            <div class="portfolio-title">Calendarios, Agendas, Juegos, Logos y Prensa</div>
+           
+          </div>
+        </div>
+
+			<div id="lightbox" class="lightbox">
+			    <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+			    
+			    <button class="lightbox-arrow prev" onclick="changeLightboxImage(-1)"><i class="ph ph-caret-left"></i></button>
+			    
+			    <div class="lightbox-content">
+			        <div id="lightbox-media-container"></div>
+			    </div>
+			    
+			    <button class="lightbox-arrow next" onclick="changeLightboxImage(1)"><i class="ph ph-caret-right"></i></button>
+			</div>
+
+
+
+
 
       </div>
     </div>
@@ -1401,17 +1476,6 @@ una de las galerías en el script en la variable const projectsData -->
     <div class="container"><p>© 2026 Clara Luna Rodríguez.</p></div>
   </footer>
 
-<div id="lightbox" class="lightbox">
-    <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
-    
-    <button class="lightbox-arrow prev" onclick="changeLightboxImage(-1)"><i class="ph ph-caret-left"></i></button>
-    
-    <div class="lightbox-content">
-        <div id="lightbox-media-container"></div>
-    </div>
-    
-    <button class="lightbox-arrow next" onclick="changeLightboxImage(1)"><i class="ph ph-caret-right"></i></button>
-</div>
 
  <script type="text/javascript">
     // --- THEME TOGGLE ---
@@ -1488,7 +1552,7 @@ una de las galerías en el script en la variable const projectsData -->
 	        'gal8m14.jpg?auto=format&fit=crop&q=100',
 	    ],
 	    'project3': [
-			  { type: 'video', src: 'muroveryfast.mp4', poster: 'postervientos3.jpg' },
+			  { type: 'video', src: 'muroveryfast.mp4', poster: 'postervientos.jpg' },
 	        'galvientos01.jpg?auto=format&fit=crop&q=100',
 	        'galvientos02.jpg?auto=format&fit=crop&q=100',
 	        'galvientos03.jpg?auto=format&fit=crop&q=100',
@@ -1562,59 +1626,15 @@ una de las galerías en el script en la variable const projectsData -->
 	        'galreal15.jpg?auto=format&fit=crop&q=100',
 	    ],
 	    'project7': [
-	        'juegos04.jpg?auto=format&fit=crop&q=100',
-	        'juegos01.jpg?auto=format&fit=crop&q=100',
-	        'juegos02.jpg?auto=format&fit=crop&q=100',
-	        'juegos03.jpg?auto=format&fit=crop&q=100',
-	        'juegos05.jpg?auto=format&fit=crop&q=100',
-	        'juegos06.jpg?auto=format&fit=crop&q=100',
-	        'logos01.jpg?auto=format&fit=crop&q=100',
-	        'logos02.jpg?auto=format&fit=crop&q=100',
-	        'logos03.jpg?auto=format&fit=crop&q=100',
-	        'logos04.jpg?auto=format&fit=crop&q=100',
-	        'logos05.jpg?auto=format&fit=crop&q=100',
-	        'logos06.jpg?auto=format&fit=crop&q=100',
-	        'logos07.jpg?auto=format&fit=crop&q=100',
-	        'logos08.jpg?auto=format&fit=crop&q=100',
-	        'logos09.jpg?auto=format&fit=crop&q=100',
-	        'prensa01.jpg?auto=format&fit=crop&q=100',
-	        'prensa02.jpg?auto=format&fit=crop&q=100',
-	        'prensa03.jpg?auto=format&fit=crop&q=100',
-	        'prensa04.jpg?auto=format&fit=crop&q=100',
-	        'prensa05.jpg?auto=format&fit=crop&q=100',
-	    ],
-	    'project8': [
-	        'cagendas01.jpg?auto=format&fit=crop&q=100',
-	        'cagendas02.jpg?auto=format&fit=crop&q=100',
-	        'cagendas03.jpg?auto=format&fit=crop&q=100',
-	        'cagendas04.jpg?auto=format&fit=crop&q=100',
-	        'cagendas05.jpg?auto=format&fit=crop&q=100',
-	        'cagendas06.jpg?auto=format&fit=crop&q=100',
-	        'cagendas07.jpg?auto=format&fit=crop&q=100',
-	        'cagendas08.jpg?auto=format&fit=crop&q=100',
-	        'cagendas08-2.jpg?auto=format&fit=crop&q=100',
-	        'cagendas09-2.jpg?auto=format&fit=crop&q=100',
-	        'cagendas15.jpg?auto=format&fit=crop&q=100',
-	        'cagendas16.jpg?auto=format&fit=crop&q=100',
-	        'cagendas17.jpg?auto=format&fit=crop&q=100',
-	        'cagendas18.jpg?auto=format&fit=crop&q=100',
-	        'cagendas19.jpg?auto=format&fit=crop&q=100',
-	        'cagendas19-2.jpg?auto=format&fit=crop&q=100',
-	        'cagendas21.jpg?auto=format&fit=crop&q=100',
-	        'cagendas26.jpg?auto=format&fit=crop&q=100',
-	    ],
-	    'project9': [
+	        'cf03.jpg?auto=format&fit=crop&q=100',
 	        'cf01.jpg?auto=format&fit=crop&q=100',
 	        'cf02.jpg?auto=format&fit=crop&q=100',
-	        'cf03.jpg?auto=format&fit=crop&q=100',
 	        'cf04.jpg?auto=format&fit=crop&q=100',
 	        'cf05.jpg?auto=format&fit=crop&q=100',
 	        'cf06.jpg?auto=format&fit=crop&q=100',
 	        'cf07.jpg?auto=format&fit=crop&q=100',
 	        'cf08.jpg?auto=format&fit=crop&q=100',
-	    ],
-	    'project10': [
-	        'guias01.jpg?auto=format&fit=crop&q=100',
+			  'guias01.jpg?auto=format&fit=crop&q=100',
 	        'guias02.jpg?auto=format&fit=crop&q=100',
 	        'guias03.jpg?auto=format&fit=crop&q=100',
 	        'guias04.jpg?auto=format&fit=crop&q=100',
@@ -1625,12 +1645,10 @@ una de las galerías en el script en la variable const projectsData -->
 	        'guias09.jpg?auto=format&fit=crop&q=100',
 	        'guias10.jpg?auto=format&fit=crop&q=100',
 	        'guias11.jpg?auto=format&fit=crop&q=100',
-
 	    ],
-	    'project11': [
-	        'cuentos01.jpg?auto=format&fit=crop&q=100',
+       'project8': [	
+	        'cuentos01.png?auto=format&fit=crop&q=100',
 	        'cuentos02.jpg?auto=format&fit=crop&q=100',
-	        'cuentos03.jpg?auto=format&fit=crop&q=100',
 	        'cuentos04.jpg?auto=format&fit=crop&q=100',
 	        'cuentos05.jpg?auto=format&fit=crop&q=100',
 	        'cuentos06.jpg?auto=format&fit=crop&q=100',
@@ -1654,7 +1672,6 @@ una de las galerías en el script en la variable const projectsData -->
 	        'cuentos24.jpg?auto=format&fit=crop&q=100',
 	        'cuentos25.jpg?auto=format&fit=crop&q=100',
 	        'cuentos26.jpg?auto=format&fit=crop&q=100',
-	        'cuentos27.jpg?auto=format&fit=crop&q=100',
 	        'cuentos28.jpg?auto=format&fit=crop&q=100',
 	        'cuentos29.jpg?auto=format&fit=crop&q=100',
 	        'cuentos30.jpg?auto=format&fit=crop&q=100',
@@ -1662,7 +1679,37 @@ una de las galerías en el script en la variable const projectsData -->
 	        'cuentos32.jpg?auto=format&fit=crop&q=100',
 	        'cuentos33.jpg?auto=format&fit=crop&q=100',
 	    ],
-	};
+
+	    'project9': [
+	        'cagendas01.jpg?auto=format&fit=crop&q=100',
+	        'cagendas02.jpg?auto=format&fit=crop&q=100',
+	        'cagendas03.jpg?auto=format&fit=crop&q=100',
+	        'cagendas04.jpg?auto=format&fit=crop&q=100',
+	        'cagendas05.jpg?auto=format&fit=crop&q=100',
+	        'cagendas06.jpg?auto=format&fit=crop&q=100',
+	        'cagendas07.jpg?auto=format&fit=crop&q=100',
+	        'cagendas08.jpg?auto=format&fit=crop&q=100',
+	        'cagendas09-2.jpg?auto=format&fit=crop&q=100',
+	        'cagendas15.jpg?auto=format&fit=crop&q=100',
+	        'cagendas16.jpg?auto=format&fit=crop&q=100',
+	        'cagendas17.jpg?auto=format&fit=crop&q=100',
+	        'cagendas18.jpg?auto=format&fit=crop&q=100',
+	        'cagendas19.jpg?auto=format&fit=crop&q=100',
+	        'cagendas19-2.jpg?auto=format&fit=crop&q=100',
+	        'cagendas21.jpg?auto=format&fit=crop&q=100',
+	        'cagendas26.jpg?auto=format&fit=crop&q=100',
+	        'juegos04.jpg?auto=format&fit=crop&q=100',
+	        'juegos01.jpg?auto=format&fit=crop&q=100',
+	        'juegos05.jpg?auto=format&fit=crop&q=100',
+	        'juegos06.jpg?auto=format&fit=crop&q=100',
+	        'logos04.jpg?auto=format&fit=crop&q=100',
+	        'logos05.jpg?auto=format&fit=crop&q=100',
+	        'logos07.jpg?auto=format&fit=crop&q=100',
+	        'prensa01.jpg?auto=format&fit=crop&q=100',
+	        'prensa02.jpg?auto=format&fit=crop&q=100',
+	    ],
+
+       };
 	
 	function openLightbox(projectId) {
         currentProjectImages = projectsData[projectId] || [];
@@ -1917,6 +1964,61 @@ una de las galerías en el script en la variable const projectsData -->
 
     // 2. Para el video de Autora
     configurarVideo('videoAutora', 'wrapperAutora');
+    
+
+		    // ---------------------------------------------------------
+		    // --- LÓGICA: CARGA DESDE JSON + CARRUSEL DINÁMICO INICIO RÁPIDO ---
+		    // ---------------------------------------------------------
+		    const heroImg = document.querySelector('.hero-image img');
+		    
+		    if (heroImg) {
+		        async function cargarDatosHero() {
+		            try {
+		                // Buscamos el archivo JSON
+		                const respuesta = await fetch('lista-hero.json');
+		                const datos = await respuesta.json();
+		
+		                if (datos && datos.length > 0) {
+		                    iniciarCarruselHero(datos);
+		                }
+		            } catch (error) {
+		                console.error("No se pudo cargar el archivo JSON:", error);
+		            }
+		        }
+		
+		        function iniciarCarruselHero(lista) {
+		            let index = 0;
+		
+		            function changeImage() {
+		                // Avanzamos al siguiente elemento del JSON
+		                index = (index + 1) % lista.length;
+		                const nuevaImagen = lista[index];
+		
+		                // PRECARGA: Solo cambiamos cuando la imagen esté lista en memoria
+		                const imgPreload = new Image();
+		                imgPreload.src = nuevaImagen.src;
+		                
+		                imgPreload.onload = function() {
+		                    heroImg.style.opacity = 0; // Desvanecer
+		                    
+		                    setTimeout(() => {
+		                        heroImg.src = nuevaImagen.src;
+		                        heroImg.alt = nuevaImagen.alt || "";
+		                        heroImg.style.opacity = 1; // Mostrar
+		                    }, 800);
+		                };
+		            }
+		
+		            // --- CONFIGURACIÓN DE TIEMPOS ---
+		            // Primer cambio rápido (a los 2 segundos) para captar atención
+		            setTimeout(changeImage, 2000);
+		            
+		            // Siguientes cambios automáticos cada 5 segundos
+		            setInterval(changeImage, 5000);
+		        }
+		
+		        cargarDatosHero();
+		    }
 
   });
 </script>
